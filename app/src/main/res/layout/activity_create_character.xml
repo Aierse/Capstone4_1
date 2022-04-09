@@ -125,6 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:text="리셋" />
 
             <Button
@@ -132,6 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="9"
+                android:textStyle="bold"
                 android:text="확인" />
         </LinearLayout>
     </LinearLayout>
