@@ -16,9 +16,9 @@ Capstone
 
 ## Topic
 
-> 1. [Goal](#topic)
+> 1. [App](#topic)
 > 2. [Technologies Used](#Skill)
-> 3. 
+> 3.  
 
 
 
