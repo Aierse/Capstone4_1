@@ -1,8 +1,8 @@
 package com.example.capstone4_1
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.capstone4_1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         // 캐릭터 정보가 없을 경우 조건 필요 - 현재는 true로 대체함
         if (true) {
-            excuteMyInfoActivity()
+            excuteQuestActivity()   // 자기화면 출력하려면 밑에서 함수 만들고 이 줄에 호출하셈
         }
     }
 
@@ -22,8 +22,15 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this@MainActivity, CreateCharacterActivity::class.java)
         startActivity(intent)
     }
+    
     fun excuteMyInfoActivity() {
         val intent = Intent(this@MainActivity, MyInfoActivity::class.java)
         startActivity(intent)
     }
+
+    fun excuteQuestActivity() {
+        val intent = Intent(this@MainActivity, QuestScreen::class.java)
+        startActivity(intent)
+    }
+
 }
