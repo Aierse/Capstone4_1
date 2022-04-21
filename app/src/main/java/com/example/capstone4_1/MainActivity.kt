@@ -14,12 +14,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         // 캐릭터 정보가 없을 경우 조건 필요 - 현재는 true로 대체함
         if (true) {
-            excuteCreateCharacterActivity()
+            excuteMyInfoActivity()
         }
     }
 
     fun excuteCreateCharacterActivity() {
         val intent = Intent(this@MainActivity, CreateCharacterActivity::class.java)
+        startActivity(intent)
+    }
+    fun excuteMyInfoActivity() {
+        val intent = Intent(this@MainActivity, MyInfoActivity::class.java)
         startActivity(intent)
     }
 }
