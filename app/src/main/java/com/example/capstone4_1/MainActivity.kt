@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun excuteCreateCharacterActivity() {
-        val intent = Intent(this, CreateCharacterActivity::class.java)
+        val intent = Intent(this@MainActivity, CreateCharacterActivity::class.java)
         startActivity(intent)
     }
 }
