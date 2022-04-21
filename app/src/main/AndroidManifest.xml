@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone4_1">
         <activity
-            android:name=".CreateCharacterActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CreateCharacterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
