@@ -10,4 +10,12 @@ object Character {
         this.gender = gender
         this.interest = interest
     }
+
+    fun initializeQuest() {
+
+    }
+
+    fun initializeStats() {
+
+    }
 }
