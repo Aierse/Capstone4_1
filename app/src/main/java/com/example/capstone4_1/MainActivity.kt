@@ -9,8 +9,8 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.capstone4_1.R.layout.activity_main
 import com.example.capstone4_1.R.layout.activity_my_info
+import com.example.capstone4_1.R.layout.activity_quest_screen
 import com.example.capstone4_1.databinding.ActivityMainBinding
 
 
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            val view = inflater.inflate(activity_main, container, false)
+            val view = inflater.inflate(activity_quest_screen, container, false)
             return view
         }
     }
