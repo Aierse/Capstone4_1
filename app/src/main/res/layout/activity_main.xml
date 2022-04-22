@@ -9,7 +9,9 @@
         android:id="@+id/mainFrag"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></androidx.fragment.app.FragmentContainerView>
+        android:layout_weight="1">
+
+    </androidx.fragment.app.FragmentContainerView>
 
     <LinearLayout
         android:id="@+id/menu"
