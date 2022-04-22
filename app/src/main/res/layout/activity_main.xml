@@ -9,8 +9,7 @@
         android:id="@+id/mainFrag"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-    </androidx.fragment.app.FragmentContainerView>
+        android:layout_weight="1"></androidx.fragment.app.FragmentContainerView>
 
     <LinearLayout
         android:id="@+id/menu"
@@ -23,9 +22,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#FFFFFF"
+            android:stateListAnimator="@null"
             android:text="@string/btn_frag1"
             android:textColor="#000000"
-            android:textSize="26sp" />          
+            android:textSize="26sp" />
 
         <View
             android:layout_width="1dp"
@@ -38,11 +38,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/frag2"
-            android:textColor="#000000"
             android:backgroundTint="#FFFFFF"
             android:stateListAnimator="@null"
-            android:textSize="23sp" />        
+            android:text="@string/btn_frag2"
+            android:textColor="#000000"
+            android:textSize="23sp" />
     </LinearLayout>
 </LinearLayout>
 
