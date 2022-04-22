@@ -102,7 +102,6 @@
                 android:background="@color/teal_200"></ScrollView>
         </LinearLayout>
     </LinearLayout>
-    <!--액티비티 이동 메뉴              weight 1 -->
 
 
 </LinearLayout>
