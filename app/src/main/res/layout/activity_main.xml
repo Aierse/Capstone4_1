@@ -18,15 +18,14 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/btn_frag2"
+            android:id="@+id/btn_frag1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/frag2"
-            android:textColor="#000000"
             android:backgroundTint="#FFFFFF"
-            android:stateListAnimator="@null"
-            android:textSize="23sp" />
+            android:text="@string/btn_frag1"
+            android:textColor="#000000"
+            android:textSize="26sp" />          
 
         <View
             android:layout_width="1dp"
@@ -35,15 +34,15 @@
             android:background="@color/black" />
 
         <Button
-            android:id="@+id/btn_frag3"
+            android:id="@+id/btn_frag2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="@string/frag2"
             android:textColor="#000000"
             android:backgroundTint="#FFFFFF"
             android:stateListAnimator="@null"
-            android:text="@string/frag3"
-            android:textSize="23sp" />
+            android:textSize="23sp" />        
     </LinearLayout>
 </LinearLayout>
 

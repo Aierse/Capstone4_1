@@ -15,15 +15,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setFrag(1)
-        binding.btnFrag2.setOnClickListener {
+        binding.btnFrag1.setOnClickListener {
             setFrag(1)
         }
-        binding.btnFrag3.setOnClickListener {
+        binding.btnFrag2.setOnClickListener {
             setFrag(2)
+
         }
 
     }
@@ -44,19 +47,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
+//
 class Fragment1 : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(activity_create_character, container, false)
-        return view
-    }
-}
-
-class Fragment2 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -67,13 +59,24 @@ class Fragment2 : Fragment() {
     }
 }
 
-class Fragment3 : Fragment() {
+class Fragment2 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(activity_quest_screen, container, false)
+        return view
+    }
+}
+
+class Fragment3 : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(activity_create_character, container, false)
         return view
     }
 }

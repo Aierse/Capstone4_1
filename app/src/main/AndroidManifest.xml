@@ -13,13 +13,13 @@
             android:name=".MyInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".QuestScreen"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".CreateCharacterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".QuestScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
