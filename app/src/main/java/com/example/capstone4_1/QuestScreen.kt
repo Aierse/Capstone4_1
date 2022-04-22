@@ -43,27 +43,13 @@ class QuestAdapter(val context: Context, val QuestList: ArrayList<Quest>) : Base
     }
 }
 
-//밑 데이터 리스트는 테스트 용임
-var QuestList = arrayListOf<Quest>(
-    Quest(R.drawable.bike, "퀘스트 이름1", "퀘스트 설명1"),
-    Quest(R.drawable.face, "퀘스트 이름2", "퀘스트 설명2"),
-    Quest(R.drawable.ball, "퀘스트 이름3", "퀘스트 설명3"),
-    Quest(R.drawable.bike, "퀘스트 이름4", "퀘스트 설명4"),
-    Quest(R.drawable.ball, "퀘스트 이름5", "퀘스트 설명5"),
-    Quest(R.drawable.bike, "퀘스트 이름6", "퀘스트 설명6"),
-    Quest(R.drawable.face, "퀘스트 이름7", "퀘스트 설명7"),
-    Quest(R.drawable.bike, "퀘스트 이름8", "퀘스트 설명8"),
-    Quest(R.drawable.face, "퀘스트 이름9", "퀘스트 설명9")
-)
-
-
 class QuestScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quest_screen)
 
-        val Adapter = QuestAdapter(this, QuestList)
+        val Adapter = QuestAdapter(this, Character.QuestList)
         val listview = findViewById<ListView>(R.id.listview)
 
         listview.adapter = Adapter //어답터 리스트뷰에 적용
