@@ -1,9 +1,14 @@
 package com.example.capstone4_1
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.capstone4_1.R.layout.*
 import com.example.capstone4_1.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -12,25 +17,62 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // 캐릭터 정보가 없을 경우 조건 필요 - 현재는 true로 대체함
-        if (true) {
-            excuteQuestActivity()   // 자기화면 출력하려면 밑에서 함수 만들고 이 줄에 호출하셈
+
+        binding.btnFrag2.setOnClickListener {
+            setFrag(1)
+        }
+        binding.btnFrag3.setOnClickListener {
+            setFrag(2)
+        }
+
+    }
+
+    private fun setFrag(fragnum: Int) {
+        val ft = supportFragmentManager.beginTransaction()
+
+        when (fragnum) {
+            0 -> {
+                ft.replace(R.id.mainFrag, Fragment1()).commit()
+            }
+            1 -> {
+                ft.replace(R.id.mainFrag, Fragment2()).commit()
+            }
+            2 -> {
+                ft.replace(R.id.mainFrag, Fragment3()).commit()
+            }
         }
     }
+}
 
-    fun excuteCreateCharacterActivity() {
-        val intent = Intent(this@MainActivity, CreateCharacterActivity::class.java)
-        startActivity(intent)
+class Fragment1 : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(activity_create_character, container, false)
+        return view
     }
-    
-    fun excuteMyInfoActivity() {
-        val intent = Intent(this@MainActivity, MyInfoActivity::class.java)
-        startActivity(intent)
-    }
+}
 
-    fun excuteQuestActivity() {
-        val intent = Intent(this@MainActivity, QuestScreen::class.java)
-        startActivity(intent)
+class Fragment2 : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(activity_my_info, container, false)
+        return view
     }
+}
 
+class Fragment3 : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(activity_quest_screen, container, false)
+        return view
+    }
 }
