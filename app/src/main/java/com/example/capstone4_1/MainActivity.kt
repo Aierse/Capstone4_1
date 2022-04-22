@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.capstone4_1.R.layout.*
+import com.example.capstone4_1.R.layout.activity_my_info
+import com.example.capstone4_1.R.layout.activity_quest_screen
 import com.example.capstone4_1.databinding.ActivityMainBinding
 
 
@@ -20,12 +21,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setFrag(1)
+        setFrag(0)
         binding.btnFrag1.setOnClickListener {
-            setFrag(1)
+            setFrag(0)
         }
         binding.btnFrag2.setOnClickListener {
-            setFrag(2)
+            setFrag(1)
 
         }
 
@@ -36,19 +37,16 @@ class MainActivity : AppCompatActivity() {
 
         when (fragnum) {
             0 -> {
-                ft.replace(R.id.mainFrag, Fragment1()).commit()
+                ft.replace(R.id.mainFrag, MyInfoFragment()).commit()
             }
             1 -> {
-                ft.replace(R.id.mainFrag, Fragment2()).commit()
-            }
-            2 -> {
-                ft.replace(R.id.mainFrag, Fragment3()).commit()
+                ft.replace(R.id.mainFrag, QuestScreenFragment()).commit()
             }
         }
     }
 }
-//
-class Fragment1 : Fragment() {
+
+class MyInfoFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,24 +57,13 @@ class Fragment1 : Fragment() {
     }
 }
 
-class Fragment2 : Fragment() {
+class QuestScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(activity_quest_screen, container, false)
-        return view
-    }
-}
-
-class Fragment3 : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(activity_create_character, container, false)
         return view
     }
 }
