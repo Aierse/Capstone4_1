@@ -1,9 +1,6 @@
 package com.example.capstone4_1
 
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,6 +11,8 @@ class QuestScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quest_screen)
 
+        //화면 전환으로 실행 하기 (필요시 활성화 예정)
+/*
         val Adapter = QuestAdapter(this, Character.QuestList)
         val listview = findViewById<View>(R.id.listview) as ListView
         listview.adapter = Adapter
@@ -26,7 +25,7 @@ class QuestScreen : AppCompatActivity() {
 
                 toast(selectItem.Qname)
             }
-
+*/
     }
 
     //토스트 메시지 사용법 -->  기본값 String toast("내용")  형변환 예시 --> 변수.toString()
