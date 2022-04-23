@@ -2,7 +2,6 @@ package com.example.capstone4_1
 
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.random.Random.Default.nextInt
 
 class Quest(val image: Int, val Qname: String, val explain: String) {
     companion object {
