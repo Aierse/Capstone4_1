@@ -1,6 +1,7 @@
 package com.example.capstone4_1
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -60,6 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         initialize()
         setupEvent()
+        excuteCreateCharacterActivity()
 
         setContentView(binding.root)
     }
@@ -131,5 +133,10 @@ class MainActivity : AppCompatActivity() {
             val view = inflater.inflate(activity_quest_screen, container, false)
             return view
         }
+    }
+
+    private fun excuteCreateCharacterActivity() {
+        val intent = Intent(this, CreateCharacterActivity::class.java)
+        startActivity(intent)
     }
 }

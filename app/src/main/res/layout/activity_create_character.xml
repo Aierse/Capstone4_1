@@ -88,17 +88,19 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp">
 
-                <Button
+                <ImageButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:src="@drawable/left"
+                    android:backgroundTint="@color/white"/>
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3" />
 
-                <Button
+                <ImageButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
