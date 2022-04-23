@@ -9,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 
 
-class Quest(val image: Int, val Qname: String, val explain: String)
 
 class QuestAdapter(val context: Context, val QuestList: ArrayList<Quest>) : BaseAdapter() {
 
