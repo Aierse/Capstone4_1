@@ -19,6 +19,9 @@
             android:name=".QuestScreen"
             android:exported="false" />
         <activity
+            android:name=".QuestShowActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateCharacterActivity"
             android:exported="false" />
         <activity
