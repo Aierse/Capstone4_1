@@ -92,8 +92,6 @@ class MainScreenFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(activity_main_screen, container, false)
 
-        val rootView = view.findViewById<ListView>(R.id.mainFrag)
-
         return view
     }
 }
