@@ -23,7 +23,7 @@ class Quest(val image: Int, val Qname: String, val explain: String) {
             Quest(R.drawable.bike, "백준", "백준 문제 3개 풀기")
         )
 
-        private val defalutQuestList = arrayOf(healthQuest, languageQuest, codingQuest)
+        private val defaultQuestList = arrayOf(healthQuest, languageQuest, codingQuest)
 
 
         fun getRandomList(interest: Interest): ArrayList<Quest> {
@@ -46,7 +46,7 @@ class Quest(val image: Int, val Qname: String, val explain: String) {
             }
 
             for (i in 1..7) {
-                val selectRandomInterest = defalutQuestList[r.nextInt(questList.size)]
+                val selectRandomInterest = defaultQuestList[r.nextInt(defaultQuestList.size)]
 
                 questList.add(selectRandomInterest[r.nextInt(selectRandomInterest.size)])
             }
