@@ -60,6 +60,13 @@ class MainActivity : AppCompatActivity() {
         toast?.show()
     }
 
+    //시스템 버튼 감지
+    override fun onBackPressed() {
+        val ft = supportFragmentManager.beginTransaction()
+        //동작 테스트 코드
+        Toast.makeText(this, "$ft 뒤로가기 버튼 클릭했음", Toast.LENGTH_SHORT).show()
+    }
+
     //감지된 화면 번호 받아서 프래그먼트 매니저로 처리하는 곳
     private fun setFrag(fragnum: Int) {
 
@@ -89,6 +96,7 @@ class MainActivity : AppCompatActivity() {
             savedInstanceState: Bundle?
         ): View? {
             val view = inflater.inflate(activity_main_screen, container, false)
+
             return view
         }
     }
