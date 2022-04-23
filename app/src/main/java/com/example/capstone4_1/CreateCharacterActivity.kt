@@ -2,6 +2,7 @@ package com.example.capstone4_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.capstone4_1.databinding.ActivityCreateCharacterBinding
 
 class CreateCharacterActivity : AppCompatActivity() {
@@ -11,5 +12,9 @@ class CreateCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateCharacterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    fun leftMove(view: View) {
+
     }
 }
