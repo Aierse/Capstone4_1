@@ -20,10 +20,12 @@
             android:layout_gravity="center"
             android:text="@string/todo"
             android:textSize="20sp" />
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+        <fragment
+            android:id="@+id/mainList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:name="com.example.capstone4_1.QuestListFragment" />
     </LinearLayout>
 
     <LinearLayout
@@ -31,8 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical"
-        android:layout_weight="1"
-        >
+        android:layout_weight="1">
+
         <FrameLayout
             android:layout_width="100dp"
             android:layout_height="100dp"
