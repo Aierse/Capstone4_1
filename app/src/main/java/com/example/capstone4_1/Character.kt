@@ -10,9 +10,8 @@ object Character {
     var gender: String = "genderstub"
     var interest: Interest = Interest.HEALTH
     var questList = arrayListOf<Quest>()
-    var current_login : LocalDate? =null //최근 로그인
-    val create_time : LocalDate? =null //캐릭터 생성시점
-
+    var current_login : LocalDate? = null //최근 로그인
+    val create_time : LocalDate? = null //캐릭터 생성시점
 
     fun initialize(name: String, gender: String, interest: Interest) {
         this.name = name
