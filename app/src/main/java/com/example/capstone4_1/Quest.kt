@@ -22,5 +22,36 @@ class Quest(val image: Int, val Qname: String, val explain: String) {
         private val codingQuest = arrayListOf<Quest>(
             Quest(R.drawable.bike, "백준", "백준 문제 3개 풀기")
         )
+
+        private val defalutQuestList = arrayOf(healthQuest, languageQuest, codingQuest)
+
+
+        fun getRandomList(interest: Interest): ArrayList<Quest> {
+            val questList = arrayListOf<Quest>()
+            var selectInterest: ArrayList<Quest> = arrayListOf<Quest>()
+
+            when (interest) {
+                Interest.HEALTH ->
+                    selectInterest = healthQuest
+                Interest.LANGUAGE ->
+                    selectInterest = languageQuest
+                Interest.CODING ->
+                    selectInterest = codingQuest
+            }
+
+            val r = Random()
+
+            for (i in 1..3) {
+                questList.add(selectInterest[r.nextInt(selectInterest.size)])
+            }
+
+            for (i in 1..7) {
+                val selectRandomInterest = defalutQuestList[r.nextInt(questList.size)]
+
+                questList.add(selectRandomInterest[r.nextInt(selectRandomInterest.size)])
+            }
+
+            return questList
+        }
     }
 }
