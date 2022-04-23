@@ -7,8 +7,7 @@
         android:id="@+id/questlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
         android:divider="@color/white"
-        android:dividerHeight="25dp"
-        android:fastScrollEnabled="true" />
+        android:dividerHeight="10dp"
+        android:fastScrollEnabled="true"/>
 </LinearLayout>
