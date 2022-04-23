@@ -4,12 +4,12 @@ import org.json.JSONObject
 
 public final class JsonUtil{
     companion object {
-        fun toJson(user: User): String {
+        fun toJson(user: Character): String {
             try {
                 val json = JSONObject()
                 json.put("name", user.name)
                 json.put("gender", user.gender)
-                json.put("attention", user.attention)
+                json.put("attention", user.interest)
 
                 return json.toString()
             } catch (e: JSONException) {
