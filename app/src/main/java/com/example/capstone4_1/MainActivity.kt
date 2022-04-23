@@ -19,6 +19,7 @@ enum class CallFragment {
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private fun toast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
     // 최초 실행 시 초기화 함수
     private fun initialize() {
@@ -61,16 +62,6 @@ class MainActivity : AppCompatActivity() {
         setupEvent()
 
         setContentView(binding.root)
-    }
-
-    //토스트 메시지 사용법 -->  기본값 String toast("내용")  형변환 예시 --> toast(변수.toString())
-    private fun toast(message: String) {
-        var toast: Toast? = null
-        // 토스트 메서드
-        if (toast == null) {
-            toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
-        } else toast.setText(message)
-        toast?.show()
     }
 
     //시스템 버튼 감지
@@ -137,7 +128,6 @@ class MainActivity : AppCompatActivity() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            this.context.
             val view = inflater.inflate(activity_quest_screen, container, false)
             return view
         }
