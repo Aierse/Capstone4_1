@@ -5,8 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ListView
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -19,21 +20,18 @@ enum class CallFragment {
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private fun toast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
     // 최초 실행 시 초기화 함수
     private fun initialize() {
         // 캐릭터 클래스 초기화
         Character.initializeQuest()
 
-
-
-
         // 기타
         setFrag(CallFragment.MAIN)
     }
 
     private fun setupEvent() {
+
         binding.btnFrag1.setOnClickListener { setFrag(CallFragment.MYINFO) }
         binding.btnFrag2.setOnClickListener { setFrag(CallFragment.QUSETSCREEN) }
     }
@@ -111,7 +109,7 @@ class MyInfoFragment : Fragment() {
         return view
     }
 }
-
+// 퀘스트 리스트 뷰 프레그먼트
 class QuestListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -121,6 +119,21 @@ class QuestListFragment : Fragment() {
         val view = inflater.inflate(quest_list, container, false)
 
         val rootView = view.findViewById<ListView>(R.id.questlist)
+
+        rootView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            val dialog = AlertDialog.Builder(requireContext())
+
+            val selectQuest = parent.getItemAtPosition(position) as Quest
+            dialog.setTitle(selectQuest.name)
+            dialog.setMessage(selectQuest.explain)
+
+            dialog.setPositiveButton("확인") { dialogInterface, i ->
+                // 확인 버튼 클릭시
+            }
+
+            dialog.show()
+        }
+
         val adapter = QuestAdapter(requireContext())
 
         rootView.adapter = adapter
@@ -128,7 +141,7 @@ class QuestListFragment : Fragment() {
         return view
     }
 }
-
+// 퀘스트 스크린 프레그먼트
 class QuestScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
