@@ -17,7 +17,6 @@ enum class CallFragment {
     MAIN, MYINFO, QUSETSCREEN
 }
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setFrag(CallFragment.MAIN)
     }
 
-    fun setupevent() {
+    fun setupEvent() {
         binding.mainList.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val dialog = AlertDialog.Builder(this@MainActivity)
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         initialize()
-        setupevent()
+        setupEvent()
 
         setContentView(binding.root)
     }
@@ -138,6 +137,7 @@ class MainActivity : AppCompatActivity() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
+            this.context.
             val view = inflater.inflate(activity_quest_screen, container, false)
             return view
         }
