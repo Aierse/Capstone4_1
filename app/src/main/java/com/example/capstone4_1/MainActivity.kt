@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
         }
         //동작 테스트 코드
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        binding.mainFrag.setVisibility(View.VISIBLE)
     }
 
     //감지된 화면 번호 받아서 프래그먼트 매니저 동작 처리하는 곳
@@ -71,9 +70,11 @@ class MainActivity : AppCompatActivity() {
                 ft.replace(R.id.mainFrag, MainScreenFragment()).commit()
             }
             CallFragment.MYINFO -> {
+                supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                 ft.replace(R.id.mainFrag, MyInfoFragment()).addToBackStack(null).commit()
             }
             CallFragment.QUSETSCREEN -> {
+                supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                 ft.replace(R.id.mainFrag, QuestScreenFragment()).addToBackStack(null).commit()
             }
         }
