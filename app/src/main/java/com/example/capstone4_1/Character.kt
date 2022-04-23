@@ -24,7 +24,7 @@ object Character {
     }
 
     fun initializeQuest() {
-        Quest.getRandomList(interest)
+        questList = Quest.getRandomList(interest)
     }
 
     fun initializeStats() {
