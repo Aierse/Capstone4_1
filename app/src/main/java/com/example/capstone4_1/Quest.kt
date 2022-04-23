@@ -1,9 +1,8 @@
 package com.example.capstone4_1
 
 import java.util.*
-import kotlin.collections.ArrayList
 
-class Quest(val image: Int, val Qname: String, val explain: String) {
+class Quest(val image: Int, val name: String, val explain: String) {
     companion object {
         private val healthQuest = arrayListOf<Quest>(
             Quest(R.drawable.bike, "윗몸 일으키기", "윗몸 일으키기 30번 하기"),
