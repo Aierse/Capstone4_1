@@ -134,13 +134,12 @@ class QuestListFragment : Fragment() {
             dialog.show()
         }
 
-        val adapter = QuestAdapter(requireContext())
-
-        rootView.adapter = adapter
+        rootView.adapter = QuestAdapter(requireContext())
 
         return view
     }
 }
+
 // 퀘스트 스크린 프레그먼트
 class QuestScreenFragment : Fragment() {
     override fun onCreateView(

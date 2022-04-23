@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
-class QuestAdapter(val context: Context) : BaseAdapter() {
+class QuestAdapter(val context: Context): BaseAdapter() {
     class ViewHolder {
         lateinit var name: TextView
         lateinit var explain: TextView
@@ -24,12 +24,10 @@ class QuestAdapter(val context: Context) : BaseAdapter() {
             imageView = view.findViewById<ImageView>(R.id.image)
         }
 
-        val quest = Character.questList[position]
-
         viewHolder.apply {
-           name.setText(quest.name)
-           explain.setText(quest.explain)
-           imageView.setImageResource(quest.image)
+           name.setText(Character.questList[position].name)
+           explain.setText(Character.questList[position].explain)
+           imageView.setImageResource(Character.questList[position].image)
         }
 
         return view
