@@ -1,5 +1,6 @@
 package com.example.capstone4_1
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +10,21 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.capstone4_1.R.layout.*
 import com.example.capstone4_1.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: com.example.capstone4_1.databinding.ActivityMainBinding
+//    private lateinit var binding1: com.example.capstone4_1.databinding.ActivityQuestScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+//        binding1 = ActivityQuestScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+//        setContentView(binding1.root)
 
         Character.initializeQuest()
 
@@ -44,9 +49,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnFrag1.setOnClickListener { setFrag(1) }
         binding.btnFrag2.setOnClickListener {
             setFrag(2)
-            /* 퀘스트페이지  화면 전환으로 실행 코드 (필요시 활성화 예정)
+             //퀘스트페이지  화면 전환으로 실행 코드 (필요시 활성화 예정)
             val intent = Intent(this, QuestScreen::class.java)
-            startActivity(intent)*/
+            startActivity(intent)
         }
 
     }
@@ -63,9 +68,10 @@ class MainActivity : AppCompatActivity() {
 
     //시스템 버튼 감지
     override fun onBackPressed() {
-        val ft = supportFragmentManager.beginTransaction()
+        val fm = supportFragmentManager
         //동작 테스트 코드
-        Toast.makeText(this, "$ft 뒤로가기 버튼 클릭했음", Toast.LENGTH_SHORT).show()
+        fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        binding.mainList.setVisibility(View.VISIBLE)
     }
 
     //감지된 화면 번호 받아서 프래그먼트 매니저로 처리하는 곳
@@ -75,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
         when (fragnum) {
             0 -> {
-                ft.replace(R.id.mainFrag, MainScreenFragment()).addToBackStack(null).commit()
+                ft.replace(R.id.mainFrag, MainScreenFragment()).commit()
                 binding.mainList.setVisibility(View.VISIBLE)
             }
             1 -> {
