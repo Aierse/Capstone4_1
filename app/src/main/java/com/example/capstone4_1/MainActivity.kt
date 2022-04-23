@@ -1,12 +1,11 @@
 package com.example.capstone4_1
 
-import android.content.Intent
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -14,46 +13,41 @@ import androidx.fragment.app.FragmentManager
 import com.example.capstone4_1.R.layout.*
 import com.example.capstone4_1.databinding.ActivityMainBinding
 
+enum class CallFragment {
+    MAIN, MYINFO, QUSETSCREEN
+}
+
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: com.example.capstone4_1.databinding.ActivityMainBinding
-//    private lateinit var binding1: com.example.capstone4_1.databinding.ActivityQuestScreenBinding
+    private lateinit var binding: ActivityMainBinding
+
+    // 최초 실행 시 초기화 함수
+    fun initialize() {
+        // 캐릭터 클래스 초기화
+        Character.initializeQuest()
+
+        // 리스트뷰 어댑터 초기화
+        binding.mainList.adapter = QuestAdapter(this, Character.questList)
+        
+        // 기타
+        setFrag(CallFragment.MAIN)
+    }
+
+    fun setupevent() {
+        
+
+        binding.btnFrag1.setOnClickListener { setFrag(CallFragment.MYINFO) }
+        binding.btnFrag2.setOnClickListener { setFrag(CallFragment.QUSETSCREEN) }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-//        binding1 = ActivityQuestScreenBinding.inflate(layoutInflater)
+
+        initialize()
+        setupevent()
+
         setContentView(binding.root)
-//        setContentView(binding1.root)
-
-        Character.initializeQuest()
-
-        //최초실행 프래그먼트(앱 실행시 출력되는 화면)
-        setFrag(0)
-
-        //퀘스트 읽기 리스트 동작
-        val Adapter = QuestAdapter(this, Character.questList)
-        val listview = findViewById<View>(R.id.mainList) as ListView
-        listview.adapter = Adapter
-
-        //퀘스트 선택 감지 동작 (현재는 퀘스트 이름이 출력이 되는 코드)
-        listview.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
-
-                val selectItem = parent.getItemAtPosition(position) as Quest
-                selectItem.Qname
-                toast(selectItem.Qname)
-            }
-
-        //메뉴버튼 클릭 감지
-        binding.btnFrag1.setOnClickListener { setFrag(1) }
-        binding.btnFrag2.setOnClickListener {
-            setFrag(2)
-             //퀘스트페이지  화면 전환으로 실행 코드 (필요시 활성화 예정)
-            val intent = Intent(this, QuestScreen::class.java)
-            startActivity(intent)
-        }
-
     }
 
     //토스트 메시지 사용법 -->  기본값 String toast("내용")  형변환 예시 --> toast(변수.toString())
@@ -69,26 +63,31 @@ class MainActivity : AppCompatActivity() {
     //시스템 버튼 감지
     override fun onBackPressed() {
         val fm = supportFragmentManager
+
+        if (binding.mainList.visibility == View.VISIBLE) {
+            super.onBackPressed()
+        }
         //동작 테스트 코드
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         binding.mainList.setVisibility(View.VISIBLE)
     }
 
-    //감지된 화면 번호 받아서 프래그먼트 매니저로 처리하는 곳
-    private fun setFrag(fragnum: Int) {
+    //감지된 화면 번호 받아서 프래그먼트 매니저 동작 처리하는 곳
+    private fun setFrag(fragnum: CallFragment) {
 
         val ft = supportFragmentManager.beginTransaction()
+        binding.mainList.adapter = QuestAdapter(this, Character.questList)
 
         when (fragnum) {
-            0 -> {
+            CallFragment.MAIN -> {
                 ft.replace(R.id.mainFrag, MainScreenFragment()).commit()
                 binding.mainList.setVisibility(View.VISIBLE)
             }
-            1 -> {
+            CallFragment.MYINFO -> {
                 ft.replace(R.id.mainFrag, MyInfoFragment()).addToBackStack(null).commit()
                 binding.mainList.setVisibility(View.GONE)
             }
-            2 -> {
+            CallFragment.QUSETSCREEN -> {
                 ft.replace(R.id.mainFrag, QuestScreenFragment()).addToBackStack(null).commit()
                 binding.mainList.setVisibility(View.GONE)
             }
