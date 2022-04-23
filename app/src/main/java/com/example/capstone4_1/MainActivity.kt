@@ -34,7 +34,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupevent() {
-        
+        binding.mainList.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                val dialog = AlertDialog.Builder(this@MainActivity)
+
+                val selectQuest = parent.getItemAtPosition(position) as Quest
+                dialog.setTitle(selectQuest.name)
+                dialog.setMessage(selectQuest.explain)
+
+                dialog.setPositiveButton("확인") {dialogInterface, i ->
+                    toast("test")
+                }
+
+                dialog.setCancelable(false)
+                dialog.show()
+            }
 
         binding.btnFrag1.setOnClickListener { setFrag(CallFragment.MYINFO) }
         binding.btnFrag2.setOnClickListener { setFrag(CallFragment.QUSETSCREEN) }
