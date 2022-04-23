@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     // 최초 실행 시 초기화 함수
-    fun initialize() {
+    private fun initialize() {
         // 캐릭터 클래스 초기화
         Character.initializeQuest()
 
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setFrag(CallFragment.MAIN)
     }
 
-    fun setupEvent() {
+    private fun setupEvent() {
         binding.mainList.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val dialog = AlertDialog.Builder(this@MainActivity)
