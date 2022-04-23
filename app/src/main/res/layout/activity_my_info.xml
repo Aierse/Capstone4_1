@@ -73,9 +73,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/purple_200"
-                    android:text="이름 : "
-                    android:gravity="center_vertical"
-                    android:textSize="20dp"/>
+                    android:text="@string/MyName"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="20dp"
+                    android:autoSizeMaxTextSize="40dp"
+                    />
 
                 <TextView
                     android:id="@+id/myInfoGender"
@@ -83,9 +85,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/purple_200"
-                    android:text="성별 : "
+                    android:text="@string/gender"
                     android:gravity="center_vertical"
-                    android:textSize="20dp"/>
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="20dp"
+                    android:autoSizeMaxTextSize="40dp"/>
 
                 <TextView
                     android:id="@+id/myInfoInterest"
@@ -93,9 +97,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/purple_200"
-                    android:text="관심목표 : "
+                    android:text="@string/interest"
                     android:gravity="center_vertical"
-                    android:textSize="20dp"/>
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeMaxTextSize="40dp"/>
             </LinearLayout>
         </LinearLayout>
         <!--    통계                      weight 5 -->
