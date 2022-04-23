@@ -85,13 +85,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp">
+                android:layout_height="match_parent">
 
                 <ImageButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
+
                     android:src="@drawable/left"
                     android:backgroundTint="@color/white"
                     android:onClick="leftMove" />
@@ -100,12 +100,12 @@
                     android:id="@+id/imageView"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2" />
+                    android:layout_weight="3" />
 
                 <ImageButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:src="@drawable/right"
                     android:backgroundTint="@color/white" />
             </LinearLayout>
