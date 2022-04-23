@@ -8,40 +8,43 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
+class QuestAdapter(val context: Context) : BaseAdapter() {
+    class ViewHolder {
+        lateinit var name: TextView
+        lateinit var explain: TextView
+        lateinit var imageView: ImageView
+    }
 
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: View = LayoutInflater.from(context).inflate(R.layout.quest_list, parent, false)
 
-class QuestAdapter(val context: Context, val QuestList: ArrayList<Quest>) : BaseAdapter() {
+        val viewHolder = ViewHolder().apply {
+            name = view.findViewById<TextView>(R.id.quest_name)
+            explain = view.findViewById<TextView>(R.id.quest_explain)
+            imageView = view.findViewById<ImageView>(R.id.image)
+        }
 
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.quest_list, null)
+        val quest = Character.questList[position]
 
-        val image = view.findViewById<ImageView>(R.id.image)
-        val Qname = view.findViewById<TextView>(R.id.quest_name)
-        val explain = view.findViewById<TextView>(R.id.quest_explain)
-
-        val quest = QuestList[position]
-
-        image.setImageResource(quest.image)
-        Qname.text = quest.name
-        explain.text = quest.explain
+        viewHolder.apply {
+           name.setText(quest.name)
+           explain.setText(quest.explain)
+           imageView.setImageResource(quest.image)
+        }
 
         return view
     }
 
     //리스트 갯수
     override fun getCount(): Int {
-        return QuestList.size
+        return Character.questList.size
     }
 
     override fun getItem(position: Int): Any {
-        return QuestList[position]
+        return Character.questList[position]
     }
 
     override fun getItemId(position: Int): Long {
         return 0
     }
 }
-
-
-
-

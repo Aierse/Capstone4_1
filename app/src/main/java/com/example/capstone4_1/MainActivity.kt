@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -27,9 +28,9 @@ class MainActivity : AppCompatActivity() {
         // 캐릭터 클래스 초기화
         Character.initializeQuest()
 
-        // 리스트뷰 어댑터 초기화
-        binding.mainList.adapter = QuestAdapter(this, Character.questList)
-        
+
+
+
         // 기타
         setFrag(CallFragment.MAIN)
     }
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 dialog.setTitle(selectQuest.name)
                 dialog.setMessage(selectQuest.explain)
 
-                dialog.setPositiveButton("확인") {dialogInterface, i ->
+                dialog.setPositiveButton("확인") { dialogInterface, i ->
                     toast("test")
                 }
 
@@ -84,7 +85,6 @@ class MainActivity : AppCompatActivity() {
     private fun setFrag(fragnum: CallFragment) {
 
         val ft = supportFragmentManager.beginTransaction()
-        binding.mainList.adapter = QuestAdapter(this, Character.questList)
 
         when (fragnum) {
             CallFragment.MAIN -> {
@@ -101,51 +101,51 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    //프래그먼트별 동작
-    class MainScreenFragment : Fragment() {
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            val view = inflater.inflate(activity_main_screen, container, false)
-
-            return view
-        }
-    }
-
-    class MyInfoFragment : Fragment() {
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            val view = inflater.inflate(activity_my_info, container, false)
-            return view
-        }
-    }
-
-    class QuestScreenFragment : Fragment() {
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            val view = inflater.inflate(activity_quest_screen, container, false)
-
-
-            return view
-        }
-    }
-
     private fun excuteCreateCharacterActivity() {
         val intent = Intent(this, CreateCharacterActivity::class.java)
         startActivity(intent)
     }
+}
 
-    private fun startAct() {
-        val intent = Intent(this, QuestScreen::class.java)
-        startActivity(intent)
+//프래그먼트별 동작
+class MainScreenFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(activity_main_screen, container, false)
+
+        val rootView = view.findViewById<ListView>(R.id.mainList)
+
+        return view
+    }
+}
+
+class MyInfoFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(activity_my_info, container, false)
+        return view
+    }
+}
+
+class QuestScreenFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(activity_quest_screen, container, false)
+
+        val rootView = view.findViewById<ListView>(R.id.questlist)
+        val adapter = QuestAdapter(requireContext())
+
+        rootView.adapter = adapter
+
+        return view
     }
 }
