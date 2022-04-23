@@ -5,7 +5,7 @@ object Character {
     var name: String = "nameStub"
     var gender: String = "genderstub"
     var interest: Interest = Interest.HEALTH
-    var QuestList = arrayListOf<Quest>(
+    var questList = arrayListOf<Quest>(
         Quest(R.drawable.bike, "퀘스트 이름1", "퀘스트 설명1"),
         Quest(R.drawable.face, "퀘스트 이름2", "퀘스트 설명2"),
         Quest(R.drawable.ball, "퀘스트 이름3", "퀘스트 설명3"),
@@ -24,7 +24,7 @@ object Character {
     }
 
     fun initializeQuest() {
-
+        Quest.getRandomList(interest)
     }
 
     fun initializeStats() {

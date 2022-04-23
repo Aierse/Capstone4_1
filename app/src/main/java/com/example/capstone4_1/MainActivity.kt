@@ -25,10 +25,9 @@ class MainActivity : AppCompatActivity() {
         setFrag(0)
 
         //퀘스트 읽기 리스트 동작
-        val Adapter = QuestAdapter(this, Character.QuestList)
+        val Adapter = QuestAdapter(this, Character.questList)
         val listview = findViewById<View>(R.id.mainList) as ListView
         listview.adapter = Adapter
-
 
         //퀘스트 선택 감지 동작 (현재는 퀘스트 이름이 출력이 되는 코드)
         listview.onItemClickListener =
