@@ -22,7 +22,7 @@ class QuestAdapter(val context: Context, val QuestList: ArrayList<Quest>) : Base
         val quest = QuestList[position]
 
         image.setImageResource(quest.image)
-        Qname.text = quest.Qname
+        Qname.text = quest.name
         explain.text = quest.explain
 
         return view
