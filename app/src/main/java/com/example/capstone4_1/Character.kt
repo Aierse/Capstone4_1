@@ -5,17 +5,7 @@ object Character {
     var name: String = "nameStub"
     var gender: String = "genderstub"
     var interest: Interest = Interest.HEALTH
-    var questList = arrayListOf<Quest>(
-        Quest(R.drawable.bike, "퀘스트 이름1", "퀘스트 설명1"),
-        Quest(R.drawable.face, "퀘스트 이름2", "퀘스트 설명2"),
-        Quest(R.drawable.ball, "퀘스트 이름3", "퀘스트 설명3"),
-        Quest(R.drawable.bike, "퀘스트 이름4", "퀘스트 설명4"),
-        Quest(R.drawable.ball, "퀘스트 이름5", "퀘스트 설명5"),
-        Quest(R.drawable.bike, "퀘스트 이름6", "퀘스트 설명6"),
-        Quest(R.drawable.face, "퀘스트 이름7", "퀘스트 설명7"),
-        Quest(R.drawable.bike, "퀘스트 이름8", "퀘스트 설명8"),
-        Quest(R.drawable.face, "퀘스트 이름9", "퀘스트 설명9")
-    )
+    var questList = arrayListOf<Quest>()
 
     fun initialize(name: String, gender: String, interest: Interest) {
         this.name = name
