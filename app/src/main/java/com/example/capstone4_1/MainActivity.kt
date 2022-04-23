@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
 
 
         setContentView(binding.root)
+
     }
 
     //시스템 버튼 감지

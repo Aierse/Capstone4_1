@@ -23,5 +23,6 @@ class MyInfoActivity : AppCompatActivity() {
         name.append(" $nameValue")
         gender.append(" $genderValue")
         interest.append(" $interestValue")
+
     }
 }
