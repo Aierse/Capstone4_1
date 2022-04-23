@@ -16,7 +16,6 @@
 
     </ListView>
 
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainFrag"
         android:layout_width="match_parent"
