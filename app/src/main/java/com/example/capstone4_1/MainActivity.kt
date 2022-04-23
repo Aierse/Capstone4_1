@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         setupEvent()
         excuteCreateCharacterActivity()
 
+
         setContentView(binding.root)
     }
 
@@ -131,12 +132,19 @@ class MainActivity : AppCompatActivity() {
             savedInstanceState: Bundle?
         ): View? {
             val view = inflater.inflate(activity_quest_screen, container, false)
+
+
             return view
         }
     }
 
     private fun excuteCreateCharacterActivity() {
         val intent = Intent(this, CreateCharacterActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun startAct() {
+        val intent = Intent(this, QuestScreen::class.java)
         startActivity(intent)
     }
 }
