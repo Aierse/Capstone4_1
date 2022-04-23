@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Character.initializeQuest()
+
         //최초실행 프래그먼트(앱 실행시 출력되는 화면)
         setFrag(0)
 
@@ -121,7 +123,6 @@ class MainActivity : AppCompatActivity() {
             return view
         }
     }
-
 }
 
 
