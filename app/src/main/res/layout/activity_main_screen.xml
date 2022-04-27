@@ -65,7 +65,7 @@
             android:id="@+id/myCharacter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/testchar" />
+            android:src="@drawable/sprite_char2" />
         <ProgressBar
             android:id="@+id/indolence"
             style="@android:style/Widget.ProgressBar.Horizontal"
