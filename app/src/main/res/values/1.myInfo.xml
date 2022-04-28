@@ -1,6 +1,3 @@
 <resources>
     <string name="MyInfo">내 정보</string>
-    <string name="MyName">이름 </string>
-    <string name="gender">성별 </string>
-    <string name="interest">관심목표 </string>
 </resources>
