@@ -7,13 +7,13 @@ import java.time.LocalDate
 // 실제 구동시에는 initialize 시리즈 함수를 이용하여 초기화 시켜 사용해야함
 object Character {
     var name: String = "nameStub"
-    var gender: String = "genderstub"
+    var gender: Gender = Gender.MALE
     var interest: Interest = Interest.HEALTH
     var questList = arrayListOf<Quest>()
     var current_login : LocalDate? = null //최근 로그인
     val create_time : LocalDate? = null //캐릭터 생성시점
 
-    fun initialize(name: String, gender: String, interest: Interest) {
+    fun initialize(name: String, gender: Gender, interest: Interest) {
         this.name = name
         this.gender = gender
         this.interest = interest

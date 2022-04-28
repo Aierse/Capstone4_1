@@ -31,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:background="@color/black"
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:weightSum="5">
@@ -57,7 +56,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:progress="100" />
+                    android:progress="100"
+                    android:indeterminateTint="@color/black"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -73,9 +74,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/purple_200"
-                    android:text="@string/MyName"
+                    tools:text="이름"
                     android:autoSizeTextType="uniform"
-                    android:autoSizeMinTextSize="20dp"
+                    android:autoSizeMinTextSize="39dp"
                     android:autoSizeMaxTextSize="40dp"
                     />
 
@@ -85,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/purple_200"
-                    android:text="@string/gender"
+                    tools:text="성별"
                     android:gravity="center_vertical"
                     android:autoSizeTextType="uniform"
                     android:autoSizeMinTextSize="20dp"
@@ -97,11 +98,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/purple_200"
-                    android:text="@string/interest"
+                    tools:text="관심목표"
                     android:gravity="center_vertical"
                     android:autoSizeTextType="uniform"
                     android:autoSizeMinTextSize="10dp"
-                    android:autoSizeMaxTextSize="40dp"/>
+                    android:autoSizeMaxTextSize="40dp"
+                    />
             </LinearLayout>
         </LinearLayout>
         <!--    통계                      weight 5 -->
@@ -113,7 +115,9 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/teal_200"></ScrollView>
+                android:background="@color/teal_700" >
+
+            </ScrollView>
         </LinearLayout>
     </LinearLayout>
 
