@@ -57,8 +57,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:progress="100"
-                    android:indeterminateTint="@color/black"
-                    />
+                    android:indeterminateTint="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -112,12 +111,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="6">
 
-            <ScrollView
+            <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/teal_700" >
-
-            </ScrollView>
+                android:id="@+id/statistics" />
         </LinearLayout>
     </LinearLayout>
 
