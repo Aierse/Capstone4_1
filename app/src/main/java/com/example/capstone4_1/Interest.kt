@@ -6,7 +6,7 @@ enum class Interest(value: String) {
     CODING("코딩")
 }
 
-enum class Gender(value: String) {
+enum class Gender(val value: String) {
     MALE("남자"),
-    FEMALE("여자")
+    FEMALE("여자");
 }
