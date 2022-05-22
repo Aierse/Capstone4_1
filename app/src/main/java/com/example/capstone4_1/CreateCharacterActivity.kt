@@ -89,16 +89,13 @@ class CreateCharacterActivity : AppCompatActivity() {
 }
 
 class CharacterListPagerAdapter(private val data: ArrayList<Int>) : PagerAdapter() {
-    inner class ViewHolder {
-        lateinit var image: ImageView
-    }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = LayoutInflater.from(container.context)
         val view = inflater.inflate(R.layout.character_list, container, false)
 
         return view.apply {
-            this.findViewById<ImageView>(R.id.imageCharacter).setImageResource(data[position])
+            findViewById<ImageView>(R.id.imageCharacter).setImageResource(data[position])
 
             container.addView(this)
         }
