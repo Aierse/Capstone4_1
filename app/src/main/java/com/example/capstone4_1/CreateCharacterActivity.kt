@@ -17,8 +17,9 @@ class CreateCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateCharacterBinding.inflate(layoutInflater)
 
+
         //스텁 코드
-        binding.viewPager.adapter = CharacterListPagerAdapter(arrayListOf(R.drawable.sprite_char1, R.drawable.sprite_char2, R.drawable.sprite_char3))
+        binding.viewPager.adapter = CharacterListPagerAdapter(getCharacterImageId())
 
         binding.viewPagerIndicater.setClickListener(ClickListener {
             binding.viewPagerIndicater.setSelected(it)
@@ -26,6 +27,25 @@ class CreateCharacterActivity : AppCompatActivity() {
         })
 
         setContentView(binding.root)
+    }
+
+    fun getCharacterImageId(): ArrayList<Int> {
+        val baseName = "sprite_char"
+        val temp = ArrayList<Int>()
+
+        var i = 1
+        while (true) {
+            val readName = baseName + i++
+
+            val imageId = this.resources.getIdentifier(readName, "drawable", this.packageName)
+
+            if (imageId == 0)
+                break
+
+            temp.add(imageId)
+        }
+
+        return temp
     }
 }
 
