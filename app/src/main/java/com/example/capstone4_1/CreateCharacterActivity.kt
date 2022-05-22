@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import com.example.capstone4_1.databinding.ActivityCreateCharacterBinding
@@ -53,6 +55,36 @@ class CreateCharacterActivity : AppCompatActivity() {
         binding.interestList.clearCheck()
         binding.viewPagerIndicater.setSelected(0)
         binding.viewPager.setCurrentItem(0, false)
+    }
+
+    fun confirm(view: View) {
+        if (!check()) {
+            Toast.makeText(this, "입력값을 다시 확인해 주세요.", Toast.LENGTH_SHORT)
+            return
+        }
+
+        Character.name = binding.name.text.toString()
+        Character.gender = if (binding.male.isChecked) Gender.MALE else Gender.FEMALE
+
+        for (i in Interest.values()) {
+            val selected = findViewById<TextView>(binding.interestList.checkedRadioButtonId).text
+
+            if (selected == i.value)
+                Character.interest = i
+        }
+
+        finish()
+    }
+
+    private fun check(): Boolean {
+        if (binding.name.text.toString().trim() == "")
+            return false
+        else if (!binding.gender.isSelected)
+            return false
+        else if (!binding.interestList.isSelected)
+            return false
+
+        return true
     }
 }
 
