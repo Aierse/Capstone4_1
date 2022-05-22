@@ -17,7 +17,6 @@ class CreateCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateCharacterBinding.inflate(layoutInflater)
 
-
         //스텁 코드
         binding.viewPager.adapter = CharacterListPagerAdapter(getCharacterImageId())
 
@@ -46,6 +45,14 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
 
         return temp
+    }
+
+    fun reset(view: View) {
+        binding.name.setText("")
+        binding.gender.clearCheck()
+        binding.interestList.clearCheck()
+        binding.viewPagerIndicater.setSelected(0)
+        binding.viewPager.setCurrentItem(0, false)
     }
 }
 
