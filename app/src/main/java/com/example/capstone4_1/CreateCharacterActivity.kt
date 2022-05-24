@@ -14,23 +14,8 @@ import com.rd.draw.controller.DrawController.ClickListener
 
 class CreateCharacterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateCharacterBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityCreateCharacterBinding.inflate(layoutInflater)
-
-        //스텁 코드
-        binding.viewPager.adapter = CharacterListPagerAdapter(getCharacterImageId())
-
-        binding.viewPagerIndicater.setClickListener(ClickListener {
-            binding.viewPagerIndicater.setSelected(it)
-            binding.viewPager.setCurrentItem(it, true)
-        })
-
-        setContentView(binding.root)
-    }
-
-    fun getCharacterImageId(): ArrayList<Int> {
+    private val imageResourceList: ArrayList<Int>
+    get() {
         val baseName = "sprite_char"
         val temp = ArrayList<Int>()
 
@@ -47,6 +32,21 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
 
         return temp
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityCreateCharacterBinding.inflate(layoutInflater)
+
+        //스텁 코드
+        binding.viewPager.adapter = CharacterListPagerAdapter(imageResourceList)
+
+        binding.viewPagerIndicater.setClickListener(ClickListener {
+            binding.viewPagerIndicater.setSelected(it)
+            binding.viewPager.setCurrentItem(it, true)
+        })
+
+        setContentView(binding.root)
     }
 
     fun reset(view: View) {
@@ -73,7 +73,7 @@ class CreateCharacterActivity : AppCompatActivity() {
                 Character.interest = i
         }
 
-        Character.icon = binding.viewPager.currentItem
+        Character.icon = imageResourceList[binding.viewPager.currentItem]
 
         finish()
     }
