@@ -32,8 +32,9 @@ object Character {
 
     }
 
-    fun saveCharacter(user:Character,context: Context){
+    fun saveCharacter(context: Context){
 
+        val user:Character = this
         val output :FileOutputStream
 
         try {
@@ -51,9 +52,8 @@ object Character {
 
         val filepath = context.filesDir.toString() + "/" + filename
 
+
         return filepath
     }
-
-
 
 }

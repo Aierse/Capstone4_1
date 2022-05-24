@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnFrag1.setOnClickListener { setFrag(CallFragment.MYINFO) }
         binding.btnFrag2.setOnClickListener { setFrag(CallFragment.QUSETSCREEN) }
-        binding.btnFrag3.setOnClickListener { Toast.makeText(this, Character.loadCharacter(this) , Toast.LENGTH_SHORT).show()}  // test stub
+        binding.btnFrag3.setOnClickListener { Character.saveCharacter(this)}  // test stub
 
     }
 

@@ -29,12 +29,15 @@ public final class JsonUtil {
                 host_json.put("attention", user.interest)
 
                 val quests_ary = org.json.JSONArray()
+
                 for(quests in questlist){  // questlist in quests
                     var quest_json = JSONObject()
+                    quest_json.put("image",quests.image)
                     quest_json.put("name",quests.name )
                     quest_json.put("explain",quests.explain)
                     quests_ary.put(quest_json)
                 }
+
                 host_json.put("quests", quests_ary)
                 return host_json.toString()
 
