@@ -9,6 +9,7 @@ object Character {
     var name: String = "nameStub"
     var gender: Gender = Gender.MALE
     var interest: Interest = Interest.HEALTH
+    var icon: Int = R.drawable.sprite_char1
     var questList = arrayListOf<Quest>()
     var current_login : LocalDate? = null //최근 로그인
     val create_time : LocalDate? = null //캐릭터 생성시점
