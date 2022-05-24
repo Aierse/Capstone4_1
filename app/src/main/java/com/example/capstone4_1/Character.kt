@@ -1,6 +1,9 @@
 package com.example.capstone4_1
 
 
+import android.content.Context
+import java.io.FileOutputStream
+import java.lang.Exception
 import java.time.LocalDate
 
 // 할당된 값은 전부 스텁코드이며, 이후 필요한 스텁코드는 여기서 작성
@@ -29,8 +32,21 @@ object Character {
     }
 
 
-    fun saveCharacter(user:Character){
+    fun saveCharacter(user:Character,context: Context){
+        val filename = "data.json"
+        val data = Character.initialize(user.name, user.gender, user.interest)
+        val output :FileOutputStream
+
+        try {
+            output =context.openFileOutput(filename , Context.MODE_PRIVATE)
+            output.write(JsonUtil.toJson2(user, questList).toByteArray())
+            output.close()
+
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
 
     }
+
 
 }
