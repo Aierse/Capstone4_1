@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnFrag1.setOnClickListener { setFrag(CallFragment.MYINFO) }
         binding.btnFrag2.setOnClickListener { setFrag(CallFragment.QUSETSCREEN) }
+        binding.btnFrag3.setOnClickListener { Toast.makeText(this, Character.loadCharacter(this) , Toast.LENGTH_SHORT).show()}  // test stub
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
