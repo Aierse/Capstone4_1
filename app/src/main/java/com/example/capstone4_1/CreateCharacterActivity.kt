@@ -59,7 +59,7 @@ class CreateCharacterActivity : AppCompatActivity() {
 
     fun confirm(view: View) {
         if (!check()) {
-            Toast.makeText(this, "입력값을 다시 확인해 주세요.", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "입력값을 다시 확인해 주세요.", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -73,15 +73,17 @@ class CreateCharacterActivity : AppCompatActivity() {
                 Character.interest = i
         }
 
+        Character.icon = binding.viewPager.currentItem
+
         finish()
     }
 
     private fun check(): Boolean {
         if (binding.name.text.toString().trim() == "")
             return false
-        else if (!binding.gender.isSelected)
+        else if (binding.gender.checkedRadioButtonId == -1)
             return false
-        else if (!binding.interestList.isSelected)
+        else if (binding.interestList.checkedRadioButtonId == -1)
             return false
 
         return true
