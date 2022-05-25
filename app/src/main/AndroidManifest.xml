@@ -9,12 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone4_1">
         <activity
-            android:name=".activity_main_screen"
-            android:exported="false" />
-        <activity
-            android:name=".MyInfoActivity"
-            android:exported="false" />
-        <activity
             android:name=".QuestShowActivity"
             android:exported="false" />
         <activity

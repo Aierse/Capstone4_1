@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".MyInfoActivity">
+    tools:context=".fragment.MyinfoFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -56,8 +57,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:progress="100"
-                    android:indeterminateTint="@color/black" />
+                    android:indeterminateTint="@color/black"
+                    android:progress="100" />
             </LinearLayout>
 
             <LinearLayout
@@ -72,37 +73,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/purple_200"
-                    tools:text="이름"
-                    android:autoSizeTextType="uniform"
-                    android:autoSizeMinTextSize="39dp"
                     android:autoSizeMaxTextSize="40dp"
-                    />
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/purple_200"
+                    android:gravity="center_vertical"
+                    tools:text="이름" />
 
                 <TextView
                     android:id="@+id/myInfoGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/purple_200"
-                    tools:text="성별"
-                    android:gravity="center_vertical"
+                    android:autoSizeMaxTextSize="40dp"
+                    android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
-                    android:autoSizeMinTextSize="20dp"
-                    android:autoSizeMaxTextSize="40dp"/>
+                    android:background="@color/purple_200"
+                    android:gravity="center_vertical"
+                    tools:text="성별" />
 
                 <TextView
                     android:id="@+id/myInfoInterest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/purple_200"
-                    tools:text="관심목표"
-                    android:gravity="center_vertical"
-                    android:autoSizeTextType="uniform"
-                    android:autoSizeMinTextSize="10dp"
                     android:autoSizeMaxTextSize="40dp"
-                    />
+                    android:autoSizeMinTextSize="10dp"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/purple_200"
+                    android:gravity="center_vertical"
+                    tools:text="관심목표" />
             </LinearLayout>
         </LinearLayout>
         <!--    통계                      weight 5 -->
@@ -111,12 +111,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="6">
 
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/statistics" />
+            <!--            <fragment-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:id="@+id/statistics"-->
+            <!--                android:name="com.example.capstone4_1.fragment.MyinfoFragment"/>-->
         </LinearLayout>
     </LinearLayout>
 
-
-</LinearLayout>
+</FrameLayout>
