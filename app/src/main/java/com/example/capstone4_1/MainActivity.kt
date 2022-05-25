@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private fun initialize() {
         // 캐릭터 클래스 초기화
         Character.initializeQuest()
+        Character.loadCharacter(this)
 
     }
 //사용할 때 주석제거 후 사용
