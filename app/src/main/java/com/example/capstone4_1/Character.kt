@@ -6,6 +6,7 @@ import android.util.Log
 import org.json.JSONObject
 import java.io.*
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 // 할당된 값은 전부 스텁코드이며, 이후 필요한 스텁코드는 여기서 작성
 // 실제 구동시에는 initialize 시리즈 함수를 이용하여 초기화 시켜 사용해야함
@@ -16,8 +17,8 @@ object Character {
     var interest: Interest = Interest.HEALTH
     var icon: Int = R.drawable.sprite_char1
     var questList = arrayListOf<Quest>()
-    var current_login : LocalDate? = null //최근 로그인
-    val create_time : LocalDate? = null //캐릭터 생성시점
+    var currentLogin : LocalDate? = null //최근 로그인
+    lateinit var createTime : LocalDateTime //캐릭터 생성시점
 
     fun initialize(name: String, gender: Gender, interest: Interest) {
         this.name = name
@@ -30,7 +31,6 @@ object Character {
     }
 
     fun initializeStats() {
-
     }
 
     fun saveCharacter(context: Context){
