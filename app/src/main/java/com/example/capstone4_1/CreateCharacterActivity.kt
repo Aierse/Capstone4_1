@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import com.example.capstone4_1.databinding.ActivityCreateCharacterBinding
 import com.rd.draw.controller.DrawController.ClickListener
-import java.time.LocalDateTime
 
 class CreateCharacterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateCharacterBinding
@@ -75,7 +74,6 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
 
         Character.icon = imageResourceList[binding.viewPager.currentItem]
-        Character.createTime = LocalDateTime.now()
 
         finish()
     }

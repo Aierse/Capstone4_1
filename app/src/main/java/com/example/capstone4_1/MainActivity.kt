@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
             true
         })
-
+        // 파일 검사 해야함
         excuteCreateCharacterActivity()
     }
 
