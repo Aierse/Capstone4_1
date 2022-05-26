@@ -3,10 +3,8 @@ package com.example.capstone4_1
 
 import android.content.Context
 import android.util.Log
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.*
-import java.lang.Exception
 import java.time.LocalDate
 
 // 할당된 값은 전부 스텁코드이며, 이후 필요한 스텁코드는 여기서 작성
@@ -52,6 +50,7 @@ object Character {
     }
 
     fun loadCharacter(context: Context):String{
+
         val filepath = context.filesDir.toString() + "/" + filename
         val file = File(filepath)
         try {

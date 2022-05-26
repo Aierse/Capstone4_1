@@ -3,7 +3,6 @@ package com.example.capstone4_1
 
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.ArrayList
 
 public final class JsonUtil {
     companion object {
@@ -20,12 +19,13 @@ public final class JsonUtil {
             }
             return ""
         }
+
         fun toJson(user: Character, questlist: ArrayList<Quest>): String { //quest = guestjson this fun not used if you need to use this fun you might test fun
             try {
                 val host_json = JSONObject()
                 host_json.put("name", user.name)
-                host_json.put("gender", user.gender)
-                host_json.put("attention", user.interest)
+                host_json.put("gender", user.gender.value)
+                host_json.put("attention", user.interest.value)
 
                 val quests_ary = org.json.JSONArray()
 
