@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.capstone4_1.Character
 import com.example.capstone4_1.R
 import com.example.capstone4_1.Statistics
 import com.example.capstone4_1.StatisticsAdapter
@@ -23,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [StatisticListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class StatisticListFragment : Fragment() {
+class StatisticsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,22 +39,12 @@ class StatisticListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.listview_statisticslistview, container, false)
-        val rootView = view.findViewById<ListView>(R.id.statisticsListView)
+        val view = inflater.inflate(R.layout.statistics_list, container, false)
+        val listView = view.findViewById<ListView>(R.id.statisticsListView)
 
-        val name = rootView.findViewById<TextView>(R.id.myInfoName)
-        val gender = rootView.findViewById<TextView>(R.id.myInfoGender)
-        val interest = rootView.findViewById<TextView>(R.id.myInfoInterest)
 
-        val nameValue = Character.name
-        val genderValue = Character.gender
-        val interestValue = Character.interest
 
-        name.append(" $nameValue")
-        gender.append(" $genderValue")
-        interest.append(" $interestValue")
-
-        rootView.adapter = StatisticsAdapter(requireContext(), Statistics.statisticsList)
+       listView.adapter = StatisticsAdapter(requireContext(), Statistics.statisticsList)
 
         return view
     }
@@ -73,7 +61,7 @@ class StatisticListFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            StatisticListFragment().apply {
+            StatisticsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -40,7 +40,7 @@ class QuestlistviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.listview_questlistview, container, false)
+        val view = inflater.inflate(R.layout.quest_list, container, false)
         val rootView = view.findViewById<ListView>(R.id.questListView)
 
 

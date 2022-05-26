@@ -16,7 +16,7 @@ class QuestAdapter(val context: Context): BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.quest, parent, false)
+        val view: View = LayoutInflater.from(context).inflate(R.layout.quest_item, parent, false)
 
         val viewHolder = ViewHolder().apply {
             name = view.findViewById<TextView>(R.id.quest_name)

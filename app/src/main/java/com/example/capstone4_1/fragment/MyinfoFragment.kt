@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.capstone4_1.Character
 import com.example.capstone4_1.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,6 +37,18 @@ class MyinfoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_myinfo, container, false)
+
+        val name = view.findViewById<TextView>(R.id.myInfoName)
+        val gender = view.findViewById<TextView>(R.id.myInfoGender)
+        val interest = view.findViewById<TextView>(R.id.myInfoInterest)
+
+        val nameValue = Character.name
+        val genderValue = Character.gender
+        val interestValue = Character.interest
+
+        name.append(" $nameValue")
+        gender.append(" $genderValue")
+        interest.append(" $interestValue")
 
         return view
     }
