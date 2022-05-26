@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     // 최초 실행 시 초기화 함수
     private fun initialize() {
         // 캐릭터 클래스 초기화
+        Character.loadCharacter(this)
         Character.initializeQuest()
 
     }
