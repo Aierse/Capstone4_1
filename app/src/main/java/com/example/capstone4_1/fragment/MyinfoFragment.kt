@@ -43,8 +43,8 @@ class MyinfoFragment : Fragment() {
         val interest = view.findViewById<TextView>(R.id.myInfoInterest)
 
         val nameValue = Character.name
-        val genderValue = Character.gender
-        val interestValue = Character.interest
+        val genderValue = Character.gender.value
+        val interestValue = Character.interest.value
 
         name.append(" $nameValue")
         gender.append(" $genderValue")
