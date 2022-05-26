@@ -85,7 +85,7 @@ object Character {
                 Log.d("log_name",this.name.toString())
                 this.gender = enumValueOf(data.getString("gender"))//need to fix
                 Log.d("log_gender",this.gender.toString())
-                this.interest = enumValueOf(data.getString("explain"))
+                this.interest = enumValueOf(data.getString("interest"))
                 Log.d("log_interest",this.interest.toString())
 
                 return ""
