@@ -3,42 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
     tools:context=".fragment.QuestListFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_gravity="left"
+            android:text="@string/quest_main"
+            android:textSize="30sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/quest_main"
-                android:textSize="25sp"
-                android:gravity="center_vertical" />
-        </LinearLayout>
-
-        <LinearLayout
+        <fragment
+            android:id="@+id/questListFragment"
+            android:name="com.example.capstone4_1.fragment.QuestlistviewFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="9" >
+            android:layout_height="match_parent" />
 
-            <fragment
-                android:id="@+id/questListFragment"
-                android:name="com.example.capstone4_1.fragment.QuestListFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-
-        </LinearLayout>
     </LinearLayout>
 </FrameLayout>

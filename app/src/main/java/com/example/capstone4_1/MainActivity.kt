@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         //프래그먼트트랜잭션
         val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.mainFrag, myInfoFragment).commit()
+        transaction.replace(R.id.mainFrag, homeFragment).commit()
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.menu_bottom_navigation)
 
