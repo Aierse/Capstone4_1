@@ -2,7 +2,6 @@ package com.example.capstone4_1
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.databinding.ActivityMainBinding
@@ -15,6 +14,7 @@ import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val RESPONSE_CREATE_CHARACTER = 50
 
     var myInfoFragment: Fragment = MyinfoFragment()
     var questScreenFragment: Fragment = QuestListFragment()
@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     private fun initialize() {
         // 캐릭터 클래스 초기화
         Character.initializeQuest()
-        Character.loadCharacter(this)
 
     }
 //사용할 때 주석제거 후 사용
@@ -57,23 +56,35 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> transaction.replace(R.id.mainFrag, homeFragment).commit()
                 R.id.questList -> transaction.replace(R.id.mainFrag, questScreenFragment).commit()
             }
+
             true
         })
 
-
         excuteCreateCharacterActivity()
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            RESPONSE_CREATE_CHARACTER -> {
+                findViewById<BottomNavigationView>(R.id.menu_bottom_navigation).selectedItemId = R.id.home
+            }
+        }
     }
 
     //시스템 버튼 감지
     override fun onBackPressed() {
-        if (binding.mainFrag.visibility == View.VISIBLE) {
-            super.onBackPressed()
-        }
+        finish()
     }
 
     private fun excuteCreateCharacterActivity() {
         val intent = Intent(this, CreateCharacterActivity::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, RESPONSE_CREATE_CHARACTER)
+    }
+
+    override fun onDestroy() {
+        Character.saveCharacter(this)
+        super.onDestroy()
     }
 }
