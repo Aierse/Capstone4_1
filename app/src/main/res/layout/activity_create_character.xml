@@ -74,6 +74,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:hint="@string/hintname"
+                        android:maxLength="8"
+                        android:maxLines="1"
                         android:inputType="text" />
                 </LinearLayout>
 
@@ -138,7 +140,7 @@
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/Study" />
+                    android:text="@string/Coding" />
 
                 <RadioButton
                     android:layout_width="match_parent"
