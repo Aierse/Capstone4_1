@@ -1,6 +1,7 @@
 package com.example.capstone4_1
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,10 +68,12 @@ class CreateCharacterActivity : AppCompatActivity() {
         Character.gender = if (binding.male.isChecked) Gender.MALE else Gender.FEMALE
 
         for (i in Interest.values()) {
-            val selected = findViewById<TextView>(binding.interestList.checkedRadioButtonId).text
+            val selected = findViewById<TextView>(binding.interestList.checkedRadioButtonId).text.toString()
 
-            if (selected == i.value)
+            if (selected == i.value) {
                 Character.interest = i
+                break
+            }
         }
 
         Character.icon = imageResourceList[binding.viewPager.currentItem]
