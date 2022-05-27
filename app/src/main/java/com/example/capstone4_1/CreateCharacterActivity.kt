@@ -1,7 +1,6 @@
 package com.example.capstone4_1
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -94,7 +93,6 @@ class CreateCharacterActivity : AppCompatActivity() {
 }
 
 class CharacterListPagerAdapter(private val data: ArrayList<Int>) : PagerAdapter() {
-
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = LayoutInflater.from(container.context)
         val view = inflater.inflate(R.layout.character_list, container, false)
