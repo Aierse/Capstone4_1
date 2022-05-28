@@ -2,6 +2,7 @@ package com.example.capstone4_1
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.databinding.ActivityMainBinding
@@ -10,6 +11,7 @@ import com.example.capstone4_1.fragment.MyinfoFragment
 import com.example.capstone4_1.fragment.QuestListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,9 +28,15 @@ class MainActivity : AppCompatActivity() {
     // 최초 실행 시 초기화 함수
     private fun initialize() {
         // 캐릭터 클래스 초기화
-        Character.loadCharacter(this)
-        Character.initializeQuest()
+        val filepath= filesDir.toString() + "/data.json"
+        val file =File(filepath)
+        if(file.exists()){ // 파일이 존재 할경우
+            Character.loadCharacter(this)
+            Character.initializeQuest()
+        }
+        else{ // 아닐경우
 
+        }
     }
 //사용할 때 주석제거 후 사용
 //    private fun setupEvent() { }
