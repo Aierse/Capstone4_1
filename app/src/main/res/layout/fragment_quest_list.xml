@@ -7,24 +7,41 @@
     android:orientation="vertical"
     tools:context=".fragment.QuestListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <TextView
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="@string/quest_main"
-            android:textSize="30sp" />
+            android:orientation="horizontal">
 
-        <fragment
-            android:id="@+id/questListFragment"
-            android:name="com.example.capstone4_1.fragment.QuestlistviewFragment"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/quest_main"
+                android:textSize="30sp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_insert"
+                android:id="@+id/btn_insert"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <fragment
+                android:id="@+id/questListFragment"
+                android:name="com.example.capstone4_1.fragment.QuestlistviewFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>
