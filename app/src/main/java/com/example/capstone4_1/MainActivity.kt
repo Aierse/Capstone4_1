@@ -2,7 +2,6 @@ package com.example.capstone4_1
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.databinding.ActivityMainBinding
@@ -32,10 +31,10 @@ class MainActivity : AppCompatActivity() {
         val file =File(filepath)
         if(file.exists()){ // 파일이 존재 할경우
             Character.loadCharacter(this)
-            Character.initializeQuest()
+
         }
         else{ // 아닐경우
-
+            Character.initializeQuest()
         }
     }
 //사용할 때 주석제거 후 사용
