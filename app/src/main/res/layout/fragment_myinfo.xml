@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".fragment.MyinfoFragment">
+    tools:context=".fragment.MyinfoFragment"
+    android:background="#964b00">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -24,7 +25,10 @@
                 android:layout_height="match_parent"
                 android:text="@string/MyInfo"
                 android:textAlignment="center"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:background="#deb887"
+                android:textColor="#964b00"
+                android:layout_margin="3dp" />
         </LinearLayout>
         <!--  내 정보                    weight 3 -->
         <LinearLayout
@@ -40,25 +44,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#964b00">
 
                 <ImageView
                     android:id="@+id/myCharacter"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10"
-                    android:background="@color/white"
+                    android:background="#deb887"
+                    android:layout_margin="3dp"
                     android:contentDescription="@string/MyInfo"
                     android:src="@drawable/sprite_char1" />
 
-                <ProgressBar
-                    android:id="@+id/indolence"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
+                <RatingBar
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:indeterminateTint="@color/black"
-                    android:progress="100" />
+                    android:layout_height="wrap_content"
+
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -66,6 +69,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:orientation="vertical"
+                android:background="#964b00"
                 android:weightSum="3">
 
                 <TextView
@@ -76,8 +80,10 @@
                     android:autoSizeMaxTextSize="40dp"
                     android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
-                    android:background="@color/purple_200"
-                    android:gravity="center_vertical"
+                    android:background="#deb887"
+                    android:textColor="#964b00"
+                    android:textAlignment="center"
+                    android:layout_margin="3dp"
                     tools:text="이름" />
 
                 <TextView
@@ -88,8 +94,10 @@
                     android:autoSizeMaxTextSize="40dp"
                     android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
-                    android:background="@color/purple_200"
-                    android:gravity="center_vertical"
+                    android:background="#deb887"
+                    android:textColor="#964b00"
+                    android:textAlignment="center"
+                    android:layout_margin="3dp"
                     tools:text="성별" />
 
                 <TextView
@@ -100,8 +108,10 @@
                     android:autoSizeMaxTextSize="40dp"
                     android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
-                    android:background="@color/purple_200"
-                    android:gravity="center_vertical"
+                    android:background="#deb887"
+                    android:textColor="#964b00"
+                    android:textAlignment="center"
+                    android:layout_margin="3dp"
                     tools:text="관심목표" />
             </LinearLayout>
 
