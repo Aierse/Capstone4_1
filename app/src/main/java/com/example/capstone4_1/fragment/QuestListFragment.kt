@@ -12,6 +12,7 @@ import com.example.capstone4_1.Character
 import com.example.capstone4_1.Quest
 import com.example.capstone4_1.QuestAdapter
 import com.example.capstone4_1.R
+import com.google.android.material.snackbar.Snackbar
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -48,6 +49,7 @@ class QuestListFragment : Fragment() {
         val QuestAdapter = QuestAdapter(requireContext())
 
 
+
         btnInsert.setOnClickListener { view: View? ->
             val tmp_questList = questList.adapter
             val count = tmp_questList.count
@@ -65,6 +67,28 @@ class QuestListFragment : Fragment() {
             Character.saveCharacter(requireContext())
         }
 
+
+        //플로팅 버튼
+        val fab: View = view.findViewById(R.id.fab)
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "플로팅 버튼", Snackbar.LENGTH_LONG)
+                .setAction("Action", null)
+                .show()
+
+            val tmp_questList = questList.adapter
+            val count = tmp_questList.count
+
+//            QuestAdapter.addItem()
+//            에딧 텍스트 데이터 호출위치
+//            데이터 생성
+
+            Character.questList.add(Quest(R.drawable.ball, "111111111", "33333333")) //데이터 입력 테스트코드
+
+            Toast.makeText(requireContext(), " " + count, Toast.LENGTH_SHORT).show() //
+
+            QuestAdapter.notifyDataSetChanged()
+            Character.saveCharacter(requireContext())
+        }
 
         return view
     }
@@ -88,4 +112,5 @@ class QuestListFragment : Fragment() {
                 }
             }
     }
+
 }
