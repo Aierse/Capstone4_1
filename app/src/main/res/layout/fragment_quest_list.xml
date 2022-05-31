@@ -13,43 +13,59 @@
         android:orientation="vertical">
         <!-- TODO: Update blank fragment layout -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="@string/quest_main"
+                android:text="@string/next_quest"
                 android:textSize="30sp" />
-            <Button
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_insert"
-                android:id="@+id/btn_insert"
-                android:textSize="20sp"/>
+                android:text="@string/day_quest"
+                android:textSize="30sp" />
+
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end|bottom"
+                    android:src="@drawable/dotline" />
+
+                <ImageButton
+                    android:id="@+id/fab"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:layout_gravity="end|bottom"
+                    android:layout_margin="3dp"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_baseline_add_24" />
+            </FrameLayout>
 
             <fragment
-                android:id="@+id/questListFragment"
+                android:id="@+id/customQuestListFragment"
                 android:name="com.example.capstone4_1.fragment.QuestlistviewFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
         </LinearLayout>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:layout_margin="16dp"
-                android:src="@drawable/ic_baseline_add_24" />
     </LinearLayout>
 </FrameLayout>
