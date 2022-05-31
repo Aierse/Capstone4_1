@@ -5,7 +5,7 @@ import java.util.*
 class Quest(val image: Int, val name: String, val content: String, val value: Int) {
     val explain: String
     get() {
-        return "adsasd"
+        return String.format(content, value)
     }
 
     companion object {
