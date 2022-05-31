@@ -78,18 +78,30 @@ object Character {
                     tmp_quests.add(tmp_quest)
 //                    Log.d("test_value", tmp_object.getString("image").toString() )
 //                    Log.d("test_value", tmp_object.getString("name") )
-//                    Log.d("test_value", tmp_object.getString("explain") )
-
+//                    Log.d("test_value", tmp_object.getString("content") )
                 }
+
                 this.questList = tmp_quests
 
 
 // log test
-//                this.name =data.getString("name")
+                this.name =data.getString("name")
 //                Log.d("log_name",this.name.toString())
-//                this.gender = enumValueOf(data.getString("gender"))//need to fix
+
+                for (i in Gender.values()) {
+                    if (i.value == data.getString("gender")) {
+                        this.gender = i
+                        break
+                    }
+                }
+
+                for (i in Interest.values()) {
+                    if (i.value == data.getString("interest")) {
+                        this.interest = i
+                        break
+                    }
+                }
 //                Log.d("log_gender",this.gender.toString())
-//                this.interest = enumValueOf(data.getString("interest"))
 //                Log.d("log_interest",this.interest.toString())
 //                Log.d("log_quests",this.questList.toString())
 
