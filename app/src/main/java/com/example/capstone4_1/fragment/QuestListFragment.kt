@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -44,28 +43,8 @@ class QuestListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_quest_list, container, false)
-        val btnInsert = view.findViewById<Button>(R.id.btn_insert)
         val questList = view.findViewById<ListView>(R.id.questListView)
-        val QuestAdapter = QuestAdapter(requireContext())
-
-
-
-        btnInsert.setOnClickListener { view: View? ->
-            val tmp_questList = questList.adapter
-            val count = tmp_questList.count
-
-//            QuestAdapter.addItem()
-//            에딧 텍스트 데이터 호출위치
-//            데이터 생성
-            
-            
-            Character.questList.add(Quest(R.drawable.ball, "111111111", "33333333")) //데이터 입력 테스트코드
-
-            Toast.makeText(requireContext(), " " + count, Toast.LENGTH_SHORT).show() //
-
-            QuestAdapter.notifyDataSetChanged()
-            Character.saveCharacter(requireContext())
-        }
+        val questAdapter = QuestAdapter(requireContext())
 
 
         //플로팅 버튼
@@ -86,7 +65,8 @@ class QuestListFragment : Fragment() {
 
             Toast.makeText(requireContext(), " " + count, Toast.LENGTH_SHORT).show() //
 
-            QuestAdapter.notifyDataSetChanged()
+            questAdapter.notifyDataSetChanged()
+
             Character.saveCharacter(requireContext())
         }
 
