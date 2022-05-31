@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:divider="@color/white"
         android:dividerHeight="10dp"
-        android:fastScrollEnabled="true"/>
+        android:fastScrollEnabled="true"
+        android:stackFromBottom="true" />
 
 </FrameLayout>
