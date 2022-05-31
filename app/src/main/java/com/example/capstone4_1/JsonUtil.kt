@@ -6,6 +6,7 @@ import org.json.JSONObject
 
 public final class JsonUtil {
     companion object {
+
         fun toJson(user: Character): String { //object to json  // stub
             try {
                 val json = JSONObject()
@@ -21,10 +22,10 @@ public final class JsonUtil {
         }
         fun toJson(user: Character, questlist: ArrayList<Quest>): String { //quest = guestjson this fun not used if you need to use this fun you might test fun
             try {
-                val host_json = JSONObject()
-                host_json.put("name", user.name)
-                host_json.put("gender", user.gender.value)
-                host_json.put("attention", user.interest.value)
+                val user_json = JSONObject()
+                user_json.put("name", user.name)
+                user_json.put("gender", user.gender.value)
+                user_json.put("attention", user.interest.value)
 
                 val quests_ary = org.json.JSONArray()
 
@@ -32,12 +33,13 @@ public final class JsonUtil {
                     var quest_json = JSONObject()
                     quest_json.put("image",quests.image)
                     quest_json.put("name",quests.name )
-                    quest_json.put("explain",quests.explain)
+                    quest_json.put("content",quests.content)
+                    quest_json.put("value",quests.value)
                     quests_ary.put(quest_json)
                 }
 
-                host_json.put("quests", quests_ary)
-                return host_json.toString()
+                user_json.put("quests", quests_ary)
+                return user_json.toString()
 
             } catch (e: JSONException) {
                 e.printStackTrace()

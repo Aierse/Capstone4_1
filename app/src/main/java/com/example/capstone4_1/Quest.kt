@@ -28,7 +28,6 @@ class Quest(val image: Int, val name: String, val content: String, val value: In
 
         private val defaultQuestList = arrayOf(healthQuest, languageQuest, codingQuest)
 
-
         fun getRandomList(interest: Interest): ArrayList<Quest> {
             val questList = arrayListOf<Quest>()
             var selectInterest: ArrayList<Quest> = arrayListOf<Quest>()
