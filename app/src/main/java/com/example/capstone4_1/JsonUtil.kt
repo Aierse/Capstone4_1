@@ -12,7 +12,7 @@ public final class JsonUtil {
                 val json = JSONObject()
                 json.put("name", user.name)
                 json.put("gender", user.gender)
-                json.put("attention", user.interest)
+                json.put("interest", user.interest)
 
                 return json.toString()
             } catch (e: JSONException) {
@@ -25,7 +25,7 @@ public final class JsonUtil {
                 val user_json = JSONObject()
                 user_json.put("name", user.name)
                 user_json.put("gender", user.gender.value)
-                user_json.put("attention", user.interest.value)
+                user_json.put("interest", user.interest.value)
 
                 val quests_ary = org.json.JSONArray()
 

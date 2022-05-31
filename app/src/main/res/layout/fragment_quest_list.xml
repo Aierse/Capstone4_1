@@ -63,9 +63,6 @@
                     android:background="@color/white"
                     android:src="@drawable/ic_baseline_add_24" />
             </FrameLayout>
-
-
-
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>
