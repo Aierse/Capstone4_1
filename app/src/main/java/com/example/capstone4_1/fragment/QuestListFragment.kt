@@ -1,15 +1,13 @@
 package com.example.capstone4_1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
-import com.example.capstone4_1.Character
-import com.example.capstone4_1.Quest
-import com.example.capstone4_1.QuestAdapter
-import com.example.capstone4_1.R
+import com.example.capstone4_1.*
 
 
 
@@ -52,6 +50,10 @@ class QuestListFragment : Fragment() {
 
             //데이터 입력 테스트코드
             Character.questList.add(Quest(R.drawable.ball,"asd","asd"))
+
+            //커스텀 퀘스트 이동
+            val intent: Intent = Intent(activity, quest_custom::class.java)
+            startActivity (intent);
 
 //            Toast.makeText(context,"Name : " + name + "Explain : " + explain, Toast.LENGTH_SHORT ).show()
 
