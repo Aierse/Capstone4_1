@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity() {
     private fun initialize() {
         // 캐릭터 클래스 초기화
         val filepath = filesDir.toString() + "/data.json"
+
         val file = File(filepath)
         if (file.exists()) { // 파일이 존재 할경우
             Character.loadCharacter(this)
-            findViewById<BottomNavigationView>(R.id.menu_bottom_navigation).selectedItemId =
-                R.id.home
+            findViewById<BottomNavigationView>(R.id.menu_bottom_navigation).selectedItemId = R.id.home
         } else { // 아닐경우
             excuteCreateCharacterActivity()
         }
@@ -46,9 +46,6 @@ class MainActivity : AppCompatActivity() {
 
         // setupEvent()
 
-        //프래그먼트트랜잭션
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.mainFrag, homeFragment).commit()
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.menu_bottom_navigation)
 

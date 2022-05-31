@@ -76,6 +76,7 @@ class CreateCharacterActivity : AppCompatActivity() {
         }
 
         Character.icon = imageResourceList[binding.viewPager.currentItem]
+        Character.initializeQuest()
 
         finish()
     }
