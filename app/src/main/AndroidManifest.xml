@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone4_1">
         <activity
+            android:name=".quest_custom"
+            android:exported="false" />
+        <activity
             android:name=".EndActivity"
             android:exported="false" />
         <activity
@@ -27,7 +30,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".AutoSave"
+        <service
+            android:name=".AutoSave"
             android:stopWithTask="false" />
     </application>
 
