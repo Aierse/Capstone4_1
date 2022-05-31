@@ -3,7 +3,6 @@ package com.example.capstone4_1
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -16,10 +15,10 @@ class CreateQuestActivity : AppCompatActivity() {
         val makebtn: Button = findViewById(R.id.Makebtn)
         val qname = findViewById<EditText>(R.id.qname)
         val qexplain = findViewById<EditText>(R.id.qexplain)
-        val questList = findViewById<ListView>(R.id.questListView)
+//        val questList = findViewById<ListView>(R.id.questListView)
 
         makebtn.setOnClickListener() {
-            Character.questList.add(Quest(R.drawable.ball,"3","sad"))
+            Character.questList.add(Quest(R.drawable.ball,qname.text.toString(),qexplain.text.toString()))
 
 //            questList.adapter = QuestAdapter(this)
             QuestAdapter(this).notifyDataSetChanged()
