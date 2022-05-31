@@ -18,6 +18,7 @@ object Character {
     var icon: Int = R.drawable.sprite_char1
     lateinit var customQuest: Quest
     var questList = arrayListOf<Quest>()
+    
     var currentLogin : LocalDate? = null //최근 로그인
     lateinit var createTime : LocalDateTime //캐릭터 생성시점
 
@@ -34,7 +35,7 @@ object Character {
     fun initializeStats() {
     }
 
-    fun saveCharacter(context: Context){
+    fun saveCharacter(context: Context){//save
 
         val user:Character = this
         val output :FileOutputStream
@@ -50,7 +51,7 @@ object Character {
 
     }
 
-    fun loadCharacter(context: Context):String{
+    fun loadCharacter(context: Context):String{// load
 
         val filepath = context.filesDir.toString() + "/" + filename
         val file = File(filepath)
@@ -82,8 +83,6 @@ object Character {
                 }
 
                 this.questList = tmp_quests
-
-
 // log test
                 this.name =data.getString("name")
 //                Log.d("log_name",this.name.toString())
@@ -101,6 +100,8 @@ object Character {
                         break
                     }
                 }
+
+                this.icon = data.getInt("icon")// icon
 //                Log.d("log_gender",this.gender.toString())
 //                Log.d("log_interest",this.interest.toString())
 //                Log.d("log_quests",this.questList.toString())

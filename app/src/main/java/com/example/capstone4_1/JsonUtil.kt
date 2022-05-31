@@ -26,6 +26,7 @@ public final class JsonUtil {
                 user_json.put("name", user.name)
                 user_json.put("gender", user.gender.value)
                 user_json.put("interest", user.interest.value)
+                user_json.put("icon" ,user.icon)
 
                 val quests_ary = org.json.JSONArray()
 
