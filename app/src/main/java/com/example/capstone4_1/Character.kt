@@ -16,6 +16,7 @@ object Character {
     var gender: Gender = Gender.MALE
     var interest: Interest = Interest.HEALTH
     var icon: Int = R.drawable.sprite_char1
+    lateinit var customQuest: Quest
     var questList = arrayListOf<Quest>()
     var currentLogin : LocalDate? = null //최근 로그인
     lateinit var createTime : LocalDateTime //캐릭터 생성시점
