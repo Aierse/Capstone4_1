@@ -19,7 +19,6 @@ public final class JsonUtil {
             }
             return ""
         }
-
         fun toJson(user: Character, questlist: ArrayList<Quest>): String { //quest = guestjson this fun not used if you need to use this fun you might test fun
             try {
                 val host_json = JSONObject()

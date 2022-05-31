@@ -49,8 +49,6 @@ open class QuestAdapter(val context: Context) : BaseAdapter() {
         item.imageView = imageView
         item.name = name
         item.explain = explain
-
-        Character.questList.add(Quest(R.drawable.bike,"111111111","33333333"))
     }
     //리스트 갯수
     override fun getCount(): Int {

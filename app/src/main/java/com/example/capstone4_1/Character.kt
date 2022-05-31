@@ -73,7 +73,7 @@ object Character {
 
                 for(quest in 0 until ary_quests.length()){  // need to update
                     val tmp_object = ary_quests.getJSONObject(quest)
-                    val tmp_quest = Quest(tmp_object.getInt("image"),tmp_object.getString("name"),tmp_object.getString("explain"))
+                    val tmp_quest = Quest(tmp_object.getInt("image"),tmp_object.getString("name"),tmp_object.getString("content"), tmp_object.getInt("value"))
 
                     tmp_quests.add(tmp_quest)
 //                    Log.d("test_value", tmp_object.getString("image").toString() )

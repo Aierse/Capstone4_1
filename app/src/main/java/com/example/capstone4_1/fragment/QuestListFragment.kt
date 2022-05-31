@@ -61,13 +61,13 @@ class QuestListFragment : Fragment() {
 //            에딧 텍스트 데이터 호출위치
 //            데이터 생성
 
-            Character.questList.add(Quest(R.drawable.ball, "111111111", "33333333")) //데이터 입력 테스트코드
+            Character.questList.add(Quest(R.drawable.ball, "111111111", "%d test", 10)) //데이터 입력 테스트코드
 
             Toast.makeText(requireContext(), " " + count, Toast.LENGTH_SHORT).show() //
 
             questAdapter.notifyDataSetChanged()
 
-            questList.setAdapter(questAdapter)
+//            questList.setAdapter(questAdapter)
 
             Character.saveCharacter(requireContext())
         }
