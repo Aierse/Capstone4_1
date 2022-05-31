@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import androidx.fragment.app.Fragment
-import com.example.capstone4_1.*
-
+import com.example.capstone4_1.CreateQuestActivity
+import com.example.capstone4_1.R
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,49 +32,21 @@ class QuestListFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_quest_list, container, false)
-        val questList = view.findViewById<ListView>(R.id.questListView)
-        val questAdapter = QuestAdapter(requireContext())
+        val intent = Intent(requireContext(), CreateQuestActivity::class.java)
 
-
-        //플로팅 버튼
+        //퀘스트 생성 버튼 클릭 리스너
         val fab: View = view.findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-
-            //데이터 입력 테스트코드
-            Character.questList.add(Quest(R.drawable.ball,"asd","asd"))
-
-            //커스텀 퀘스트 이동
-            val intent: Intent = Intent(activity, quest_custom::class.java)
-            startActivity (intent);
-
-//            Toast.makeText(context,"Name : " + name + "Explain : " + explain, Toast.LENGTH_SHORT ).show()
-
-            questList.adapter = QuestAdapter(requireContext())
-            questAdapter.notifyDataSetChanged()
+            startActivity(intent)
         }
 
         return view
-//            val view: View = LayoutInflater.from(context).inflate(R.layout.quest_item, container,false)
-//
-//            val viewHolder = QuestAdapter.ViewHolder().apply {
-//                name = view.findViewById<TextView>(R.id.quest_name)
-//                explain = view.findViewById<TextView>(R.id.quest_explain)
-//            imageView = view.findViewById<ImageView>(R.id.image)
-//            }
-//
-//            viewHolder.apply {
-//                name.setText(Character.customQuest.name)
-//                explain.setText(Character.customQuest.explain)
-//            }
     }
-
     companion object {
         /**
          * Use this factory method to create a new instance of
