@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.Character
 import com.example.capstone4_1.Quest
 import com.example.capstone4_1.QuestAdapter
 import com.example.capstone4_1.R
-import com.google.android.material.snackbar.Snackbar
+
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -50,27 +49,29 @@ class QuestListFragment : Fragment() {
         //플로팅 버튼
         val fab: View = view.findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "플로팅 버튼", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .show()
 
-            val tmp_questList = questList.adapter
-            val count = tmp_questList.count
+            //데이터 입력 테스트코드
+            Character.questList.add(Quest(R.drawable.ball,"asd","asd"))
 
-//            QuestAdapter.addItem()
-//            에딧 텍스트 데이터 호출위치
-//            데이터 생성
+//            Toast.makeText(context,"Name : " + name + "Explain : " + explain, Toast.LENGTH_SHORT ).show()
 
-            Character.questList.add(Quest(R.drawable.ball, "111111111", "%d test", 10)) //데이터 입력 테스트코드
-
-            Toast.makeText(requireContext(), " " + count, Toast.LENGTH_SHORT).show() //
-
+            questList.adapter = QuestAdapter(requireContext())
             questAdapter.notifyDataSetChanged()
-
-            questList.adapter = questAdapter
         }
 
         return view
+//            val view: View = LayoutInflater.from(context).inflate(R.layout.quest_item, container,false)
+//
+//            val viewHolder = QuestAdapter.ViewHolder().apply {
+//                name = view.findViewById<TextView>(R.id.quest_name)
+//                explain = view.findViewById<TextView>(R.id.quest_explain)
+//            imageView = view.findViewById<ImageView>(R.id.image)
+//            }
+//
+//            viewHolder.apply {
+//                name.setText(Character.customQuest.name)
+//                explain.setText(Character.customQuest.explain)
+//            }
     }
 
     companion object {
