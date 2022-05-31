@@ -68,8 +68,6 @@ class QuestListFragment : Fragment() {
             questAdapter.notifyDataSetChanged()
 
             questList.adapter = questAdapter
-
-            Character.saveCharacter(requireContext())
         }
 
         return view
