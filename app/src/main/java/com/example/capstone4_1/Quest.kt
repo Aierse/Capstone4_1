@@ -2,11 +2,11 @@ package com.example.capstone4_1
 
 import java.util.*
 
-class Quest(val image: Int, val name: String, val content: String, val value: Int) {
+class Quest(val image: Int, val name: String, val content: String, val value: Int = -1) {
     val explain: String
-    get() {
-        return String.format(content, value)
-    }
+        get() {
+            return String.format(content, value)
+        }
 
     companion object {
         private val healthQuest = arrayListOf<Quest>(
