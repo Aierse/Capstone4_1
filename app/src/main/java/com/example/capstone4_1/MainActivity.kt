@@ -80,12 +80,11 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         finish()
     }
-
+    //내 정보 생성
     private fun excuteCreateCharacterActivity() {
         val intent = Intent(this, CreateCharacterActivity::class.java)
         startActivityForResult(intent, RESPONSE_CREATE_CHARACTER)
     }
-
     override fun onDestroy() {
         Character.saveCharacter(this)
         super.onDestroy()

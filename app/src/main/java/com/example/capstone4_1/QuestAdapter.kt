@@ -1,7 +1,6 @@
 package com.example.capstone4_1
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 
 
-class ListViewItem {
-    var imageView: Drawable? = null
-    var name: String? = null
-    var explain: String? = null
-}
+//class ListViewItem {
+//    var imageView: Drawable? = null
+//    var name: String? = null
+//    var explain: String? = null
+//}
 
 open class QuestAdapter(val context: Context) : BaseAdapter() {
 
@@ -43,13 +42,13 @@ open class QuestAdapter(val context: Context) : BaseAdapter() {
         return view
     }
 
-    fun addItem(imageView: Drawable?, name: String?, explain: String?) {
-        val item = ListViewItem() // 하나의 리스트 항목을 하나의 객체로 봄
-
-        item.imageView = imageView
-        item.name = name
-        item.explain = explain
-    }
+//    fun addItem(imageView: Drawable?, name: String?, explain: String?) {
+//        val item = ListViewItem() // 하나의 리스트 항목을 하나의 객체로 봄
+//
+//        item.imageView = imageView
+//        item.name = name
+//        item.explain = explain
+//    }
     //리스트 갯수
     override fun getCount(): Int {
         return Character.questList.size
