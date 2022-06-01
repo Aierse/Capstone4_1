@@ -78,6 +78,12 @@
                 android:layout_gravity="center"
                 android:progress="100" />
         </LinearLayout>
-    </LinearLayout>
 
+        <Button
+            android:id="@+id/randomBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="발작 버튼" />
+    </LinearLayout>
 </FrameLayout>
