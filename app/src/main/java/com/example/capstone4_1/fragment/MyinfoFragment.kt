@@ -46,9 +46,9 @@ class MyinfoFragment : Fragment() {
         val genderValue = Character.gender.value
         val interestValue = Character.interest.value
 
-        name.append(" $nameValue")
-        gender.append(" $genderValue")
-        interest.append(" $interestValue")
+        name.append("이름:$nameValue")
+        gender.append("성별:$genderValue")
+        interest.append("관심:$interestValue")
 
         return view
     }
