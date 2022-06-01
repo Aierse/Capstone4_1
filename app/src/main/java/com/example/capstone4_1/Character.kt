@@ -2,6 +2,7 @@ package com.example.capstone4_1
 
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import org.json.JSONObject
 import java.io.*
@@ -29,6 +30,13 @@ object Character {
         this.name = name
         this.gender = gender
         this.interest = interest
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { //sdk 버전 26이상
+            this.currentLogin = LocalDate.now()  
+        }else{
+            this.currentLogin = null
+        }
+
     }
 
     fun initializeQuest() {
