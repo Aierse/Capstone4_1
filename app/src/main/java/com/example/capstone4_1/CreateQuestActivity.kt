@@ -19,7 +19,6 @@ class CreateQuestActivity : AppCompatActivity() {
 
         makebtn.setOnClickListener() { view ->
             Character.customQuestList.add(Quest(R.drawable.ball,qname.text.toString(),qexplain.text.toString()))
-
         }
 
         backbtn.setOnClickListener() {
