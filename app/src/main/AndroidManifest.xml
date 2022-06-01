@@ -8,12 +8,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone4_1">
-        <activity
-            android:name=".quest_custom"
-            android:exported="false" />
+
         <activity
             android:name=".EndActivity"
             android:exported="false" />
+
         <activity
             android:name=".QuestShowActivity"
             android:exported="false" />
@@ -36,6 +35,15 @@
         <service
             android:name=".AutoSave"
             android:stopWithTask="false" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.capstone4_1"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/fileprovider" />
+        </provider>
     </application>
 
 </manifest>
