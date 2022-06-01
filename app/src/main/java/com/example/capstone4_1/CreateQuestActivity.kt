@@ -24,7 +24,6 @@ class CreateQuestActivity : AppCompatActivity() {
 
         backbtn.setOnClickListener() {
             questAdapter.notifyDataSetChanged()
-            Character.saveCharacter(this)
             finish()
         }
 
