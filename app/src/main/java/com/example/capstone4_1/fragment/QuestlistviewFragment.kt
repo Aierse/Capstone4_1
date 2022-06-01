@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.capstone4_1.Character
 import com.example.capstone4_1.Quest
 import com.example.capstone4_1.QuestAdapter
 import com.example.capstone4_1.R
@@ -42,7 +44,7 @@ class QuestlistviewFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.quest_list, container, false)
         val rootView = view.findViewById<ListView>(R.id.questListView)
-
+        val questAdapter = QuestAdapter(requireContext())
 
         rootView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -50,19 +52,35 @@ class QuestlistviewFragment : Fragment() {
 
                 val selectQuest = parent.getItemAtPosition(position) as Quest
 
+
                 //다이얼로그 이름
                 dialog.setTitle(selectQuest.name)
                 //다이얼로그 설명
-                dialog.setMessage(selectQuest.explain)
+                dialog.setMessage(" 이 퀘스트를 해치우셨나용? ")
+
+
                 // 확인 버튼 클릭시 동작할 것들!!!
-                dialog.setPositiveButton("확인") { dialogInterface, i ->  }
+                dialog.setPositiveButton("완료") { dialogInterface, i ->
+                    Toast.makeText(requireContext(), selectQuest.name + "\n 퀘스트를 완료하셨습니다." , Toast.LENGTH_SHORT).show()
+
+                    Character.questList.removeAt(position)
+                    rootView.adapter = QuestAdapter(requireContext())
+                    questAdapter.notifyDataSetChanged()
+                }
+
+                dialog.setNegativeButton("취소") { dialogInterface, i ->
+//                    Log.d("yyy position", "position: $position")
+                }
+
                 dialog.show()
+
             }
 
         rootView.adapter = QuestAdapter(requireContext())
 
         return view
     }
+
 
     companion object {
         /**
