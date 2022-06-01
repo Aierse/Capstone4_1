@@ -19,10 +19,25 @@ object Character {
     var icon: Int = R.drawable.sprite_char1
     var customQuestList = arrayListOf<Quest>()
     var randomQuestList = arrayListOf<Quest>()
-    val questList: ArrayList<Quest>
+    var questList: ArrayList<Quest>
     get() {
         return (randomQuestList + customQuestList) as ArrayList<Quest>
     }
+    set(qValue) {
+        var tempRandom = arrayListOf<Quest>()
+        var tempCustom = arrayListOf<Quest>()
+
+        for (i in qValue) {
+            if (i.value == -1)
+                tempCustom.add(i)
+            else
+                tempRandom.add(i)
+        }
+
+        customQuestList = tempCustom
+        randomQuestList = tempRandom
+    }
+
     var currentLogin : LocalDate? = null //최근 로그인
     lateinit var createTime : LocalDateTime //캐릭터 생성시점
 
@@ -93,7 +108,7 @@ object Character {
 //                    Log.d("test_value", tmp_object.getString("content") )
                 }
 
-                this.randomQuestList = tmp_quests
+                this.questList = tmp_quests
 // log test
                 this.name =data.getString("name")
 //                Log.d("log_name",this.name.toString())
