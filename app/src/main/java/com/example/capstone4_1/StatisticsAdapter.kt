@@ -1,6 +1,7 @@
 package com.example.capstone4_1
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,14 +31,20 @@ class StatisticsAdapter(val context: Context, val statisticsList: ArrayList<Stat
         }
         val statistics = statisticsList[position]
 
-        val genreId = context.resources.getIdentifier(statistics.genre, "drawable", context.packageName)
-        val tierId = context.resources.getIdentifier(statistics.tier, "drawable", context.packageName)
+        var size = statistics.title.size
+            val genreId =
+                context.resources.getIdentifier(statistics.genre, "drawable", context.packageName)
+            val tierId =
+                context.resources.getIdentifier(statistics.tier, "drawable", context.packageName)
 
-        holder.genre?.setImageResource(genreId)
-        holder.typeName?.text = statistics.title
-        holder.progress?.text = statistics.count.toString()
-        holder.nextScore?.text = statistics.limitCount
-        holder.tier?.setImageResource(tierId)
+
+            var i: Int = 0
+
+            holder.genre?.setImageResource(genreId)
+            holder.typeName?.text = statistics.title.toString()
+            holder.progress?.text = statistics.count.toString()
+            holder.nextScore?.text = statistics.limit.toString()
+            holder.tier?.setImageResource(tierId)
 
         return view
     }
