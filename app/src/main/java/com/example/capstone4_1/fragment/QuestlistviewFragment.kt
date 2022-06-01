@@ -63,7 +63,13 @@ class QuestlistviewFragment : Fragment() {
                 dialog.setPositiveButton("완료") { dialogInterface, i ->
                     Toast.makeText(requireContext(), selectQuest.name + "\n 퀘스트를 완료하셨습니다." , Toast.LENGTH_SHORT).show()
 
-                    Character.questList.removeAt(position)
+                    if (Character.questList[position].value == -1) {
+                        val realPosition = position - Character.randomQuestList.count()
+                        Character.customQuestList.removeAt(realPosition)
+                    }
+                    else {
+                        Character.randomQuestList.removeAt(position)
+                    }
                     rootView.adapter = QuestAdapter(requireContext())
                     questAdapter.notifyDataSetChanged()
                 }
