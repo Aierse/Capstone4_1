@@ -7,32 +7,40 @@
     android:orientation="vertical"
     tools:context=".CreateQuestActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:menu="@menu/custom_top_nav_menu">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="할일"
+                android:textSize="20sp" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/qname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="퀘스트 이름"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/qexplain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="48dp"
-            android:hint="내용"
-            android:textSize="20sp" />
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <Button
             android:id="@+id/Makebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginRight="90dp"
             android:text="생성"
             android:textSize="20sp" />
 
@@ -44,4 +52,41 @@
             android:text="돌아가기"
             android:textSize="20sp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제목"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/qname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="제목을 입력하세요"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="설명"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/qexplain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="설명을 입력하세요"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 </LinearLayout>

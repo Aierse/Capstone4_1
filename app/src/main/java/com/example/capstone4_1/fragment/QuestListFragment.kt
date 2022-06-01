@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.CreateQuestActivity
+import com.example.capstone4_1.QuestAdapter
 import com.example.capstone4_1.R
 
 
@@ -32,6 +34,7 @@ class QuestListFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,12 +44,19 @@ class QuestListFragment : Fragment() {
 
         //퀘스트 생성 버튼 클릭 리스너
         val fab: View = view.findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener {
             startActivity(intent)
         }
 
         return view
     }
+    override fun onResume() {
+        super.onResume()
+
+        view?.findViewById<ListView>(R.id.questListView)?.adapter = QuestAdapter(requireContext())
+        QuestAdapter(requireContext()).notifyDataSetChanged()
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
