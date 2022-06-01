@@ -16,7 +16,12 @@ object Character {
     var gender: Gender = Gender.MALE
     var interest: Interest = Interest.HEALTH
     var icon: Int = R.drawable.sprite_char1
-    var questList = arrayListOf<Quest>()    
+    var customQuestList = arrayListOf<Quest>()
+    var randomQuestList = arrayListOf<Quest>()
+    val questList: ArrayList<Quest>
+    get() {
+        return (randomQuestList + customQuestList) as ArrayList<Quest>
+    }
     var currentLogin : LocalDate? = null //최근 로그인
     lateinit var createTime : LocalDateTime //캐릭터 생성시점
 
@@ -27,7 +32,7 @@ object Character {
     }
 
     fun initializeQuest() {
-        questList = Quest.getRandomList(interest)
+        randomQuestList = Quest.getRandomList(interest)
     }
 
     fun initializeStats() {
@@ -80,7 +85,7 @@ object Character {
 //                    Log.d("test_value", tmp_object.getString("content") )
                 }
 
-                this.questList = tmp_quests
+                this.randomQuestList = tmp_quests
 // log test
                 this.name =data.getString("name")
 //                Log.d("log_name",this.name.toString())
