@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+var i = 0
 
 class StatisticsAdapter(val context: Context, val statisticsList: ArrayList<Statistics>) : BaseAdapter(){
 
@@ -32,21 +33,28 @@ class StatisticsAdapter(val context: Context, val statisticsList: ArrayList<Stat
         val statistics = statisticsList[position]
 
         var size = statistics.title.size
-            val genreId =
+
+        val genreId =
                 context.resources.getIdentifier(statistics.genre, "drawable", context.packageName)
-            val tierId =
+
+        val tierId =
                 context.resources.getIdentifier(statistics.tier, "drawable", context.packageName)
 
 
-            var i: Int = 0
+        holder.genre?.setImageResource(genreId)
+        holder.typeName?.text = statistics.title[i]// need  to fix it
+        holder.progress?.text = statistics.count.toString()
+        holder.nextScore?.text = statistics.limit.toString()
+        holder.tier?.setImageResource(tierId)
+        ++i
 
-            holder.genre?.setImageResource(genreId)
-            holder.typeName?.text = statistics.title.toString()
-            holder.progress?.text = statistics.count.toString()
-            holder.nextScore?.text = statistics.limit.toString()
-            holder.tier?.setImageResource(tierId)
+
+        if (i==statistics.title.size)
+            i = 0
+
 
         return view
+
     }
 
     override fun getCount(): Int {
