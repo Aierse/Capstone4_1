@@ -10,6 +10,9 @@ import java.io.*
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.Period
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 // 할당된 값은 전부 스텁코드이며, 이후 필요한 스텁코드는 여기서 작성
 // 실제 구동시에는 initialize 시리즈 함수를 이용하여 초기화 시켜 사용해야함
@@ -112,13 +115,16 @@ object Character {
                 }
 
                 this.questList = tmp_quests
-//                this.createTime = data.getString("createTime").to(LocalDate) // need to fix it
-//
-//                this.currentLogin = data.getString("currentLogin").to
-// log test
-                Log.d("time",this.currentLogin.toString())
-                Log.d("time",this.createTime.toString())
+
                 this.name =data.getString("name")
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+                    this.createTime =  LocalDateTime.parse(data.getString("createTime") ,DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS" , Locale.KOREA))
+//                    Log.d("crateTime end", "create time excuted ")
+//                    Log.d("createvalue", this.createTime.toString())
+                }
+
 //                Log.d("log_name",this.name.toString())
 
                 for (i in Gender.values()) { // this.gender = data.getString(Gender!)
@@ -136,6 +142,8 @@ object Character {
                 }
 
                 this.icon = data.getInt("icon")// icon
+
+//                Log.d("createTime",this.createTime.toString())
 //                Log.d("log_gender",this.gender.toString())
 //                Log.d("log_interest",this.interest.toString())
 //                Log.d("log_quests",this.questList.toString())
