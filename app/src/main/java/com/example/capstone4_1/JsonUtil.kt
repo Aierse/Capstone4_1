@@ -28,6 +28,9 @@ public final class JsonUtil {
                 user_json.put("interest", user.interest.value)
                 user_json.put("icon" ,user.icon)
 
+                user_json.put("createTime",user.createTime)
+                user_json.put("currentLogin",user.currentLogin)
+
                 val quests_ary = org.json.JSONArray()
 
                 for(quests in questlist){  // questlist in quests
