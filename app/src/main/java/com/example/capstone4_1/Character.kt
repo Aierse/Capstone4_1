@@ -19,6 +19,9 @@ object Character {
     var icon: Int = R.drawable.sprite_char1
     var customQuestList = arrayListOf<Quest>()
     var randomQuestList = arrayListOf<Quest>()
+    var currentLogin : LocalDateTime? = null //최근 로그인
+    lateinit var createTime : LocalDateTime //캐릭터 생성시점
+
     var questList: ArrayList<Quest>
     get() {
         return (randomQuestList + customQuestList) as ArrayList<Quest>
@@ -38,20 +41,10 @@ object Character {
         randomQuestList = tempRandom
     }
 
-    var currentLogin : LocalDate? = null //최근 로그인
-    lateinit var createTime : LocalDateTime //캐릭터 생성시점
-
     fun initialize(name: String, gender: Gender, interest: Interest) {
         this.name = name
         this.gender = gender
         this.interest = interest
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { //sdk 버전 26이상
-            this.currentLogin = LocalDate.now()  
-        }else{
-            this.currentLogin = null
-        }
-
     }
 
     fun initializeQuest() {
