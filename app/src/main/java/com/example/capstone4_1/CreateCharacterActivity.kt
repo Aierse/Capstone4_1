@@ -1,5 +1,6 @@
 package com.example.capstone4_1
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import com.example.capstone4_1.databinding.ActivityCreateCharacterBinding
 import com.rd.draw.controller.DrawController.ClickListener
+import java.time.LocalDateTime
 
 class CreateCharacterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateCharacterBinding
@@ -77,7 +79,12 @@ class CreateCharacterActivity : AppCompatActivity() {
 
         Character.icon = imageResourceList[binding.viewPager.currentItem]
         Character.initializeQuest()
-
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // 시간설정
+            Character.createTime = LocalDateTime.now()
+            Character.currentLogin = Character.createTime
+        }
+        
         finish()
     }
 

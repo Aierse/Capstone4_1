@@ -3,11 +3,13 @@ package com.example.capstone4_1
 
 import android.content.Context
 import android.os.Build
+import android.text.format.DateFormat
 import android.util.Log
 import org.json.JSONObject
 import java.io.*
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.Period
 
 // 할당된 값은 전부 스텁코드이며, 이후 필요한 스텁코드는 여기서 작성
 // 실제 구동시에는 initialize 시리즈 함수를 이용하여 초기화 시켜 사용해야함
@@ -52,6 +54,14 @@ object Character {
     }
 
     fun initializeStats() {
+    }
+
+    fun survivalDays():Int?{ // return int  & must be tested,
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Period.between(this.createTime.toLocalDate(), this.currentLogin?.toLocalDate()).days
+        } else {
+            -1
+        }
     }
 
     fun saveCharacter(context: Context){//save
@@ -102,18 +112,23 @@ object Character {
                 }
 
                 this.questList = tmp_quests
+//                this.createTime = data.getString("createTime").to(LocalDate) // need to fix it
+//
+//                this.currentLogin = data.getString("currentLogin").to
 // log test
+                Log.d("time",this.currentLogin.toString())
+                Log.d("time",this.createTime.toString())
                 this.name =data.getString("name")
 //                Log.d("log_name",this.name.toString())
 
-                for (i in Gender.values()) {
+                for (i in Gender.values()) { // this.gender = data.getString(Gender!)
                     if (i.value == data.getString("gender")) {
                         this.gender = i
                         break
                     }
                 }
 
-                for (i in Interest.values()) {
+                for (i in Interest.values()) {// this.interest = data.getString(Interest!)
                     if (i.value == data.getString("interest")) {
                         this.interest = i
                         break
