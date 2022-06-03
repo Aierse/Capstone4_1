@@ -84,7 +84,6 @@ object Character {
     }
 
     fun loadCharacter(context: Context):String{// load
-
         val filepath = context.filesDir.toString() + "/" + filename
         val file = File(filepath)
         try {
@@ -118,8 +117,7 @@ object Character {
 
                 this.name =data.getString("name")
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // createTime load check sdk v
                     this.createTime =  LocalDateTime.parse(data.getString("createTime") ,DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS" , Locale.KOREA))
 //                    Log.d("crateTime end", "create time excuted ")
 //                    Log.d("createvalue", this.createTime.toString())
