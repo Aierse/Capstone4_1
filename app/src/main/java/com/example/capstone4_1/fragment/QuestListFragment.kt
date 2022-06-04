@@ -63,25 +63,19 @@ class QuestListFragment : Fragment() {
     fun remainQuestTime(): String? {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             var remainQuestTime:String? =""
-            val nowTime = LocalTime.parse("07:57:44") // stub code
+            val nowTime = LocalTime.parse("05:57:44") // stub code
             val resetTime = LocalTime.parse("06:00:00") // stub code must be changed
 //            val nowTime = LocalTime.now()
             var duration = Duration.between(resetTime,nowTime).seconds
 //            Log.d("Duration :","${duration.toString()}" )
             if (duration < 0) {
                 duration = -1 * duration
-                var hour = duration / 3600
-
-                if (hour.toInt() == 24) {
-                    hour = 0
-//                    Log.d("fffff", "hour: " + hour)
-                }
-
+                var hour = duration / 360
                 duration %= 3600
                 val minutes = duration / 60
                 duration %= 60
                 val seconds = duration
-
+                remainQuestTime = " " + hour.toString() + ":" + minutes.toString() + ":" + seconds.toString()
             } else {
                 duration = 86400- duration
                 var hour = duration/3600
