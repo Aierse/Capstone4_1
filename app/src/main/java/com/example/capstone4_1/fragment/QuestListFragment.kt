@@ -1,15 +1,20 @@
 package com.example.capstone4_1.fragment
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.CreateQuestActivity
 import com.example.capstone4_1.QuestAdapter
 import com.example.capstone4_1.R
+import java.time.Duration
+import java.time.LocalTime
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -41,6 +46,8 @@ class QuestListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_quest_list, container, false)
         val intent = Intent(requireContext(), CreateQuestActivity::class.java)
+        val nextQuestTime = view.findViewById<TextView>(R.id.nextQuestTime)
+
 
         //퀘스트 생성 버튼 클릭 리스너
         val fab: View = view.findViewById(R.id.fab)
@@ -48,12 +55,71 @@ class QuestListFragment : Fragment() {
             startActivity(intent)
         }
 
+        nextQuestTime.setText(remainQuestTime())
+
         return view
     }
+
+    fun remainQuestTime(): String {
+
+        val remainQuestTime = "00:00:00"
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val resetTime = LocalTime.parse("06:00:00")
+//            val nowTime = LocalTime.now()
+            val nowTime = LocalTime.parse("01:00:00")
+            var duration = Duration.between(resetTime,nowTime).seconds
+
+            Log.d("fffff", "nowTime: " + nowTime)
+
+            if (duration < 0) {
+                duration = -1 * duration
+
+                var hour = duration / 3600
+                Log.d("fffff듀레이션 음수", "hour: " + hour)
+                if (hour.toInt() == 24) {
+                    hour = 0
+                    Log.d("fffff", "hour: " + hour)
+                }
+
+                duration %= 3600
+                val minutes = duration / 60
+                duration %= 60
+                val seconds = duration
+
+                val remainQuestTime =
+                    " " + hour.toString() + ":" + minutes.toString() + ":" + seconds.toString()
+
+                return remainQuestTime
+
+            } else {
+                var hour = (86400 - duration) / 3600
+                Log.d("fffff듀레이션 양수", "hour: " + hour)
+                Log.d("fffff듀레이션 양수", "duration: " + duration)
+                if (hour.toInt() == 24) {
+                    hour = 0
+                }
+                Log.d("fffff", "hour: " + hour)
+                duration %= 3600
+                val minutes = duration / 60
+                duration %= 60
+                val seconds = duration
+
+                val remainQuestTime =
+                    " " + hour.toString() + ":" + minutes.toString() + ":" + seconds.toString()
+            }
+        } else {
+        }
+
+        return remainQuestTime
+    }
+
+
     override fun onResume() {
         super.onResume()
 
-        view?.findViewById<ListView>(R.id.questListView)?.adapter = QuestAdapter(requireContext())
+        view?.findViewById<ListView>(R.id.questListView)?.adapter =
+            QuestAdapter(requireContext())
         QuestAdapter(requireContext()).notifyDataSetChanged()
     }
 

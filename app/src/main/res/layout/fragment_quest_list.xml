@@ -29,10 +29,9 @@
                     android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/nextQuest"
+                    android:id="@+id/nextQuestTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint=" 남은시간"
                     android:textSize="30sp" />
 
             </LinearLayout>
