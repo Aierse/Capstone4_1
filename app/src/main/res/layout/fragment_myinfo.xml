@@ -51,16 +51,22 @@
                     android:id="@+id/myCharacter"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="10"
+                    android:layout_weight="9"
                     android:background="#deb887"
                     android:layout_margin="3dp"
                     android:contentDescription="@string/MyInfo"
                     android:src="@drawable/sprite_char1" />
 
                 <RatingBar
+                    android:id="@+id/hp_Bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="0"
+                    style="@style/slothBar"
                     />
             </LinearLayout>
 
