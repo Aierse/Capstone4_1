@@ -3,16 +3,13 @@ package com.example.capstone4_1
 
 import android.content.Context
 import android.os.Build
-import android.text.format.DateFormat
 import android.util.Log
 import org.json.JSONObject
 import java.io.*
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.Period
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
 // 할당된 값은 전부 스텁코드이며, 이후 필요한 스텁코드는 여기서 작성
 // 실제 구동시에는 initialize 시리즈 함수를 이용하여 초기화 시켜 사용해야함
@@ -24,6 +21,7 @@ object Character {
     var icon: Int = R.drawable.sprite_char1
     var customQuestList = arrayListOf<Quest>()
     var randomQuestList = arrayListOf<Quest>()
+    var doingQuetstCount = 0  // 금일 퀘스트 수행   0 / 3
     var currentLogin : LocalDateTime? = null //최근 로그인
     lateinit var createTime : LocalDateTime //캐릭터 생성시점
     var hp: Float = 0.5f // 나태함
