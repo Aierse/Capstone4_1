@@ -60,22 +60,21 @@ class QuestListFragment : Fragment() {
         return view
     }
 
-    fun remainQuestTime(): String {
-        val remainQuestTime = "00:00:00"
+    fun remainQuestTime(): String? {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val nowTime = LocalTime.parse("07:57:44")
-            val resetTime = LocalTime.parse("06:00:00")
+            var remainQuestTime:String? =""
+            val nowTime = LocalTime.parse("07:57:44") // stub code
+            val resetTime = LocalTime.parse("06:00:00") // stub code must be changed
 //            val nowTime = LocalTime.now()
             var duration = Duration.between(resetTime,nowTime).seconds
-            Log.d("Duration :","${duration.toString()}" )
+//            Log.d("Duration :","${duration.toString()}" )
             if (duration < 0) {
                 duration = -1 * duration
-
                 var hour = duration / 3600
 
                 if (hour.toInt() == 24) {
                     hour = 0
-                    Log.d("fffff", "hour: " + hour)
+//                    Log.d("fffff", "hour: " + hour)
                 }
 
                 duration %= 3600
@@ -83,29 +82,22 @@ class QuestListFragment : Fragment() {
                 duration %= 60
                 val seconds = duration
 
-                val remainQuestTime =
-                    " " + hour.toString() + ":" + minutes.toString() + ":" + seconds.toString()
-
-                return remainQuestTime
-
             } else {
                 duration = 86400- duration
                 var hour = duration/3600
 
-                Log.d("hours :" ,"${hour.toString()}")
+//                Log.d("hours :" ,"${hour.toString()}")
 
                 duration %= 3600
                 val minutes = duration / 60
-                Log.d("hours :" ,"${minutes.toString()}")
+//                Log.d("hours :" ,"${minutes.toString()}")
                 duration %= 60
                 val seconds = duration
-                Log.d("seconds :" , "${seconds.toString()}")
-
-                val remainQuestTime =
-                    " " + hour.toString() + ":" + minutes.toString() + ":" + seconds.toString()
-
-                return remainQuestTime
+//                Log.d("seconds :" , "${seconds.toString()}")
+                remainQuestTime = " " + hour.toString() + ":" + minutes.toString() + ":" + seconds.toString()
             }
+
+            return  remainQuestTime
         }
         return ""
     }
