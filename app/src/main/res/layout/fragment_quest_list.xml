@@ -47,13 +47,18 @@
                     android:text="@string/day_quest"
                     android:textSize="30sp" />
                 <TextView
-                    android:id="@+id/dateQuest"
+                    android:id="@+id/doQuest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="횟수/ 3"
+                    android:text="0"
+                    android:textSize="30sp" />
+                <TextView
+                    android:id="@+id/dailyQuest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/ 3"
                     android:textSize="30sp" />
             </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -77,7 +82,7 @@
                 <android.widget.Button
                     android:id="@+id/fab"
                     android:layout_width="150dp"
-                    android:layout_height="44dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginVertical="2dp"
                     android:background="@drawable/dotline"
