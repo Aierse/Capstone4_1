@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.Character
@@ -41,17 +42,24 @@ class MyinfoFragment : Fragment() {
         val name = view.findViewById<TextView>(R.id.myInfoName)
         val gender = view.findViewById<TextView>(R.id.myInfoGender)
         val interest = view.findViewById<TextView>(R.id.myInfoInterest)
+//        val hpbar = view.findViewById<RatingBar>(R.id.hp_Bar)
 
         val nameValue = Character.name
         val genderValue = Character.gender.value
         val interestValue = Character.interest.value
+        val hpValue = Character.hp.toFloat()
 
         name.append("이름:$nameValue")
         gender.append("성별:$genderValue")
         interest.append("관심:$interestValue")
 
+//        hpbar.rating = hpValue
+
+
+
         return view
     }
+
 
     companion object {
         /**
@@ -72,3 +80,4 @@ class MyinfoFragment : Fragment() {
                 }
     }
 }
+
