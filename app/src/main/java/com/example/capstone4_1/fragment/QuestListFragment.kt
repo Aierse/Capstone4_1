@@ -3,13 +3,13 @@ package com.example.capstone4_1.fragment
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.capstone4_1.Character
 import com.example.capstone4_1.CreateQuestActivity
 import com.example.capstone4_1.QuestAdapter
 import com.example.capstone4_1.R
@@ -48,6 +48,8 @@ class QuestListFragment : Fragment() {
         val intent = Intent(requireContext(), CreateQuestActivity::class.java)
         val nextQuestTime = view.findViewById<TextView>(R.id.nextQuestTime)
 
+        val finishQuest = view.findViewById<TextView>(R.id.doQuest)
+        finishQuest.setText(Character.doingQuetstCount.toString())
 
         //퀘스트 생성 버튼 클릭 리스너
         val fab: View = view.findViewById(R.id.fab)
