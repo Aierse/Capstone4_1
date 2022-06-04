@@ -3,7 +3,6 @@ package com.example.capstone4_1.fragment
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,13 +60,13 @@ class QuestListFragment : Fragment() {
     }
 
     fun remainQuestTime(): String? {
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            var remainQuestTime:String? =""
-            val nowTime = LocalTime.parse("05:57:44") // stub code
+            var remainQuestTime: String? = ""
+            val nowTime = LocalTime.now() // stub code
             val resetTime = LocalTime.parse("06:00:00") // stub code must be changed
-//            val nowTime = LocalTime.now()
-            var duration = Duration.between(resetTime,nowTime).seconds
-//            Log.d("Duration :","${duration.toString()}" )
+            var duration = Duration.between(resetTime, nowTime).seconds
+            //시간차 음수일때 
             if (duration < 0) {
                 duration = -1 * duration
                 var hour = duration / 360
@@ -75,23 +74,20 @@ class QuestListFragment : Fragment() {
                 val minutes = duration / 60
                 duration %= 60
                 val seconds = duration
+
                 remainQuestTime = " " + hour.toString() + ":" + minutes.toString() + ":" + seconds.toString()
             } else {
-                duration = 86400- duration
-                var hour = duration/3600
-
-//                Log.d("hours :" ,"${hour.toString()}")
-
+                //시간차 양수일때
+                duration = 86400 - duration
+                var hour = duration / 3600
                 duration %= 3600
                 val minutes = duration / 60
-//                Log.d("hours :" ,"${minutes.toString()}")
                 duration %= 60
                 val seconds = duration
-//                Log.d("seconds :" , "${seconds.toString()}")
+
                 remainQuestTime = " " + hour.toString() + ":" + minutes.toString() + ":" + seconds.toString()
             }
-
-            return  remainQuestTime
+            return remainQuestTime
         }
         return ""
     }
