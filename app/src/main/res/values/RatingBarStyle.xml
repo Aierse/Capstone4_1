@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="RatingBar" parent="@android:style/Widget.RatingBar"></style>
+    <style name="slothBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/sloth_ratingbar</item>
+        <item name="android:minHeight">64px</item>
+        <item name="android:maxHeight">64px</item>
+
+        <item name="android:minWidth">64px</item>
+        <item name="android:maxWidth">64px</item>
+
+    </style>
 </resources>
