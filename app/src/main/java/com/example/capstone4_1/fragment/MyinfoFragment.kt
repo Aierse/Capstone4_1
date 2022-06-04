@@ -42,24 +42,21 @@ class MyinfoFragment : Fragment() {
         val name = view.findViewById<TextView>(R.id.myInfoName)
         val gender = view.findViewById<TextView>(R.id.myInfoGender)
         val interest = view.findViewById<TextView>(R.id.myInfoInterest)
-//        val hpbar = view.findViewById<RatingBar>(R.id.hp_Bar)
+        val hpbar = view.findViewById<RatingBar>(R.id.hp_Bar)
 
         val nameValue = Character.name
         val genderValue = Character.gender.value
         val interestValue = Character.interest.value
-        val hpValue = Character.hp.toFloat()
+        val hpValue = Character.hp
 
         name.append("이름:$nameValue")
         gender.append("성별:$genderValue")
         interest.append("관심:$interestValue")
 
-//        hpbar.rating = hpValue
-
-
+        hpbar.rating = hpValue
 
         return view
     }
-
 
     companion object {
         /**
