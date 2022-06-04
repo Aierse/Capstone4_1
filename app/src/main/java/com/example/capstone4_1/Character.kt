@@ -26,6 +26,7 @@ object Character {
     var randomQuestList = arrayListOf<Quest>()
     var currentLogin : LocalDateTime? = null //최근 로그인
     lateinit var createTime : LocalDateTime //캐릭터 생성시점
+    var hp: Int = 5 // 나태함
 
     var questList: ArrayList<Quest>
     get() {
