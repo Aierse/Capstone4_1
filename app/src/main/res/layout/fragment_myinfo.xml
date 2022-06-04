@@ -14,11 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <!-- 현재 페이지 이름             weight 1 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -29,7 +31,9 @@
                 android:background="#deb887"
                 android:textColor="#964b00"
                 android:layout_margin="3dp" />
+
         </LinearLayout>
+
         <!--  내 정보                    weight 3 -->
         <LinearLayout
             android:id="@+id/info"
@@ -38,42 +42,44 @@
             android:layout_weight="3"
             android:baselineAligned="false"
             android:orientation="horizontal"
-            android:weightSum="5">
+            android:weightSum="4">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:background="#964b00">
 
                 <ImageView
                     android:id="@+id/myCharacter"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="9"
+                    android:layout_height="match_parent"
                     android:background="#deb887"
                     android:layout_margin="3dp"
                     android:contentDescription="@string/MyInfo"
-                    android:src="@drawable/sprite_char1" />
+                    android:src="@drawable/sprite_char1"
+                    android:layout_weight="2"/>
 
                 <RatingBar
                     android:id="@+id/hp_Bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:rating="0"
                     style="@style/slothBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="#deb887"
+                    android:isIndicator="true"
+                    android:numStars="3"
+                    android:stepSize="0.5"
                     />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:orientation="vertical"
                 android:background="#964b00"
                 android:weightSum="3">
@@ -122,16 +128,24 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <!--  나태함                    weight 1 -->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:gravity="center">-->
+
+<!--            -->
+
+<!--        </LinearLayout>-->
+
         <!--    통계                      weight 5 -->
-            <fragment
-                android:id="@+id/myInfoListFragment"
-                android:name="com.example.capstone4_1.fragment.StatisticsFragment"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="5"/>
-
-
-
+        <fragment
+            android:id="@+id/myInfoListFragment"
+            android:name="com.example.capstone4_1.fragment.StatisticsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"/>
     </LinearLayout>
-
 </FrameLayout>
