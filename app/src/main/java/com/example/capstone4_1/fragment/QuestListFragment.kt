@@ -63,7 +63,7 @@ class QuestListFragment : Fragment() {
     fun remainQuestTime(): String{
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             var remainQuestTime:LocalTime
-            val nowTime = LocalTime.parse("05:57:44") // stub code
+            val nowTime = LocalTime.now()
             val resetTime = LocalTime.parse("06:00:00") // stub code must be changed
 //            val nowTime = LocalTime.now()
             var duration = Duration.between(resetTime,nowTime).seconds
