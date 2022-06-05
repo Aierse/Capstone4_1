@@ -32,7 +32,7 @@
                     android:id="@+id/nextQuestTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="30sp" />
+                    android:textSize="25sp" />
 
             </LinearLayout>
 
@@ -51,13 +51,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="30sp" />
-                <TextView
-                    android:id="@+id/dailyQuest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="/ 3"
-                    android:textSize="30sp" />
+                    android:textSize="33sp" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -68,7 +63,7 @@
             android:orientation="vertical">
 
             <fragment
-                android:id="@+id/customQuestListFragment"
+                android:id="@+id/QuestListFragment"
                 android:name="com.example.capstone4_1.fragment.QuestlistviewFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

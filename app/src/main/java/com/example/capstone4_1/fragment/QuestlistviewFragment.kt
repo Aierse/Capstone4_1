@@ -52,7 +52,6 @@ class QuestlistviewFragment : Fragment() {
                 val dialog = AlertDialog.Builder(requireContext())
                 val selectQuest = parent.getItemAtPosition(position) as Quest
 
-
                 //다이얼로그 이름
                 dialog.setTitle(selectQuest.name)
                 //다이얼로그 설명
@@ -61,10 +60,7 @@ class QuestlistviewFragment : Fragment() {
                 // 확인 버튼 클릭시 동작할 것들!!!
                 dialog.setPositiveButton("완료") { dialogInterface, i ->
                     Toast.makeText(
-                        requireContext(),
-                        selectQuest.name + "\n 퀘스트를 완료하셨습니다.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                        requireContext(), selectQuest.name + "\n 퀘스트를 완료하셨습니다.",Toast.LENGTH_SHORT).show()
 
                     if (Character.questList[position].value == -1) {
                         val realPosition = position - Character.randomQuestList.count()
@@ -89,8 +85,6 @@ class QuestlistviewFragment : Fragment() {
 
         return view
     }
-
-
     companion object {
         /**
          * Use this factory method to create a new instance of
