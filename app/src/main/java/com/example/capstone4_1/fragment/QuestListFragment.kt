@@ -66,7 +66,7 @@ class QuestListFragment : Fragment() {
 //            Log.d("Duration :","${duration.toString()}" )
             if (duration < 0) {
                 duration = -1 * duration
-                val hour = duration / 360
+                val hour = duration / 3600
                 duration %= 3600
                 val minutes = duration / 60
                 duration %= 60
