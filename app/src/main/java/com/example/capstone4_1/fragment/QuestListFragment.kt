@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -46,41 +47,34 @@ class QuestListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_quest_list, container, false)
         val intent = Intent(requireContext(), CreateQuestActivity::class.java)
-        val nextQuestTime = view.findViewById<TextView>(R.id.nextQuestTime)
-
-        val finishQuest = view.findViewById<TextView>(R.id.doQuest)
-        finishQuest.setText(Character.doingQuetstCount.toString())
 
         //퀘스트 생성 버튼 클릭 리스너
-        val fab: View = view.findViewById(R.id.fab)
+        val fab = view.findViewById<Button>(R.id.fab)
         fab.setOnClickListener {
             startActivity(intent)
         }
-
-        nextQuestTime.setText(remainQuestTime())
-
         return view
     }
 
-    fun remainQuestTime(): String{
+    fun remainQuestTime(): String {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            var remainQuestTime:LocalTime
+            val remainQuestTime: LocalTime
             val nowTime = LocalTime.now()
             val resetTime = LocalTime.parse("06:00:00") // stub code must be changed
 //            val nowTime = LocalTime.now()
-            var duration = Duration.between(resetTime,nowTime).seconds
+            var duration = Duration.between(resetTime, nowTime).seconds
 //            Log.d("Duration :","${duration.toString()}" )
             if (duration < 0) {
                 duration = -1 * duration
-                var hour = duration / 360
+                val hour = duration / 360
                 duration %= 3600
                 val minutes = duration / 60
                 duration %= 60
                 val seconds = duration
-                remainQuestTime = LocalTime.of(hour.toInt(),minutes.toInt(),seconds.toInt())
+                remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
             } else {
-                duration = 86400- duration
-                var hour = duration/3600
+                duration = 86400 - duration
+                val hour = duration / 3600
 //                Log.d("hours :" ,"${hour.toString()}")
                 duration %= 3600
                 val minutes = duration / 60
@@ -88,20 +82,25 @@ class QuestListFragment : Fragment() {
                 duration %= 60
                 val seconds = duration
 //                Log.d("seconds :" , "${seconds.toString()}")
-                remainQuestTime = LocalTime.of(hour.toInt(),minutes.toInt(),seconds.toInt())
+                remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
             }
 
-            return  remainQuestTime.toString()
+            return remainQuestTime.toString()
         }
         return ""
     }
 
-
     override fun onResume() {
         super.onResume()
 
-        view?.findViewById<ListView>(R.id.questListView)?.adapter =
-            QuestAdapter(requireContext())
+        //남은시간 계산
+        val nextQuestTime = view?.findViewById<TextView>(R.id.nextQuestTime)
+        nextQuestTime?.setText(remainQuestTime())
+//      퀘스트 진행 현황
+        val finishQuest = view?.findViewById<TextView>(R.id.doQuest)
+        finishQuest?.setText(Character.doingQuetstCount.toString() + " / 3")
+
+        view?.findViewById<ListView>(R.id.questListView)?.adapter = QuestAdapter(requireContext())
         QuestAdapter(requireContext()).notifyDataSetChanged()
     }
 
