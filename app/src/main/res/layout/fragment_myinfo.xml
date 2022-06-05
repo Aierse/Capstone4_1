@@ -59,7 +59,6 @@
                     android:background="#deb887"
                     android:layout_margin="3dp"
                     android:contentDescription="@string/MyInfo"
-                    android:src="@drawable/sprite_char1"
                     android:layout_weight="2"/>
 
                 <RatingBar

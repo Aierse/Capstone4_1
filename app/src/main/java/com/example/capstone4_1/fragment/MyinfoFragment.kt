@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -39,16 +40,20 @@ class MyinfoFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_myinfo, container, false)
 
+        var characterImg = view.findViewById<ImageView>(R.id.myCharacter)
         val name = view.findViewById<TextView>(R.id.myInfoName)
         val gender = view.findViewById<TextView>(R.id.myInfoGender)
         val interest = view.findViewById<TextView>(R.id.myInfoInterest)
         val hpbar = view.findViewById<RatingBar>(R.id.hp_Bar)
 
-        val nameValue = Character.name
-        val genderValue = Character.gender.value
-        val interestValue = Character.interest.value
-        val hpValue = Character.hp
+        var charInt = Character.icon
+        var nameValue = Character.name
+        var genderValue = Character.gender.value
+        var interestValue = Character.interest.value
+        var hpValue = Character.hp
 
+
+        characterImg.setImageResource(charInt)
         name.append("이름:$nameValue")
         gender.append("성별:$genderValue")
         interest.append("관심:$interestValue")

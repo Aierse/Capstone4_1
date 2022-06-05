@@ -1,15 +1,13 @@
 package com.example.capstone4_1.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
-import com.example.capstone4_1.R
-import com.example.capstone4_1.Statistics
-import com.example.capstone4_1.StatisticsAdapter
-
+import com.example.capstone4_1.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,7 +42,8 @@ class StatisticsFragment : Fragment() {
 
 
 
-       listView.adapter = StatisticsAdapter(requireContext(), Statistics.statisticsList)
+
+        listView.adapter = StatisticsAdapter(requireContext(), Statistics.statisticsList)
 
         return view
     }

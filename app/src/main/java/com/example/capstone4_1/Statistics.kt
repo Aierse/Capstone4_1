@@ -1,38 +1,54 @@
 package com.example.capstone4_1
 
-val healthTitle : Array<String> = arrayOf("팔굽혀 펴기", "풀업" , "뜀걸음")
-val studyTitle : Array<String> = arrayOf("영단어 외우기", "단어의 뜻 말하기" , "독서")
-val codingTitle : Array<String> = arrayOf("백준 문제 풀기", "코딩 영상 보기", "코딩 실습 ")
-val tierList: Array<String> = arrayOf("bronze_tier", "silver_tier", "gold_tier")
-val limitList: Array<Int> = arrayOf(100,1000,10000)
+import android.util.Log
 
-//<a href="https://www.flaticon.com/kr/free-icons/" title="헬스장 아이콘">헬스장 아이콘  제작자: Payungkead - Flaticon</a>
-data class Statistics(val count: Int ) {
+class Statistics(val count: Int,val titleNum: Int) {
     val genre: String = Character.interest.toString().lowercase()
-    var title: Array<String> = initializeTitle()
+    val title: ArrayList<String> = initializeTitle()
     var limit: Int = initializeLimit()
     var tier: String = initializeTier()
+    val tierList: Array<String> = arrayOf("bronze_tier", "silver_tier", "gold_tier")
+    val limitList: Array<Int> = arrayOf(100,1000,10000)
 
-    fun initializeTitle(): Array<String> {
-        val i = this.genre
-        return if (i == "health") {
-            healthTitle
-        } else if (i == "study") {
-            studyTitle
-        } else {
-            codingTitle
-        }
+    companion object {
+//        fun addElement(addCount: Int, maxSize: Int ){
+//            for (i in 0..maxSize) {
+//                statisticsList.add(i, Statistics(addCount, titleNum = i))
+//            }
+//        }
+        val statisticsList: MutableList<Statistics> = mutableListOf<Statistics>(
+            Statistics(200,1)
+        )
+
     }
+
+    fun initializeTitle(): ArrayList<String> {
+        val test = ArrayList<String>()
+        Log.d("확인", "Character.questList.size "+Character.questList.size)
+
+        for (j in 0..Character.questList.size) {
+            test.add(Character.questList[j].name)
+            Log.d("확인", " "+ test[j] +test.size )
+        }
+        for (i in 0..test.size) {
+            Log.d("확인", "배열 내용 확인 "+test[i])
+        }
+        test.distinct()
+        return test
+    }
+
 
     fun initializeLimit(): Int {
         return if (count <= limitList[0]) {
-            100
+            limitList[0]
         } else if (limitList[0] < count && count <= limitList[1]) {
-            1000
+            limitList[1]
         } else {
-            10000
+            limitList[2]
         }
+        Log.d("확인", "initializeLimit: 리미트 도달")
     }
+
 
     fun initializeTier(): String {
         return if (count <= limitList[0]) {
@@ -42,15 +58,6 @@ data class Statistics(val count: Int ) {
         } else {
             tierList[2]
         }
-    }
-
-
-
-    companion object{
-        var statisticsList = arrayListOf<Statistics>(
-            Statistics(200)
-            ,Statistics(1000)
-            ,Statistics(50)
-        )
+        Log.d("확인", "initializeLimit: 티어 도달")
     }
 }

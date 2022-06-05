@@ -1,19 +1,23 @@
 package com.example.capstone4_1
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+
 var i = 0
 
-class StatisticsAdapter(val context: Context, val statisticsList: ArrayList<Statistics>) : BaseAdapter(){
+class StatisticsAdapter(val context: Context, val statisticsList: MutableList<Statistics>) : BaseAdapter(){
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view : View
         val holder : ViewHolder
+
+        Log.d("확인","!!어댑터 진입 성공!!")
 
         if(convertView == null){
             view = LayoutInflater.from(context).inflate(R.layout.statistics_item, null)
@@ -31,26 +35,22 @@ class StatisticsAdapter(val context: Context, val statisticsList: ArrayList<Stat
         }
         val statistics = statisticsList[position]
 
-        var size = statistics.title.size
-
         val genreId =
                 context.resources.getIdentifier(statistics.genre, "drawable", context.packageName)
-
         val tierId =
                 context.resources.getIdentifier(statistics.tier, "drawable", context.packageName)
 
 
+
         holder.genre?.setImageResource(genreId)
-        holder.typeName?.text = statistics.title[i]// need  to fix it
+        holder.typeName?.text = statistics.title[i] //need  to fix it
         holder.progress?.text = statistics.count.toString()
         holder.nextScore?.text = statistics.limit.toString()
         holder.tier?.setImageResource(tierId)
         ++i
 
-
-        if (i==statistics.title.size)
-            i = 0
-
+        if (i == statistics.title.size)
+            i=0
 
         return view
 
