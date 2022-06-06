@@ -65,6 +65,8 @@ class QuestListFragment : Fragment() {
                         val realPosition = position - Character.randomQuestList.count()
                         Character.customQuestList.removeAt(realPosition)
                     } else {
+                        //수한 여기야 여기
+                        //addCount(Character.randomQuestList[position])
                         Character.randomQuestList.removeAt(position)
                         Character.doingQuetstCount++
                     }
@@ -86,9 +88,6 @@ class QuestListFragment : Fragment() {
         //리스트뷰 갱신
         view?.findViewById<ListView>(R.id.questListView)?.adapter = QuestAdapter(requireContext())
         QuestAdapter(requireContext()).notifyDataSetChanged()
-        //남은시간
-//        val nextTime = view?.findViewById<TextView>(R.id.nextQuestTime)
-//        nextTime?.setText(Character.remainTime)
     }
 
     companion object {
