@@ -2,7 +2,6 @@ package com.example.capstone4_1.fragment
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.*
-import java.time.Duration
-import java.time.LocalTime
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,16 +22,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class QuestListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -45,6 +35,7 @@ class QuestListFragment : Fragment() {
         val intent = Intent(requireContext(), CreateQuestActivity::class.java)
         val rootView = view.findViewById<ListView>(R.id.questListView)
         val questAdapter = QuestAdapter(requireContext())
+
         val doQuest = view.findViewById<TextView>(R.id.doQuest)
         doQuest.setText(Character.doingQuetstCount.toString() + " / 3")
 
@@ -79,6 +70,7 @@ class QuestListFragment : Fragment() {
                     }
                     rootView.adapter = QuestAdapter(requireContext())
                     questAdapter.notifyDataSetChanged()
+                    //퀘스트 수행 완료 시 증가
                     doQuest.setText(Character.doingQuetstCount.toString() + " / 3")
                 }
                 dialog.setNegativeButton("취소") { dialogInterface, i -> }
@@ -88,52 +80,15 @@ class QuestListFragment : Fragment() {
         return view
     }
 
-    fun remainQuestTime(): String {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val remainQuestTime: LocalTime
-            val nowTime = LocalTime.now()
-            val resetTime = LocalTime.parse("06:00:00") // stub code must be changed
-            var duration = Duration.between(resetTime, nowTime).seconds
-//            Log.d("Duration :","${duration.toString()}" )
-            if (duration < 0) {
-                duration = -1 * duration
-                val hour = duration / 3600
-                duration %= 3600
-                val minutes = duration / 60
-                duration %= 60
-                val seconds = duration
-                remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
-            } else {
-                duration = 86400 - duration
-                val hour = duration / 3600
-//                Log.d("hours :" ,"${hour.toString()}")
-                duration %= 3600
-                val minutes = duration / 60
-//                Log.d("hours :" ,"${minutes.toString()}")
-                duration %= 60
-                val seconds = duration
-//                Log.d("seconds :" , "${seconds.toString()}")
-                remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
-            }
-
-            return remainQuestTime.toString()
-        }
-        return ""
-    }
-
+    /*--------------------------------------------- 메인 끝 ---------------------------------------------*/
     override fun onResume() {
         super.onResume()
-        //남은시간 계산
-        val nextQuestTime = view?.findViewById<TextView>(R.id.nextQuestTime)
-        nextQuestTime?.setText(remainQuestTime())
-
-        //퀘스트 진행 현황
-//        val CurrentQuest = view?.findViewById<TextView>(R.id.doQuest)
-//        CurrentQuest?.setText(Character.doingQuetstCount.toString() + " / 3")
-
         //리스트뷰 갱신
         view?.findViewById<ListView>(R.id.questListView)?.adapter = QuestAdapter(requireContext())
         QuestAdapter(requireContext()).notifyDataSetChanged()
+        //남은시간
+//        val nextTime = view?.findViewById<TextView>(R.id.nextQuestTime)
+//        nextTime?.setText(Character.remainTime)
     }
 
     companion object {
