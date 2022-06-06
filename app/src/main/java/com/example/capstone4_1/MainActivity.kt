@@ -2,10 +2,10 @@ package com.example.capstone4_1
 
 import android.app.Service
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
-import android.util.Log
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -16,14 +16,11 @@ import com.example.capstone4_1.fragment.QuestListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import java.io.File
-import java.time.Duration
-import java.time.LocalTime
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val RESPONSE_CREATE_CHARACTER = 50
-    lateinit var thread: Thread
 
     var myInfoFragment: Fragment = MyinfoFragment()
     var questListFragment: Fragment = QuestListFragment()
@@ -68,14 +65,18 @@ class MainActivity : AppCompatActivity() {
         })
         initialize()
 
-        thread(start = true) {
+        val f = findViewById<FrameLayout>(R.id.mainFrag)
+
+        thread(start = true, true) {
+
             while (true) {
-                Character.remainTime = remainQuestTime()
-                binding.remainTime.setText(Character.remainTime)
-                Log.d("aaaaaa", "TIme" + Character.remainTime)
+                val t = f.findViewById<TextView>(R.id.remainTime1) ?: continue
+
+                runOnUiThread {
+                    t.text = Character.remainTime
+                }
                 Thread.sleep(1000)
             }
-            thread.isDaemon
         }
 
     }
@@ -118,37 +119,4 @@ class AutoSave : Service() {
         Character.saveCharacter(this)
 
     }
-}
-
-fun remainQuestTime(): String {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val remainQuestTime: LocalTime
-        val nowTime = LocalTime.now()
-        val resetTime = LocalTime.parse("06:00:00") // stub code must be changed
-        var duration = Duration.between(resetTime, nowTime).seconds
-//            Log.d("Duration :","${duration.toString()}" )
-        if (duration < 0) {
-            duration = -1 * duration
-            val hour = duration / 3600
-            duration %= 3600
-            val minutes = duration / 60
-            duration %= 60
-            val seconds = duration
-            remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
-        } else {
-            duration = 86400 - duration
-            val hour = duration / 3600
-//                Log.d("hours :" ,"${hour.toString()}")
-            duration %= 3600
-            val minutes = duration / 60
-//                Log.d("hours :" ,"${minutes.toString()}")
-            duration %= 60
-            val seconds = duration
-//                Log.d("seconds :" , "${seconds.toString()}")
-            remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
-        }
-
-        return remainQuestTime.toString()
-    }
-    return ""
 }
