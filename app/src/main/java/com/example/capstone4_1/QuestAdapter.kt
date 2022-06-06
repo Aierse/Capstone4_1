@@ -37,8 +37,6 @@ open class QuestAdapter(val context: Context) : BaseAdapter() {
             explain.setText(Character.questList[position].explain)
             imageView.setImageResource(Character.questList[position].image)
         }
-
-
         return view
     }
 
@@ -61,8 +59,6 @@ open class QuestAdapter(val context: Context) : BaseAdapter() {
     override fun getItemId(position: Int): Long {
         return 0
     }
-
-
 
 //    // item 삭제
 //    fun delItem(position: Int) {
