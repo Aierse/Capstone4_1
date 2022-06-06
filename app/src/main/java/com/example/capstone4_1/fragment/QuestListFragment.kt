@@ -22,6 +22,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class QuestListFragment : Fragment() {
+    private lateinit var qSize: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,8 @@ class QuestListFragment : Fragment() {
 
         val doQuest = view.findViewById<TextView>(R.id.doQuest)
         doQuest.setText(Character.doingQuetstCount.toString() + " / 3")
+
+        qSize = view.findViewById<TextView>(R.id.questListSize)
 
         //퀘스트 생성 버튼 클릭 리스너
         val fab = view.findViewById<Button>(R.id.fab)
@@ -73,8 +76,11 @@ class QuestListFragment : Fragment() {
                     rootView.adapter = QuestAdapter(requireContext())
                     questAdapter.notifyDataSetChanged()
                     //퀘스트 수행 완료 시 증가
+
+                    qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
                     doQuest.setText(Character.doingQuetstCount.toString() + " / 3")
                 }
+
                 dialog.setNegativeButton("취소") { dialogInterface, i -> }
                 dialog.show()
             }
@@ -88,6 +94,7 @@ class QuestListFragment : Fragment() {
         //리스트뷰 갱신
         view?.findViewById<ListView>(R.id.questListView)?.adapter = QuestAdapter(requireContext())
         QuestAdapter(requireContext()).notifyDataSetChanged()
+        qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
     }
 
     companion object {

@@ -54,7 +54,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0 / 3"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
                     android:textSize="33sp" />
+                <TextView
+                    android:id="@+id/questListSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity=""
+                    tools:text="(남은 퀘스트 : 15)"
+                    android:textSize="17sp" />
 
             </LinearLayout>
         </LinearLayout>
