@@ -23,6 +23,7 @@ object Character {
     var randomQuestList = arrayListOf<Quest>()
     var doingQuetstCount = 0  // 금일 퀘스트 수행   0 / 3
     var currentLogin : LocalDateTime? = null //최근 로그인
+    var remainTime : String  = "00:00:00"//다음 퀘스트까지 남은시간
     lateinit var createTime : LocalDateTime //캐릭터 생성시점
     var hp: Float = 0.5f // 나태함
 
