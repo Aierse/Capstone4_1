@@ -28,6 +28,14 @@
                     android:text="@string/next_quest"
                     android:textSize="30sp" />
 
+                <TextView
+                    android:id="@+id/remainTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시간"
+                    android:textAlignment="center"
+                    android:textSize="30sp" />
+
             </LinearLayout>
 
             <LinearLayout

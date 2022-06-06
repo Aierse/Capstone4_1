@@ -44,8 +44,6 @@ data class Statistics(val count: Int ) {
         }
     }
 
-
-
     companion object{
         var statisticsList = arrayListOf<Statistics>(
             Statistics(200)
