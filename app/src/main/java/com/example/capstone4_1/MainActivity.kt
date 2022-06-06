@@ -2,13 +2,13 @@ package com.example.capstone4_1
 
 import android.app.Service
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.example.capstone4_1.databinding.ActivityMainBinding
 import com.example.capstone4_1.fragment.HomeFragment
 import com.example.capstone4_1.fragment.MyinfoFragment
@@ -16,13 +16,17 @@ import com.example.capstone4_1.fragment.QuestListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import java.io.File
+import java.time.Duration
+import java.time.LocalTime
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val RESPONSE_CREATE_CHARACTER = 50
-    var myInfoFragment: Fragment = MyinfoFragment()
+    lateinit var thread: Thread
 
-    var questScreenFragment: Fragment = QuestListFragment()
+    var myInfoFragment: Fragment = MyinfoFragment()
+    var questListFragment: Fragment = QuestListFragment()
     var homeFragment: Fragment = HomeFragment()
     var FM = supportFragmentManager
 
@@ -47,9 +51,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         startService(Intent(this, AutoSave::class.java))
 
+
         // setupEvent()
-
-
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.menu_bottom_navigation)
 
         //프래그먼트 메뉴
@@ -59,33 +62,23 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.myInfo -> transaction.replace(R.id.mainFrag, myInfoFragment).commit()
                 R.id.home -> transaction.replace(R.id.mainFrag, homeFragment).commit()
-                R.id.questList -> transaction.replace(R.id.mainFrag, questScreenFragment).commit()
+                R.id.questList -> transaction.replace(R.id.mainFrag, questListFragment).commit()
             }
             true
         })
         initialize()
 
-    //        finishQuest.setText(Character.doingQuetstCount.toString() + " / 3")
-//        thread(start = true) {
-//            var i = 0
-//
-//            while(i < 10) {
-//                i += 1
-//
-//                runOnUiThread {    //Ui에 접근할 수 있음
-//                    finishQuest.text = "카운트 : ${i}"
-//                }
-//
-//                Thread.sleep(1000)	//1000 == 1초
-//            }
-//        }
-    }
+        thread(start = true) {
+            while (true) {
+                Character.remainTime = remainQuestTime()
+                binding.remainTime.setText(Character.remainTime)
+                Log.d("aaaaaa", "TIme" + Character.remainTime)
+                Thread.sleep(1000)
+            }
+            thread.isDaemon
+        }
 
-    fun refreshFragment(fragment: Fragment, FM: FragmentManager) {
-        val ft: FragmentTransaction = FM.beginTransaction()
-        ft.detach(fragment).attach(fragment).commit()
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -113,7 +106,6 @@ class MainActivity : AppCompatActivity() {
         Character.saveCharacter(this)
         super.onDestroy()
     }
-
 }
 
 class AutoSave : Service() {
@@ -124,5 +116,39 @@ class AutoSave : Service() {
 
     override fun onTaskRemoved(rootIntent: Intent) { //핸들링 하는 부분
         Character.saveCharacter(this)
+
     }
+}
+
+fun remainQuestTime(): String {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val remainQuestTime: LocalTime
+        val nowTime = LocalTime.now()
+        val resetTime = LocalTime.parse("06:00:00") // stub code must be changed
+        var duration = Duration.between(resetTime, nowTime).seconds
+//            Log.d("Duration :","${duration.toString()}" )
+        if (duration < 0) {
+            duration = -1 * duration
+            val hour = duration / 3600
+            duration %= 3600
+            val minutes = duration / 60
+            duration %= 60
+            val seconds = duration
+            remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
+        } else {
+            duration = 86400 - duration
+            val hour = duration / 3600
+//                Log.d("hours :" ,"${hour.toString()}")
+            duration %= 3600
+            val minutes = duration / 60
+//                Log.d("hours :" ,"${minutes.toString()}")
+            duration %= 60
+            val seconds = duration
+//                Log.d("seconds :" , "${seconds.toString()}")
+            remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
+        }
+
+        return remainQuestTime.toString()
+    }
+    return ""
 }
