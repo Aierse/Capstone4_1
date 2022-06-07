@@ -11,8 +11,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.Character
 import com.example.capstone4_1.R
-import com.example.capstone4_1.Statistics
-import com.example.capstone4_1.StatisticsList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

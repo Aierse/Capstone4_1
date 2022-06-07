@@ -1,7 +1,6 @@
 package com.example.capstone4_1
 
 import java.util.*
-import kotlin.collections.ArrayList
 
 class Quest(val image: Int, val name: String, val content: String, val value: Int = -1) {
     val explain: String
