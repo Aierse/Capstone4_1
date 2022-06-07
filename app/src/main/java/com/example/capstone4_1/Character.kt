@@ -24,9 +24,15 @@ object Character {
     var customQuestList = arrayListOf<Quest>()
     var randomQuestList = arrayListOf<Quest>()
     var doingQuetstCount = 0  // 금일 퀘스트 수행   0 / 3
-    var currentLogin: LocalDateTime? = null //최근 로그인
-    lateinit var createTime: LocalDateTime //캐릭터 생성시점
-    var hp: Float = 0.5f // 나태함
+    var currentLogin : LocalDateTime? = null //최근 로그인
+    lateinit var createTime : LocalDateTime //캐릭터 생성시점
+    var hp: Float = 1.0f // 나태함
+
+    var statisticsList = arrayListOf<Statistics>()
+    var userCount = arrayOf<Int>()
+
+    var countRecord= arrayListOf<QuestCountRecord>()
+
 
     val remainTimes: String
         get() {
@@ -200,4 +206,6 @@ object Character {
         }
         return ""
     }
+
+    fun addPlayCount(){}
 }

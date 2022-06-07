@@ -1,15 +1,13 @@
 package com.example.capstone4_1.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
-import com.example.capstone4_1.R
-import com.example.capstone4_1.Statistics
-import com.example.capstone4_1.StatisticsAdapter
-
+import com.example.capstone4_1.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,6 +30,7 @@ class StatisticsFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -42,9 +41,27 @@ class StatisticsFragment : Fragment() {
         val view = inflater.inflate(R.layout.statistics_list, container, false)
         val listView = view.findViewById<ListView>(R.id.statisticsListView)
 
+        Log.d("확인", "어댑터 입구 도착 ")
 
 
-       listView.adapter = StatisticsAdapter(requireContext(), Statistics.statisticsList)
+
+        if (StatisticsList.testTitle.size <= Character.statisticsList.size)
+            StatisticsList.resetList()
+
+        if (StatisticsList.testGenre.isEmpty()){
+            StatisticsList.initializeTitle()
+            StatisticsList.initializeGenre()
+            Log.d("확인", "userCount.size "+ Character.userCount.isEmpty())
+            StatisticsList.setUserCount()
+            Log.d("확인", "userCount.size "+ Character.userCount.isEmpty())
+        }
+        StatisticsList.initializeCutlineAndTier(Character.userCount)
+        StatisticsList.getStatisticsList()
+
+
+        Log.d("확인", "명령어 끝부분에 도착 ")
+
+        listView.adapter = StatisticsAdapter(requireContext())
 
         return view
     }
