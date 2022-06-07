@@ -28,7 +28,7 @@ object Character {
     lateinit var createTime: LocalDateTime //캐릭터 생성시점
     var hp: Float = 0.5f // 나태함
 
-    val remainTime: String
+    val remainTimes: String
         get() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val remainQuestTime: LocalTime
@@ -47,13 +47,10 @@ object Character {
                 } else {
                     duration = 86400 - duration
                     val hour = duration / 3600
-//                Log.d("hours :" ,"${hour.toString()}")
                     duration %= 3600
                     val minutes = duration / 60
-//                Log.d("hours :" ,"${minutes.toString()}")
                     duration %= 60
                     val seconds = duration
-//                Log.d("seconds :" , "${seconds.toString()}")
                     remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
                 }
 
