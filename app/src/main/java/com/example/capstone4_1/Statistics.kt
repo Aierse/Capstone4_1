@@ -2,14 +2,14 @@ package com.example.capstone4_1
 
 class Statistics(var genre: Int, var title: String, var limit: Array<Int>, var count: Int = 0) {
     val nextLimit: Int?
-    get() {
-        for (i in limit) {
-            if (count < i)
-                return i
-        }
+        get() {
+            for (i in limit) {
+                if (count < i)
+                    return i
+            }
 
-        return null
-    }
+            return null
+        }
 
     val tier: String
         get() {
@@ -42,6 +42,15 @@ class Statistics(var genre: Int, var title: String, var limit: Array<Int>, var c
         )
 
         val statisticsList = healthStatistics + languageStatistics + codingStatistics
+
+        fun addCount(quest: Quest) {
+            for (i in statisticsList) {
+                if (i.title == quest.name) {
+                    i.count += quest.value
+                    break
+                }
+            }
+        }
     }
 }
 

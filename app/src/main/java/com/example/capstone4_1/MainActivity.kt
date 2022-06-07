@@ -4,8 +4,6 @@ import android.app.Service
 import android.content.Intent
 import android.os.Bundle
 import android.os.IBinder
-import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -16,7 +14,6 @@ import com.example.capstone4_1.fragment.QuestListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import java.io.File
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -65,19 +62,17 @@ class MainActivity : AppCompatActivity() {
         })
         initialize()
 
-
-
-        thread(start = true, true) {
-
-            while (true) {
-                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
-                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
-                runOnUiThread {
-                    t.text = Character.remainTimes
-                }
-                Thread.sleep(1000)
-            }
-        }
+//        thread(start = true, true) {
+//
+//            while (true) {
+//                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
+//                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
+//                runOnUiThread {
+//                    t.text = Character.remainTimes
+//                }
+//                Thread.sleep(1000)
+//            }
+//        }
 
     }
 
