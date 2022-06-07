@@ -44,7 +44,7 @@ open class StatisticsAdapter(val context: Context) : BaseAdapter() {
         holder.genre?.setImageResource(stat.genre)
         holder.typeName?.text = stat.title//need  to fix it
         holder.progress?.text = stat.count.toString()
-        holder.nextScore?.text = stat.nextLimit.toString()
+        holder.nextScore?.text = (stat.nextLimit ?: "최고 단계").toString()
         holder.tier?.setImageResource(tierId)
 
 

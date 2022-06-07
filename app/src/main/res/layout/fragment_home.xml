@@ -65,7 +65,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/myCharacter"
+                android:id="@+id/mainCharacterIcon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/sprite_char1" />
