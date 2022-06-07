@@ -38,7 +38,7 @@ class QuestListFragment : Fragment() {
         val questAdapter = QuestAdapter(requireContext())
 
         val doQuest = view.findViewById<TextView>(R.id.doQuest)
-        doQuest.setText(Character.doingQuetstCount.toString() + " / 3")
+        doQuest.setText(Character.doingQuestCount.toString() + " / 3")
 
         qSize = view.findViewById<TextView>(R.id.questListSize)
 
@@ -68,17 +68,16 @@ class QuestListFragment : Fragment() {
                         val realPosition = position - Character.randomQuestList.count()
                         Character.customQuestList.removeAt(realPosition)
                     } else {
-                        //수한 여기야 여기
-                        //addCount(Character.randomQuestList[position])
+                        Statistics.addCount(Character.randomQuestList[position])
                         Character.randomQuestList.removeAt(position)
-                        Character.doingQuetstCount++
+                        Character.doingQuestCount++
                     }
                     rootView.adapter = QuestAdapter(requireContext())
                     questAdapter.notifyDataSetChanged()
                     //퀘스트 수행 완료 시 증가
 
                     qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
-                    doQuest.setText(Character.doingQuetstCount.toString() + " / 3")
+                    doQuest.setText(Character.doingQuestCount.toString() + " / 3")
                 }
 
                 dialog.setNegativeButton("취소") { dialogInterface, i -> }
