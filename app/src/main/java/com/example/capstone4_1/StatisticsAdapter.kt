@@ -9,18 +9,16 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
-var i = 0
 
-class StatisticsAdapter(val context: Context, val statisticsList: MutableList<Statistics>) : BaseAdapter(){
+open class StatisticsAdapter(val context: Context) : BaseAdapter(){
+
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view : View
         val holder : ViewHolder
 
-        Log.d("확인","!!어댑터 진입 성공!!")
-
         if(convertView == null){
-            view = LayoutInflater.from(context).inflate(R.layout.statistics_item, null)
+            view = LayoutInflater.from(context).inflate(R.layout.statistics_item, parent,false)
             holder = ViewHolder()
             holder.genre = view.findViewById<ImageView>(R.id.img_genre)
             holder.typeName = view.findViewById<TextView>(R.id.tv_type_name)
@@ -33,35 +31,38 @@ class StatisticsAdapter(val context: Context, val statisticsList: MutableList<St
             holder = convertView.tag as ViewHolder
             view = convertView
         }
-        val statistics = statisticsList[position]
 
-        val genreId =
-                context.resources.getIdentifier(statistics.genre, "drawable", context.packageName)
+
+        val statisticsList = Character.statisticsList[position]
+
+        Log.d("확인", "어댑터 내부 ")
+//        val genreId =
+//                context.resources.getIdentifier(statisticsList.genre, "drawable", context.packageName)
         val tierId =
-                context.resources.getIdentifier(statistics.tier, "drawable", context.packageName)
+                context.resources.getIdentifier(statisticsList.tier, "drawable", context.packageName)
 
 
 
-        holder.genre?.setImageResource(genreId)
-        holder.typeName?.text = statistics.title[i] //need  to fix it
-        holder.progress?.text = statistics.count.toString()
-        holder.nextScore?.text = statistics.limit.toString()
+        Log.d("확인", "title "+ position + statisticsList.title.toString())
+
+        holder.genre?.setImageResource(statisticsList.genre)
+        holder.typeName?.text = statisticsList.title//need  to fix it
+        holder.progress?.text = statisticsList.count.toString()
+        holder.nextScore?.text = statisticsList.limit.toString()
         holder.tier?.setImageResource(tierId)
-        ++i
 
-        if (i == statistics.title.size)
-            i=0
+
 
         return view
 
     }
 
     override fun getCount(): Int {
-        return statisticsList.size
+        return Character.statisticsList.size
     }
 
     override fun getItem(position: Int): Any {
-        return statisticsList[position]
+        return Character.statisticsList[position]
     }
 
     override fun getItemId(position: Int): Long {
