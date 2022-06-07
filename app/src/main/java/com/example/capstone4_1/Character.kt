@@ -24,8 +24,8 @@ object Character {
     var customQuestList = arrayListOf<Quest>()
     var randomQuestList = arrayListOf<Quest>()
     var doingQuestCount = 0  // 금일 퀘스트 수행   0 / 3
-    var currentLogin : LocalDateTime? = null //최근 로그인
-    lateinit var createTime : LocalDateTime //캐릭터 생성시점
+    var currentLogin: LocalDateTime? = null //최근 로그인
+    lateinit var createTime: LocalDateTime //캐릭터 생성시점
     var hp: Float = 1.0f // 나태함
 
     val statisticsList: Array<Statistics> = Statistics.statisticsList.toTypedArray()
@@ -80,23 +80,15 @@ object Character {
             randomQuestList = tempRandom
         }
 
-    fun initialize(name: String, gender: Gender, interest: Interest) {
-        this.name = name
-        this.gender = gender
-        this.interest = interest
-    }
-
     fun initializeQuest() {
         randomQuestList = Quest.getRandomList(interest)
-    }
-
-    fun initializeStats() {
     }
 
     fun survivalDays(): Int? { // return int  & must be tested,
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             Period.between(this.createTime.toLocalDate(), this.currentLogin?.toLocalDate()).days
         } else {
+            //구버전 사용 안됨
             -1
         }
     }
@@ -202,6 +194,4 @@ object Character {
         }
         return ""
     }
-
-    fun addPlayCount(){}
 }
