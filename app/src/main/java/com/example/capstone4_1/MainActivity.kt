@@ -71,10 +71,9 @@ class MainActivity : AppCompatActivity() {
 
             while (true) {
                 val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
-                val t = mainFrag.findViewById<TextView>(R.id.remainTime1) ?: continue
-
+                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
                 runOnUiThread {
-                    t.text = Character.remainTime
+                    t.text = Character.remainTimes
                 }
                 Thread.sleep(1000)
             }
