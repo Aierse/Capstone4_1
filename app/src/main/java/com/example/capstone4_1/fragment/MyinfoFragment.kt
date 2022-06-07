@@ -1,6 +1,7 @@
 package com.example.capstone4_1.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.Character
 import com.example.capstone4_1.R
+import com.example.capstone4_1.Statistics
+import com.example.capstone4_1.StatisticsList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,6 +35,7 @@ class MyinfoFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +63,8 @@ class MyinfoFragment : Fragment() {
         interest.append("관심:$interestValue")
 
         hpbar.rating = hpValue
+
+        Log.d("확인", "임포 프래그먼트 도착 ")
 
         return view
     }
