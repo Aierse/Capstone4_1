@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
             true
         })
         initialize()
-
 //        thread(start = true, true) {
 //
 //            while (true) {
@@ -70,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 //                runOnUiThread {
 //                    t.text = Character.remainTimes
 //                }
-//                Thread.sleep(1000)
+//                Thread.sleep(100)
 //            }
 //        }
 

@@ -28,7 +28,7 @@ object Character {
     lateinit var createTime: LocalDateTime //캐릭터 생성시점
     var hp: Float = 1.0f // 나태함
 
-    val statisticsList: Array<Statistics> = Statistics.statisticsList.toTypedArray()
+    val statisticsList: Array<Statistics> = Statistics.statisticsList
 
     val remainTimes: String
         get() {
@@ -194,4 +194,5 @@ object Character {
         }
         return ""
     }
+
 }

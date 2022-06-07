@@ -43,7 +43,7 @@ class Statistics(var genre: Int, var title: String, var limit: Array<Int>, var c
             Statistics(R.drawable.bike, "백준", arrayOf<Int>(50, 200, 500))
         )
 
-        val statisticsList = healthStatistics + languageStatistics + codingStatistics
+        val statisticsList = (healthStatistics + languageStatistics + codingStatistics).toTypedArray()
 
         fun addCount(quest: Quest) {
             for (i in statisticsList) {
@@ -56,5 +56,3 @@ class Statistics(var genre: Int, var title: String, var limit: Array<Int>, var c
         }
     }
 }
-
-

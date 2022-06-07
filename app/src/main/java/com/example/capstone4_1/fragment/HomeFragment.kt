@@ -43,7 +43,6 @@ class HomeFragment : Fragment() {
         val randomBtn = view.findViewById<Button>(R.id.randomBtn)
         view.findViewById<ImageView>(R.id.mainCharacterIcon).setImageResource(Character.icon)
 
-
         randomBtn.setOnClickListener {
             Character.initializeQuest()
             view.findViewById<ListView>(R.id.questListView).adapter = QuestAdapter(requireContext())
