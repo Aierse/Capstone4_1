@@ -33,27 +33,21 @@ open class StatisticsAdapter(val context: Context) : BaseAdapter() {
         }
 
         Log.d("확인", "어댑터 내부 ")
-//        val genreId =
-//                context.resources.getIdentifier(statisticsList.genre, "drawable", context.packageName)
 
         val stat = Character.statisticsList[position]
 
         val tierId = context.resources.getIdentifier(stat.tier, "drawable", context.packageName)
-        Log.d("확인", "title " + position + stat.title.toString())
 
         holder.genre?.setImageResource(stat.genre)
-        holder.typeName?.text = stat.title//need  to fix it
+        holder.typeName?.text = stat.title
         holder.progress?.text = stat.count.toString()
         holder.nextScore?.text = (stat.nextLimit ?: "최고 단계").toString()
         holder.tier?.setImageResource(tierId)
 
-
-
-
-
+        Log.d("저장", "addCount: "+Statistics.statisticsList[1].count)
+        Log.d("저장", "addCount: "+Character.statisticsList[1].count)
 
         return view
-
     }
 
     override fun getCount(): Int {
