@@ -17,19 +17,55 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/next_quest"
-                android:textSize="30sp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next_quest"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/remainTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시간고장"
+                    android:textAlignment="center"
+                    android:textSize="27sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/day_quest"
-                android:textSize="30sp" />
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/day_quest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/day_quest"
+                    android:textSize="30sp" />
+                <TextView
+                    android:id="@+id/doQuest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 / 3"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="23sp" />
+                <TextView
+                    android:id="@+id/questListSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    tools:text="(남은 퀘스트 : 15)"
+                    android:textSize="17sp" />
 
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -37,12 +73,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <fragment
-                android:id="@+id/customQuestListFragment"
+                android:id="@+id/QuestListFragment"
                 android:name="com.example.capstone4_1.fragment.QuestlistviewFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +89,7 @@
                 <android.widget.Button
                     android:id="@+id/fab"
                     android:layout_width="150dp"
-                    android:layout_height="44dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginVertical="2dp"
                     android:background="@drawable/dotline"

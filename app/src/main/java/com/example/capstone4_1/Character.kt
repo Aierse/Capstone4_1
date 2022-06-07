@@ -3,16 +3,15 @@ package com.example.capstone4_1
 
 import android.content.Context
 import android.os.Build
-import android.text.format.DateFormat
 import android.util.Log
 import org.json.JSONObject
 import java.io.*
-import java.time.LocalDate
+import java.time.Duration
 import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.Period
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
 // 할당된 값은 전부 스텁코드이며, 이후 필요한 스텁코드는 여기서 작성
 // 실제 구동시에는 initialize 시리즈 함수를 이용하여 초기화 시켜 사용해야함
@@ -24,6 +23,7 @@ object Character {
     var icon: Int = R.drawable.sprite_char1
     var customQuestList = arrayListOf<Quest>()
     var randomQuestList = arrayListOf<Quest>()
+    var doingQuetstCount = 0  // 금일 퀘스트 수행   0 / 3
     var currentLogin : LocalDateTime? = null //최근 로그인
     lateinit var createTime : LocalDateTime //캐릭터 생성시점
     var hp: Float = 1.0f // 나태함
@@ -33,24 +33,56 @@ object Character {
 
     var countRecord= arrayListOf<QuestCountRecord>()
 
-    var questList: ArrayList<Quest>
-    get() {
-        return (randomQuestList + customQuestList) as ArrayList<Quest>
-    }
-    set(qValue) {
-        var tempRandom = arrayListOf<Quest>()
-        var tempCustom = arrayListOf<Quest>()
 
-        for (i in qValue) {
-            if (i.value == -1)
-                tempCustom.add(i)
-            else
-                tempRandom.add(i)
+    val remainTimes: String
+        get() {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val remainQuestTime: LocalTime
+                val nowTime = LocalTime.now()
+                val resetTime = LocalTime.parse("06:00:00") // stub code must be changed
+                var duration = Duration.between(resetTime, nowTime).seconds
+//            Log.d("Duration :","${duration.toString()}" )
+                if (duration < 0) {
+                    duration = -1 * duration
+                    val hour = duration / 3600
+                    duration %= 3600
+                    val minutes = duration / 60
+                    duration %= 60
+                    val seconds = duration
+                    remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
+                } else {
+                    duration = 86400 - duration
+                    val hour = duration / 3600
+                    duration %= 3600
+                    val minutes = duration / 60
+                    duration %= 60
+                    val seconds = duration
+                    remainQuestTime = LocalTime.of(hour.toInt(), minutes.toInt(), seconds.toInt())
+                }
+
+                return remainQuestTime.toString()
+            }
+            return ""
         }
 
-        customQuestList = tempCustom
-        randomQuestList = tempRandom
-    }
+    var questList: ArrayList<Quest>
+        get() {
+            return (randomQuestList + customQuestList) as ArrayList<Quest>
+        }
+        set(qValue) {
+            var tempRandom = arrayListOf<Quest>()
+            var tempCustom = arrayListOf<Quest>()
+
+            for (i in qValue) {
+                if (i.value == -1)
+                    tempCustom.add(i)
+                else
+                    tempRandom.add(i)
+            }
+
+            customQuestList = tempCustom
+            randomQuestList = tempRandom
+        }
 
     fun initialize(name: String, gender: Gender, interest: Interest) {
         this.name = name
@@ -65,7 +97,7 @@ object Character {
     fun initializeStats() {
     }
 
-    fun survivalDays():Int?{ // return int  & must be tested,
+    fun survivalDays(): Int? { // return int  & must be tested,
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             Period.between(this.createTime.toLocalDate(), this.currentLogin?.toLocalDate()).days
         } else {
@@ -73,23 +105,23 @@ object Character {
         }
     }
 
-    fun saveCharacter(context: Context){//save
+    fun saveCharacter(context: Context) {//save
 
-        val user:Character = this
-        val output :FileOutputStream
+        val user: Character = this
+        val output: FileOutputStream
 
         try {
-            output =context.openFileOutput(filename , Context.MODE_PRIVATE)
+            output = context.openFileOutput(filename, Context.MODE_PRIVATE)
             output.write(JsonUtil.toJson(user, questList).toByteArray())
             output.close()
 
-        }catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
 
     }
 
-    fun loadCharacter(context: Context):String{// load
+    fun loadCharacter(context: Context): String {// load
         val filepath = context.filesDir.toString() + "/" + filename
         val file = File(filepath)
         try {
@@ -104,14 +136,19 @@ object Character {
                 val quests = data.getString("quests")
                 val ary_quests = data.optJSONArray("quests")
 
-                val tmp_quests=ArrayList<Quest>()
+                val tmp_quests = ArrayList<Quest>()
 
 //                Log.d("log_quests",ary_quests.toString())
 //                Log.d("array_length", ary_quests.length().toString() )
 
-                for(quest in 0 until ary_quests.length()){  // need to update
+                for (quest in 0 until ary_quests.length()) {  // need to update
                     val tmp_object = ary_quests.getJSONObject(quest)
-                    val tmp_quest = Quest(tmp_object.getInt("image"),tmp_object.getString("name"),tmp_object.getString("content"), tmp_object.getInt("value"))
+                    val tmp_quest = Quest(
+                        tmp_object.getInt("image"),
+                        tmp_object.getString("name"),
+                        tmp_object.getString("content"),
+                        tmp_object.getInt("value")
+                    )
 
                     tmp_quests.add(tmp_quest)
 //                    Log.d("test_value", tmp_object.getString("image").toString() )
@@ -121,10 +158,13 @@ object Character {
 
                 this.questList = tmp_quests
 
-                this.name =data.getString("name")
+                this.name = data.getString("name")
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // createTime load check sdk v
-                    this.createTime =  LocalDateTime.parse(data.getString("createTime") ,DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS" , Locale.KOREA))
+                    this.createTime = LocalDateTime.parse(
+                        data.getString("createTime"),
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.KOREA)
+                    )
 //                    Log.d("crateTime end", "create time excuted ")
 //                    Log.d("createvalue", this.createTime.toString())
                 }
@@ -154,8 +194,8 @@ object Character {
 
                 return ""
 
-            }catch (e:java.lang.Exception){
-                Log.d("에러",e.printStackTrace().toString())
+            } catch (e: java.lang.Exception) {
+                Log.d("에러", e.printStackTrace().toString())
             }
             reader.close()
         } catch (e1: FileNotFoundException) {

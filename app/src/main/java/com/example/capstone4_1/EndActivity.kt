@@ -8,6 +8,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.RatingBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import java.io.File
@@ -22,15 +24,26 @@ class EndActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_end)
         val shareBtn: Button = findViewById(R.id.shareBtn)
-        val sc: Button = findViewById(R.id.restartBtn)
+        val restartBtn: Button = findViewById(R.id.restartBtn)
 
         shareBtn.setOnClickListener(View.OnClickListener {
             capture()
         })
-        sc.setOnClickListener(View.OnClickListener {
-            capture()
+        restartBtn.setOnClickListener(View.OnClickListener {
+
         })
 
+        val name = findViewById<TextView>(R.id.name)
+        val gender = findViewById<TextView>(R.id.endgender)
+        val interest = findViewById<TextView>(R.id.interest)
+
+        val nameValue = Character.name
+        val genderValue = Character.gender.value
+        val interestValue = Character.interest.value
+
+        name.append("이름:$nameValue")
+        gender.append("성별:$genderValue")
+        interest.append("관심:$interestValue")
 
     }
 
@@ -77,33 +90,5 @@ class EndActivity : AppCompatActivity() {
 
     }
 
-
-    //화면 캡쳐하기
-    fun ScreenShot() {
-        val view = window.decorView.rootView
-        var screenBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
-        var canvas = Canvas(screenBitmap)
-        view.draw(canvas)
-
-        try {
-            val cachePath = File(applicationContext.cacheDir, "images")
-            cachePath.mkdirs() // don't forget to make the directory
-            val stream =
-                FileOutputStream("$cachePath/image.png") // overwrites this image every time
-            screenBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-            stream.close()
-            val newFile = File(cachePath, "image.png")
-            val contentUri = FileProvider.getUriForFile(
-                applicationContext,
-                "com.example.capstone4_1", newFile
-            )
-            val Sharing_intent = Intent(Intent.ACTION_SEND)
-            Sharing_intent.type = "image/png"
-            Sharing_intent.putExtra(Intent.EXTRA_STREAM, contentUri)
-            startActivity(Intent.createChooser(Sharing_intent, "Share image"))
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-    }
 
 }
