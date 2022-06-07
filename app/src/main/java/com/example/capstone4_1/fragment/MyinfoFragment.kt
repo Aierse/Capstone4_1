@@ -42,25 +42,18 @@ class MyinfoFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_myinfo, container, false)
 
-        var characterImg = view.findViewById<ImageView>(R.id.myCharacter)
+        val characterImg = view.findViewById<ImageView>(R.id.myCharacter)
         val name = view.findViewById<TextView>(R.id.myInfoName)
         val gender = view.findViewById<TextView>(R.id.myInfoGender)
         val interest = view.findViewById<TextView>(R.id.myInfoInterest)
         val hpbar = view.findViewById<RatingBar>(R.id.hp_Bar)
 
-        var charInt = Character.icon
-        var nameValue = Character.name
-        var genderValue = Character.gender.value
-        var interestValue = Character.interest.value
-        var hpValue = Character.hp
+        characterImg.setImageResource(Character.icon)
+        name.append("이름:${Character.name}")
+        gender.append("성별:${Character.gender.value}")
+        interest.append("관심:${Character.interest.value}")
 
-
-        characterImg.setImageResource(charInt)
-        name.append("이름:$nameValue")
-        gender.append("성별:$genderValue")
-        interest.append("관심:$interestValue")
-
-        hpbar.rating = hpValue
+        hpbar.rating = Character.hp
 
         Log.d("확인", "임포 프래그먼트 도착 ")
 
