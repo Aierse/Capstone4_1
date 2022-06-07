@@ -55,38 +55,5 @@ class Quest(val image: Int, val name: String, val content: String, val value: In
 
             return questList
         }
-
-        fun getQuestName(): ArrayList<String>{
-            val questnamelist = arrayListOf<String>()
-
-            for (i in 0 until healthQuest.size)
-                questnamelist.add(healthQuest[i].name)
-            for (i in 0 until languageQuest.size)
-                questnamelist.add(languageQuest[i].name)
-            for (i in 0 until codingQuest.size)
-                questnamelist.add(codingQuest[i].name)
-//
-//            for(category in defaultQuestList.indices){
-//                for (quest in ){
-//                    questnamelist.add()
-//                }
-//            }
-
-            return questnamelist
-        }
-
-        fun getQuestImg(): ArrayList<Int> {
-            val questImglist = arrayListOf<Int>()
-
-            for (i in 0 until healthQuest.size)
-                questImglist.add(healthQuest[i].image)
-            for (i in 0 until languageQuest.size)
-                questImglist.add(languageQuest[i].image)
-            for (i in 0 until codingQuest.size)
-                questImglist.add(codingQuest[i].image)
-
-            return questImglist
-        }
-
     }
 }
