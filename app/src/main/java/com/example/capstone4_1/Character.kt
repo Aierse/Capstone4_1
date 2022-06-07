@@ -145,7 +145,7 @@ object Character {
                 }
 
                 this.questList = tmp_quests
-
+                this.doingQuestCount = data.getInt("doingQuest")
                 this.name = data.getString("name")
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // createTime load check sdk v
