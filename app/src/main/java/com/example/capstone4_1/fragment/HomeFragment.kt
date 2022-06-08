@@ -1,13 +1,20 @@
 package com.example.capstone4_1.fragment
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import android.widget.ImageView
+
+import android.widget.*
+
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.Character
 import com.example.capstone4_1.R
+import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +30,7 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var mToast: Toast? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +45,8 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        var mainCharacterIcon = view.findViewById<ImageView>(R.id.mainCharacterIcon)
+
         view.findViewById<ImageView>(R.id.mainCharacterIcon).setImageResource(Character.icon)
 //        val randomBtn = view.findViewById<Button>(R.id.randomBtn)
 
@@ -46,8 +56,36 @@ class HomeFragment : Fragment() {
 //            QuestAdapter(requireContext()).notifyDataSetChanged()
 //        }
 
+        mainCharacterIcon.setOnClickListener { //이미지 클릭시
+            makeToast() //토스트 출력
+        }
+
+
         return view
     }
+
+    private fun makeToast() {
+
+        val inflater = layoutInflater
+        val layout: View = inflater.inflate(
+            R.layout.toastborder, view?.findViewById(R.id.toast_layout) as ViewGroup?
+        )
+        val randomStrings = arrayOf("안녕하세요", "반갑습니다", "배고파")
+        val message = layout.findViewById<TextView>(R.id.toastText)
+        message.setText(randomStrings[Random().nextInt(randomStrings.size)])
+        if(mToast!=null)mToast?.cancel()
+        mToast = Toast(context)
+        mToast!!.setGravity(Gravity.CENTER, 0, 140)
+        mToast!!.duration = Toast.LENGTH_SHORT
+        mToast!!.setView(layout);
+        mToast!!.show()
+
+    }
+    override fun onStop() {
+        super.onStop()
+        mToast?.cancel()
+    }
+
 
     companion object {
         /**
