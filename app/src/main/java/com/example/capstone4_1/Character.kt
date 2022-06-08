@@ -134,7 +134,6 @@ object Character {
                         if(it.title.equals(ary_statics.getJSONObject(statistic).getString("title")))
                             it.count = ary_statics.getJSONObject(statistic).getInt("value")
                     }
-
                 }
 
 
