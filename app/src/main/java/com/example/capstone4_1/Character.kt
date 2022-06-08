@@ -94,7 +94,6 @@ object Character {
     }
 
     fun saveCharacter(context: Context) {//save
-
         val user: Character = this
         val output: FileOutputStream
 
@@ -123,11 +122,21 @@ object Character {
                 val data = JSONObject(result)
                 val quests = data.getString("quests")
                 val ary_quests = data.optJSONArray("quests")
+                val ary_statics = data.optJSONArray("statistics")
 
                 val tmp_quests = ArrayList<Quest>()
 
+
 //                Log.d("log_quests",ary_quests.toString())
 //                Log.d("array_length", ary_quests.length().toString() )
+                for (statistic in 0 until ary_statics.length()){
+                    statisticsList.forEach {
+                        if(it.title.equals(ary_statics.getJSONObject(statistic).getString("title")))
+                            it.count = ary_statics.getJSONObject(statistic).getInt("value")
+                    }
+
+                }
+
 
                 for (quest in 0 until ary_quests.length()) {  // need to update
                     val tmp_object = ary_quests.getJSONObject(quest)

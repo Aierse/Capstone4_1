@@ -21,6 +21,8 @@ public final class JsonUtil {
             return ""
         }
         fun toJson(user: Character, questlist: ArrayList<Quest>): String { //quest = guestjson this fun not used if you need to use this fun you might test fun
+            val statisticList = user.statisticsList //Array<Statics>
+
             try {
                 val user_json = JSONObject()
                 user_json.put("name", user.name)
@@ -43,7 +45,18 @@ public final class JsonUtil {
                     quests_ary.put(quest_json)
                 }
 
+                val statistics_ary = org.json.JSONArray()
+
+                for(statistics in statisticList){
+                    var static_json = JSONObject()
+                    static_json.put("name",statistics.title)
+                    static_json.put("value",statistics.count)
+                    statistics_ary.put(static_json)
+                }
+                user_json.put("statistics", statistics_ary)
                 user_json.put("quests", quests_ary)
+
+
                 return user_json.toString()
 
             } catch (e: JSONException) {
