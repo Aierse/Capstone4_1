@@ -153,7 +153,7 @@ object Character {
                 this.questList = tmp_quests
                 this.doingQuestCount = data.getInt("doingQuest")
                 this.name = data.getString("name")
-
+                this.hp = data.getDouble("hp").toFloat()
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // createTime load check sdk v
                     this.createTime = LocalDateTime.parse(
                         data.getString("createTime"),
