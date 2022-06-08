@@ -2,9 +2,12 @@ package com.example.capstone4_1
 
 import android.app.Service
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log
 import androidx.annotation.Nullable
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.databinding.ActivityMainBinding
@@ -14,6 +17,9 @@ import com.example.capstone4_1.fragment.QuestListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import java.io.File
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 
     // 최초 실행 시 초기화 함수
     private fun initialize() {
+        //날짜 초기화
+
         // 캐릭터 클래스 초기화
         val filepath = filesDir.toString() + "/data.json"
         val file = File(filepath)
@@ -39,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,6 +70,23 @@ class MainActivity : AppCompatActivity() {
             true
         })
         initialize()
+
+        Character.currentLogin = LocalDateTime.parse("2022-06-08T01:03:31.747")
+        Log.d("Day11111", "최근 로긴 -> " + Character.currentLogin)
+
+        val currentday = Character.currentLogin
+        val nowday = LocalDate.now()
+        val format = DateTimeFormatter.ofPattern("yyyyMMdd")
+
+        val currentdayI = currentday?.format(format)?.toInt()
+        val nowdayI = nowday.format(format).toInt()
+        Log.d("Daycalculator", "최근: " + currentdayI)
+        Log.d("Daycalculator", "오늘: " + nowdayI)
+
+        if (currentdayI != nowdayI) {
+            dailyReset()
+        }
+
 //        thread(start = true, true) {
 //
 //            while (true) {
@@ -73,6 +99,18 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 
+    }
+
+    //하루 초기화시 리셋할 것들
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun dailyReset() {
+        //나태함 증가
+        if(Character.doingQuestCount < 3)
+        Character.hp += 0.5f
+        Log.d("Day", "현재 나태함 -> "+Character.hp)
+        //랜덤퀘스트 리셋
+        Character.initializeQuest()
+        //doing퀘스트 리셋
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
