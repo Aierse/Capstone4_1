@@ -4,12 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.Character
-import com.example.capstone4_1.QuestAdapter
 import com.example.capstone4_1.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,14 +37,14 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        val randomBtn = view.findViewById<Button>(R.id.randomBtn)
         view.findViewById<ImageView>(R.id.mainCharacterIcon).setImageResource(Character.icon)
+//        val randomBtn = view.findViewById<Button>(R.id.randomBtn)
 
-        randomBtn.setOnClickListener {
-            Character.initializeQuest()
-            view.findViewById<ListView>(R.id.questListView).adapter = QuestAdapter(requireContext())
-            QuestAdapter(requireContext()).notifyDataSetChanged()
-        }
+//        randomBtn.setOnClickListener { 랜던 퀘스트 데이터삽입 this fun is for test stub code
+//            Character.initializeQuest()
+//            view.findViewById<ListView>(R.id.questListView).adapter = QuestAdapter(requireContext())
+//            QuestAdapter(requireContext()).notifyDataSetChanged()
+//        }
 
         return view
     }
