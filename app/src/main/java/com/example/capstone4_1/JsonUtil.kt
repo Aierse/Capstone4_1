@@ -49,10 +49,11 @@ public final class JsonUtil {
 
                 for(statistics in statisticList){
                     var static_json = JSONObject()
-                    static_json.put("name",statistics.title)
-                    static_json.put("value",statistics.count)
+                    static_json.put("title",statistics.title)
+                    static_json.put("count",statistics.count)
                     statistics_ary.put(static_json)
                 }
+
                 user_json.put("statistics", statistics_ary)
                 user_json.put("quests", quests_ary)
 

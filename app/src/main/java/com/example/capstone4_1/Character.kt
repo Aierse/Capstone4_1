@@ -120,22 +120,20 @@ object Character {
             }
             try {
                 val data = JSONObject(result)
-                val quests = data.getString("quests")
                 val ary_quests = data.optJSONArray("quests")
-                val ary_statics = data.optJSONArray("statistics")
+                val ary_statistics = data.optJSONArray("statistics")
 
                 val tmp_quests = ArrayList<Quest>()
 
-
-//                Log.d("log_quests",ary_quests.toString())
-//                Log.d("array_length", ary_quests.length().toString() )
-                for (statistic in 0 until ary_statics.length()){
-                    statisticsList.forEach {
-                        if(it.title.equals(ary_statics.getJSONObject(statistic).getString("title")))
-                            it.count = ary_statics.getJSONObject(statistic).getInt("value")
+                for (statistic in 0 until ary_statistics.length()){
+                    var tmp_statistic = ary_statistics.getJSONObject(statistic)
+                    statisticsList.forEach { it ->
+                        if (it.title == tmp_statistic.getString("title")){
+                            it.count = tmp_statistic.getInt("count")
+                        }
                     }
-                }
 
+                }
 
                 for (quest in 0 until ary_quests.length()) {  // need to update
                     val tmp_object = ary_quests.getJSONObject(quest)
@@ -188,7 +186,7 @@ object Character {
 //                Log.d("log_interest",this.interest.toString())
 //                Log.d("log_quests",this.questList.toString())
 
-                return ""
+
 
             } catch (e: java.lang.Exception) {
                 Log.d("에러", e.printStackTrace().toString())
