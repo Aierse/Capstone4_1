@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
         message.setText(randomStrings[Random().nextInt(randomStrings.size)])
         if(mToast!=null)mToast?.cancel()
         mToast = Toast(context)
-        mToast!!.setGravity(Gravity.CENTER, 0, 140)
+        mToast!!.setGravity(Gravity.CENTER, 0, 400)
         mToast!!.duration = Toast.LENGTH_SHORT
         mToast!!.setView(layout);
         mToast!!.show()
