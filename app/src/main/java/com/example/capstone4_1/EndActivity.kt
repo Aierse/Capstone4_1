@@ -8,13 +8,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.RatingBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import java.io.File
 import java.io.FileOutputStream
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,7 +28,9 @@ class EndActivity : AppCompatActivity() {
             capture()
         })
         restartBtn.setOnClickListener(View.OnClickListener {
-
+            val intent = Intent(this, CreateCharacterActivity::class.java)
+            finish()
+            startActivity(intent)
         })
 
         val name = findViewById<TextView>(R.id.name)
@@ -41,9 +41,9 @@ class EndActivity : AppCompatActivity() {
         val genderValue = Character.gender.value
         val interestValue = Character.interest.value
 
-        name.append("이름:$nameValue")
-        gender.append("성별:$genderValue")
-        interest.append("관심:$interestValue")
+        name.append(nameValue)
+        gender.append(genderValue)
+        interest.append(interestValue)
 
     }
 
