@@ -6,6 +6,8 @@ import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -18,8 +20,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import java.io.File
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -31,15 +33,16 @@ class MainActivity : AppCompatActivity() {
     var FM = supportFragmentManager
 
     // 최초 실행 시 초기화 함수
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun initialize() {
-        //날짜 초기화
-
         // 캐릭터 클래스 초기화
         val filepath = filesDir.toString() + "/data.json"
         val file = File(filepath)
 
         if (file.exists()) { // 파일이 존재 할경우
             Character.loadCharacter(this)
+            //날짜 초기화시
+            dailyReset()
             findViewById<BottomNavigationView>(R.id.menu_bottom_navigation).selectedItemId =
                 R.id.home
         } else { // 아닐경우
@@ -69,48 +72,57 @@ class MainActivity : AppCompatActivity() {
             }
             true
         })
+        //최근 로그인 insert
+//        Character.currentLogin = LocalDateTime.now()
+
         initialize()
 
-        Character.currentLogin = LocalDateTime.parse("2022-06-08T01:03:31.747")
-        Log.d("Day11111", "최근 로긴 -> " + Character.currentLogin)
+        thread(start = true, true) {
 
-        val currentday = Character.currentLogin
-        val nowday = LocalDate.now()
-        val format = DateTimeFormatter.ofPattern("yyyyMMdd")
-
-        val currentdayI = currentday?.format(format)?.toInt()
-        val nowdayI = nowday.format(format).toInt()
-        Log.d("Daycalculator", "최근: " + currentdayI)
-        Log.d("Daycalculator", "오늘: " + nowdayI)
-
-        if (currentdayI != nowdayI) {
-            dailyReset()
+            while (true) {
+                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
+                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
+                runOnUiThread {
+                    t.text = Character.remainTimes
+                }
+                Thread.sleep(100)
+            }
         }
-
-//        thread(start = true, true) {
-//
-//            while (true) {
-//                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
-//                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
-//                runOnUiThread {
-//                    t.text = Character.remainTimes
-//                }
-//                Thread.sleep(100)
-//            }
-//        }
 
     }
 
     //하루 초기화시 리셋할 것들
     @RequiresApi(Build.VERSION_CODES.O)
     fun dailyReset() {
-        //나태함 증가
-        if(Character.doingQuestCount < 3)
-        Character.hp += 0.5f
-        Log.d("Day", "현재 나태함 -> "+Character.hp)
-        //랜덤퀘스트 리셋
-        Character.initializeQuest()
-        //doing퀘스트 리셋
+
+        //최근 로그인 시간
+        val currentday = LocalDate.parse("2022-06-08")
+        Character.doingQuestCount = 3
+//        val currentday = Character.currentLogin
+        //현재 시간
+        val nowday = LocalDate.now()
+        //포멧 형식
+        val format = DateTimeFormatter.ofPattern("yyyyMMdd")
+        //날짜 데이터 포맷 -> INT
+        val currentdayI = currentday?.format(format)?.toInt()
+        val nowdayI = nowday.format(format).toInt()
+        //로그
+        Log.d("dailyReset", "최근 로그인 -> " + currentday)
+        Log.d("dailyReset", "최근 포멧: " + currentdayI)
+        Log.d("dailyReset", "오늘 포멧: " + nowdayI)
+        //최근 로그인과 오늘 날짜 비교 후 다르면 실행
+        if (currentdayI != nowdayI) {
+            //나태함 증가
+            if (Character.doingQuestCount < 3) {
+                Character.hp += 0.5f
+                Log.d("dailyReset", "현재 나태함 증가됨 -> " + Character.hp)
+            }
+            //랜덤퀘스트 리셋
+            Character.initializeQuest()
+            //doing퀘스트 리셋
+            Character.doingQuestCount = 0
+            Log.d("dailyReset", "초기화 완료")
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
