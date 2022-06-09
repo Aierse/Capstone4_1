@@ -27,10 +27,10 @@ class Statistics(var genre: Int, var title: String, var limit: Array<Int>, var c
 
     companion object {
         private val healthStatistics = arrayListOf<Statistics>(
-            Statistics(R.drawable.bike, "윗몸 일으키기", arrayOf<Int>(200, 1000, 10000)),
-            Statistics(R.drawable.bike, "팔굽혀 펴기", arrayOf<Int>(200, 1000, 10000)),
+            Statistics(R.drawable.sit_up, "윗몸 일으키기", arrayOf<Int>(200, 1000, 10000)),
+            Statistics(R.drawable.push_up, "팔굽혀 펴기", arrayOf<Int>(200, 1000, 10000)),
             Statistics(R.drawable.bike, "뜀걸음", arrayOf<Int>(200, 1000, 5000)),
-            Statistics(R.drawable.bike, "걷기", arrayOf<Int>(400, 2000, 10000))
+            Statistics(R.drawable.pull_up, "풀업", arrayOf<Int>(50, 300, 700))
         )
 
         private val languageStatistics = arrayListOf<Statistics>(

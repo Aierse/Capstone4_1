@@ -10,10 +10,10 @@ class Quest(val image: Int, val name: String, val content: String, val value: In
 
     companion object {
         private val healthQuest = arrayListOf<Quest>(
-            Quest(R.drawable.bike, "윗몸 일으키기", "윗몸 일으키기 %d번 하기", 30),
-            Quest(R.drawable.bike, "팔굽혀 펴기", "팔굽혀 펴기 %d번 하기", 30),
+            Quest(R.drawable.sit_up, "윗몸 일으키기", "윗몸 일으키기 %d번 하기", 30),
+            Quest(R.drawable.push_up, "팔굽혀 펴기", "팔굽혀 펴기 %d번 하기", 30),
             Quest(R.drawable.bike, "뜀걸음", "뜀걸음 %d분 하기", 10),
-            Quest(R.drawable.bike, "걷기", "걷기 %d분 하기", 30)
+            Quest(R.drawable.pull_up, "풀업", "풀업 %d번 하기", 10)
         )
 
         private val languageQuest = arrayListOf<Quest>(
