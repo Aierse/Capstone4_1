@@ -84,9 +84,9 @@ object Character {
         randomQuestList = Quest.getRandomList(interest)
     }
 
-    fun survivalDays(): Int? { // return int  & must be tested,
+    fun survivalDays(): Int? { // return int  & must be tested
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Period.between(this.createTime.toLocalDate(), this.currentLogin?.toLocalDate()).days
+            Period.between(createTime.toLocalDate(), currentLogin?.toLocalDate()).days
         } else {
             //구버전 사용 안됨
             -1
@@ -125,10 +125,10 @@ object Character {
 
                 val tmp_quests = ArrayList<Quest>()
 
-                for (statistic in 0 until ary_statistics.length()){
+                for (statistic in 0 until ary_statistics.length()) {
                     var tmp_statistic = ary_statistics.getJSONObject(statistic)
                     statisticsList.forEach { it ->
-                        if (it.title == tmp_statistic.getString("title")){
+                        if (it.title == tmp_statistic.getString("title")) {
                             it.count = tmp_statistic.getInt("count")
                         }
                     }
@@ -185,7 +185,6 @@ object Character {
 //                Log.d("log_gender",this.gender.toString())
 //                Log.d("log_interest",this.interest.toString())
 //                Log.d("log_quests",this.questList.toString())
-
 
 
             } catch (e: java.lang.Exception) {
