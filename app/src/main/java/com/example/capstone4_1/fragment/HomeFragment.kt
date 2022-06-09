@@ -1,17 +1,18 @@
 package com.example.capstone4_1.fragment
 
+import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import android.widget.ImageView
-
-import android.widget.*
-
+import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.Character
+import com.example.capstone4_1.Character.survivalDays
 import com.example.capstone4_1.R
 import java.util.*
 
@@ -39,6 +40,8 @@ class HomeFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,10 +49,12 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         var mainCharacterIcon = view.findViewById<ImageView>(R.id.mainCharacterIcon)
+        val SVday = view.findViewById<TextView>(R.id.SVday)
+        SVday.setText(survivalDays()?.plus(1).toString() + " 일차 생존")
 
         view.findViewById<ImageView>(R.id.mainCharacterIcon).setImageResource(Character.icon)
-//        val randomBtn = view.findViewById<Button>(R.id.randomBtn)
 
+//        val randomBtn = view.findViewById<Button>(R.id.randomBtn)
 //        randomBtn.setOnClickListener { 랜던 퀘스트 데이터삽입 this fun is for test stub code
 //            Character.initializeQuest()
 //            view.findViewById<ListView>(R.id.questListView).adapter = QuestAdapter(requireContext())
@@ -73,7 +78,7 @@ class HomeFragment : Fragment() {
         val randomStrings = arrayOf("안녕하세요", "반갑습니다", "배고파")
         val message = layout.findViewById<TextView>(R.id.toastText)
         message.setText(randomStrings[Random().nextInt(randomStrings.size)])
-        if(mToast!=null)mToast?.cancel()
+        if (mToast != null) mToast?.cancel()
         mToast = Toast(context)
         mToast!!.setGravity(Gravity.CENTER, 0, 400)
         mToast!!.duration = Toast.LENGTH_SHORT
@@ -81,6 +86,7 @@ class HomeFragment : Fragment() {
         mToast!!.show()
 
     }
+
     override fun onStop() {
         super.onStop()
         mToast?.cancel()

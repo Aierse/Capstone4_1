@@ -14,11 +14,12 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/SVday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/todo"
-            android:textSize="20sp" />
+            android:text="@string/end"
+            android:textSize="30sp" />
 
         <fragment
             android:id="@+id/mainList"
@@ -57,11 +58,11 @@
 
         </LinearLayout>
 
-<!--        <Button-->
-<!--            android:id="@+id/randomBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:text="랜덤 퀘스트 생성" />-->
+        <!--        <Button-->
+        <!--            android:id="@+id/randomBtn"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:text="랜덤 퀘스트 생성" />-->
     </LinearLayout>
 </FrameLayout>
