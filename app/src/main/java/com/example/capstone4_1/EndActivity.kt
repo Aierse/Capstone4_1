@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -57,8 +58,11 @@ class EndActivity : AppCompatActivity() {
 
     }
     fun deletefile(){ //must be tested
-        val filepath = filesDir.toString() + "/"+Character.filename
-        File(filepath).delete()
+        val filepath = filesDir.toString() +"/" + Character.filename
+        Log.d("deletefile fun", "filepath: ${filepath}")
+        Log.d( "file exist ", "${File(filepath).exists()}")
+        var file = File(filepath)
+        file.delete()
     }
 
     fun capture(): String? {
