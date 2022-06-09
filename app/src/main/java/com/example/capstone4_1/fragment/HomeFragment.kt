@@ -49,8 +49,8 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         var mainCharacterIcon = view.findViewById<ImageView>(R.id.mainCharacterIcon)
-        val SVday = view.findViewById<TextView>(R.id.SVday)
-        SVday.setText(survivalDays()?.plus(1).toString() + " 일차 생존")
+        view.findViewById<TextView>(R.id.SVday).setText(survivalDays()?.plus(1).toString() + " 일차 생존")
+
 
         view.findViewById<ImageView>(R.id.mainCharacterIcon).setImageResource(Character.icon)
 

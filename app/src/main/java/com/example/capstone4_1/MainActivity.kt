@@ -6,8 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
-import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -20,8 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import java.io.File
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -73,21 +71,21 @@ class MainActivity : AppCompatActivity() {
             true
         })
         //최근 로그인 insert
-//        Character.currentLogin = LocalDateTime.now()
+        Character.currentLogin = LocalDateTime.now()
 
         initialize()
 
-        thread(start = true, true) {
-
-            while (true) {
-                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
-                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
-                runOnUiThread {
-                    t.text = Character.remainTimes
-                }
-                Thread.sleep(100)
-            }
-        }
+//        thread(start = true, true) {
+//
+//            while (true) {
+//                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
+//                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
+//                runOnUiThread {
+//                    t.text = Character.remainTimes
+//                }
+//                Thread.sleep(100)
+//            }
+//        }
 
     }
 
@@ -97,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 
         //최근 로그인 시간
         val currentday = LocalDate.parse("2022-06-08")
-        Character.doingQuestCount = 3
+        Character.doingQuestCount = 1
 //        val currentday = Character.currentLogin
         //현재 시간
         val nowday = LocalDate.now()
@@ -114,9 +112,14 @@ class MainActivity : AppCompatActivity() {
         if (currentdayI != nowdayI) {
             //나태함 증가
             if (Character.doingQuestCount < 3) {
+                Log.d("dailyReset", "현재 나태함 증가됨 -> " + Character.hp)
                 Character.hp += 0.5f
                 Log.d("dailyReset", "현재 나태함 증가됨 -> " + Character.hp)
+                if (Character.hp >= 3.0f) {
+                    startActivity(Intent(this, EndActivity::class.java))
+                }
             }
+
             //랜덤퀘스트 리셋
             Character.initializeQuest()
             //doing퀘스트 리셋

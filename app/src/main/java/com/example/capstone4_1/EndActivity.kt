@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
@@ -23,14 +24,22 @@ class EndActivity : AppCompatActivity() {
         setContentView(R.layout.activity_end)
         val shareBtn: Button = findViewById(R.id.shareBtn)
         val restartBtn: Button = findViewById(R.id.restartBtn)
+        findViewById<ImageView>(R.id.endCharacterIcon).setImageResource(Character.icon)
+        findViewById<TextView>(R.id.endSVday).setText(Character.survivalDays()?.toString() + " 일 생존")
 
+        //공유버튼
         shareBtn.setOnClickListener(View.OnClickListener {
             capture()
         })
+
+        //리셋버튼
         restartBtn.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, CreateCharacterActivity::class.java)
-            finish()
             startActivity(intent)
+            deletefile()
+            Character.loadCharacter(this)
+            Character.hp = 0f
+            finish()
         })
 
         val name = findViewById<TextView>(R.id.name)
@@ -45,6 +54,10 @@ class EndActivity : AppCompatActivity() {
         gender.append(genderValue)
         interest.append(interestValue)
 
+    }
+    fun deletefile(){ //must be tested
+        val filepath = filesDir.toString() + "/"+Character.filename
+        File(filepath).delete()
     }
 
     fun capture(): String? {
