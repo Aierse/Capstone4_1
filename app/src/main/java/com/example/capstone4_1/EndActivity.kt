@@ -35,13 +35,13 @@ class EndActivity : AppCompatActivity() {
 
         //리셋버튼
         restartBtn.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, CreateCharacterActivity::class.java)
-            startActivity(intent)
+            val c = Character
             deletefile()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finishAffinity()
+            System.exit(0)
 
-            
-
-            finish()
         })
 
         val name = findViewById<TextView>(R.id.name)
@@ -63,6 +63,7 @@ class EndActivity : AppCompatActivity() {
         Log.d( "file exist ", "${File(filepath).exists()}")
         var file = File(filepath)
         file.delete()
+        Log.d( "file exist ", "${File(filepath).exists()}")
     }
 
     fun capture(): String? {
