@@ -25,7 +25,7 @@ class EndActivity : AppCompatActivity() {
         val shareBtn: Button = findViewById(R.id.shareBtn)
         val restartBtn: Button = findViewById(R.id.restartBtn)
         findViewById<ImageView>(R.id.endCharacterIcon).setImageResource(Character.icon)
-        findViewById<TextView>(R.id.endSVday).setText(Character.survivalDays()?.toString() + " 일 생존")
+        findViewById<TextView>(R.id.endSVday).setText(Character.survivalDays()?.plus(1).toString() + " 일 생존")
 
         //공유버튼
         shareBtn.setOnClickListener(View.OnClickListener {
@@ -37,8 +37,9 @@ class EndActivity : AppCompatActivity() {
             val intent = Intent(this, CreateCharacterActivity::class.java)
             startActivity(intent)
             deletefile()
-            Character.loadCharacter(this)
-            Character.hp = 0f
+
+            
+
             finish()
         })
 

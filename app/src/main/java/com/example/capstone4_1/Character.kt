@@ -26,7 +26,7 @@ object Character {
     var doingQuestCount = 0  // 금일 퀘스트 수행   0 / 3
     var currentLogin: LocalDateTime? = null //최근 로그인
     lateinit var createTime: LocalDateTime //캐릭터 생성시점
-    var hp: Float = 1.0f // 나태함
+    var hp: Float = 2.0f // 나태함
 
     val statisticsList: Array<Statistics> = Statistics.statisticsList
 
