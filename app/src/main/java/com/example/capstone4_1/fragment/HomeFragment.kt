@@ -48,18 +48,12 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        var mainCharacterIcon = view.findViewById<ImageView>(R.id.mainCharacterIcon)
+        val mainCharacterIcon = view.findViewById<ImageView>(R.id.mainCharacterIcon)
         view.findViewById<TextView>(R.id.SVday).setText(survivalDays()?.plus(1).toString() + " 일차 생존")
 
 
         view.findViewById<ImageView>(R.id.mainCharacterIcon).setImageResource(Character.icon)
 
-//        val randomBtn = view.findViewById<Button>(R.id.randomBtn)
-//        randomBtn.setOnClickListener { 랜던 퀘스트 데이터삽입 this fun is for test stub code
-//            Character.initializeQuest()
-//            view.findViewById<ListView>(R.id.questListView).adapter = QuestAdapter(requireContext())
-//            QuestAdapter(requireContext()).notifyDataSetChanged()
-//        }
 
         mainCharacterIcon.setOnClickListener { //이미지 클릭시
             makeToast() //토스트 출력

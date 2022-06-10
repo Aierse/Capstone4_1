@@ -35,7 +35,6 @@ class EndActivity : AppCompatActivity() {
 
         //리셋버튼
         restartBtn.setOnClickListener(View.OnClickListener {
-            val c = Character
             deletefile()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

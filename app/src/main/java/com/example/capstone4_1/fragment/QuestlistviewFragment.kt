@@ -54,7 +54,7 @@ class QuestlistviewFragment : Fragment() {
                 //다이얼로그 이름
                 dialog.setTitle(selectQuest.name)
                 //다이얼로그 설명
-                dialog.setMessage(" 이 퀘스트를 해치우셨나용? ")
+                dialog.setMessage(" 이 퀘스트를 수행하셨나용? ")
 
                 // 확인 버튼 클릭시 동작할 것들!!!
                 dialog.setPositiveButton("완료") { dialogInterface, i ->
