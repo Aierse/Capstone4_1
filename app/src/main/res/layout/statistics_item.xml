@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/tv_type_name"
-            android:layout_width="268dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginStart="2dp"
@@ -45,7 +45,7 @@
 
             <TextView
                 android:id="@+id/tv_progress"
-                android:layout_width="98dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="2dp"
@@ -54,27 +54,30 @@
                 android:gravity="center"
                 android:text="현재 카운트"
                 android:textColor="#964b00"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:layout_weight="2"/>
 
             <TextView
                 android:id="@+id/tv_next_score"
-                android:layout_width="98dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:background="#deb887"
                 android:gravity="center"
                 android:text="100000"
                 android:textColor="#964b00"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:layout_weight="2"/>
 
             <ImageView
                 android:id="@+id/img_tier"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="#deb887"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"/>
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"/>
 
         </LinearLayout>
     </LinearLayout>
