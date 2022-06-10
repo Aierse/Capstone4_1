@@ -15,6 +15,7 @@ import com.rd.draw.controller.DrawController.ClickListener
 import java.time.LocalDateTime
 
 class CreateCharacterActivity : AppCompatActivity() {
+    var backPressedTime: Long = 0
     private lateinit var binding: ActivityCreateCharacterBinding
     private val imageResourceList: ArrayList<Int>
     get() {
@@ -52,7 +53,10 @@ class CreateCharacterActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
+        if (System.currentTimeMillis() > backPressedTime + 2500)
+            backPressedTime = System.currentTimeMillis()
+        else
+            finishAffinity()
     }
 
     fun reset(view: View) {
