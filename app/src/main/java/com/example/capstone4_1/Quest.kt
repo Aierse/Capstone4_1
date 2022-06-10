@@ -35,13 +35,13 @@ class Quest(val image: Int, val name: String, val content: String, val value: In
             val questList = arrayListOf<Quest>()
             var selectInterest: ArrayList<Quest> = arrayListOf<Quest>()
 
-            when (interest) {
+            selectInterest = when (interest) {
                 Interest.HEALTH ->
-                    selectInterest = healthQuest
+                    healthQuest
                 Interest.LANGUAGE ->
-                    selectInterest = languageQuest
+                    languageQuest
                 Interest.CODING ->
-                    selectInterest = codingQuest
+                    codingQuest
             }
 
             val r = Random()
