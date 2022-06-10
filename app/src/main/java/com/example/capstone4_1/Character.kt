@@ -29,6 +29,7 @@ object Character {
     @RequiresApi(Build.VERSION_CODES.O)
     var createTime: LocalDateTime = LocalDateTime.now() //캐릭터 생성시점
     var hp: Float = 0.0f // 나태함
+    var isInitialized: Boolean = false
 
     val statisticsList: Array<Statistics> = Statistics.statisticsList
 
@@ -92,6 +93,9 @@ object Character {
     }
 
     fun saveCharacter(context: Context) {//save
+        if (!isInitialized)
+            return
+
         val output: FileOutputStream
 
         try {
@@ -177,6 +181,7 @@ object Character {
                 }
 
                 this.icon = data.getInt("icon")// icon
+                this.isInitialized = true
 
 //                Log.d("createTime",this.createTime.toString())
 //                Log.d("log_gender",this.gender.toString())
@@ -189,7 +194,6 @@ object Character {
             }
             reader.close()
         } catch (e1: FileNotFoundException) {
-
             Log.d("파일못찾음", e1.printStackTrace().toString())
         } catch (e2: IOException) {
             Log.d("읽기오류", e2.printStackTrace().toString())
