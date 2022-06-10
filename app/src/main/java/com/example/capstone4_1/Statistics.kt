@@ -29,18 +29,18 @@ class Statistics(var genre: Int, var title: String, var limit: Array<Int>, var c
         private val healthStatistics = arrayListOf<Statistics>(
             Statistics(R.drawable.sit_up, "윗몸 일으키기", arrayOf<Int>(200, 1000, 10000)),
             Statistics(R.drawable.push_up, "팔굽혀 펴기", arrayOf<Int>(200, 1000, 10000)),
-            Statistics(R.drawable.bike, "뜀걸음", arrayOf<Int>(200, 1000, 5000)),
+            Statistics(R.drawable.running, "뜀걸음", arrayOf<Int>(200, 1000, 5000)),
             Statistics(R.drawable.pull_up, "풀업", arrayOf<Int>(50, 300, 700))
         )
 
         private val languageStatistics = arrayListOf<Statistics>(
-            Statistics(R.drawable.bike, "영단어", arrayOf<Int>(200, 1000, 10000)),
-            Statistics(R.drawable.bike, "독해", arrayOf<Int>(50, 200, 500)),
-            Statistics(R.drawable.bike, "회화", arrayOf<Int>(100, 500, 1000))
+            Statistics(R.drawable.abc, "영단어", arrayOf<Int>(200, 1000, 10000)),
+            Statistics(R.drawable.reading, "독해", arrayOf<Int>(50, 200, 500)),
+            Statistics(R.drawable.speaking, "회화", arrayOf<Int>(100, 500, 1000))
         )
 
         private val codingStatistics = arrayListOf<Statistics>(
-            Statistics(R.drawable.bike, "백준", arrayOf<Int>(50, 200, 500))
+            Statistics(R.drawable.coding, "백준", arrayOf<Int>(50, 200, 500))
         )
 
         val statisticsList = (healthStatistics + languageStatistics + codingStatistics).toTypedArray()
