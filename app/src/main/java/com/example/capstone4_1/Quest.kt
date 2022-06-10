@@ -23,7 +23,10 @@ class Quest(val image: Int, val name: String, val content: String, val value: In
         )
 
         private val codingQuest = arrayListOf<Quest>(
-            Quest(R.drawable.bike, "백준", "백준 문제 %d개 풀기", 3)
+            Quest(R.drawable.bike, "백준", "백준 문제 %d개 풀기", 3),
+            Quest(R.drawable.bike, "백준", "백준 문제 %d개 풀기", 2),
+            Quest(R.drawable.bike, "백준", "백준 문제 %d개 풀기", 1),
+
         )
 
         private val defaultQuestList = arrayOf(healthQuest, languageQuest, codingQuest)

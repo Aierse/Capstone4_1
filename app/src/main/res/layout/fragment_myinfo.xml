@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
+    android:background="#964b00"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".fragment.MyinfoFragment"
-    android:background="#964b00">
+    tools:context=".fragment.MyinfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -25,12 +25,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:background="#deb887"
                 android:text="@string/MyInfo"
                 android:textAlignment="center"
-                android:textSize="30sp"
-                android:background="#deb887"
                 android:textColor="#964b00"
-                android:layout_margin="3dp" />
+                android:textSize="30sp" />
 
         </LinearLayout>
 
@@ -48,18 +48,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:orientation="vertical"
+                android:background="#964b00"
                 android:gravity="center"
-                android:background="#964b00">
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/myCharacter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#deb887"
                     android:layout_margin="3dp"
-                    android:contentDescription="@string/MyInfo"
-                    android:layout_weight="2"/>
+                    android:layout_weight="2"
+                    android:background="#deb887"
+                    android:contentDescription="@string/MyInfo" />
 
                 <RatingBar
                     android:id="@+id/hp_Bar"
@@ -69,9 +69,7 @@
                     android:layout_margin="3dp"
                     android:background="#deb887"
                     android:isIndicator="true"
-                    android:numStars="3"
-                    android:stepSize="0.5"
-                    />
+                    android:numStars="3" />
 
             </LinearLayout>
 
@@ -79,72 +77,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:orientation="vertical"
                 android:background="#964b00"
+                android:orientation="vertical"
                 android:weightSum="3">
 
                 <TextView
                     android:id="@+id/myInfoName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:autoSizeMaxTextSize="40dp"
                     android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
                     android:background="#deb887"
-                    android:textColor="#964b00"
                     android:textAlignment="center"
-                    android:layout_margin="3dp"
+                    android:textColor="#964b00"
                     tools:text="이름" />
 
                 <TextView
                     android:id="@+id/myInfoGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:autoSizeMaxTextSize="40dp"
                     android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
                     android:background="#deb887"
-                    android:textColor="#964b00"
                     android:textAlignment="center"
-                    android:layout_margin="3dp"
+                    android:textColor="#964b00"
                     tools:text="성별" />
 
                 <TextView
                     android:id="@+id/myInfoInterest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:autoSizeMaxTextSize="40dp"
                     android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
                     android:background="#deb887"
-                    android:textColor="#964b00"
                     android:textAlignment="center"
-                    android:layout_margin="3dp"
+                    android:textColor="#964b00"
                     tools:text="관심목표" />
+
             </LinearLayout>
-
         </LinearLayout>
-
-        <!--  나태함                    weight 1 -->
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical"-->
-<!--            android:gravity="center">-->
-
-<!--            -->
-
-<!--        </LinearLayout>-->
-
-        <!--    통계                      weight 5 -->
         <fragment
             android:id="@+id/myInfoListFragment"
             android:name="com.example.capstone4_1.fragment.StatisticsFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5"/>
+            android:layout_weight="5" />
     </LinearLayout>
 </FrameLayout>
