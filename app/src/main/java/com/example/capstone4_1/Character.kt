@@ -92,12 +92,11 @@ object Character {
     }
 
     fun saveCharacter(context: Context) {//save
-        val user: Character = this
         val output: FileOutputStream
 
         try {
             output = context.openFileOutput(filename, Context.MODE_PRIVATE)
-            output.write(JsonUtil.toJson(user, questList).toByteArray())
+            output.write(JsonUtil.toJson(this, questList).toByteArray())
             output.close()
 
         } catch (e: Exception) {
