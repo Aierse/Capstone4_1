@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.capstone4_1.Character
 import com.example.capstone4_1.R
+import com.example.capstone4_1.StatisticsAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,7 +58,9 @@ class MyinfoFragment : Fragment() {
         hpbar.rating = Character.hp
 
         Log.d("확인", "임포 프래그먼트 도착 ")
+        val listView = view.findViewById<ListView>(R.id.statisticsListView)
 
+        listView.adapter = StatisticsAdapter(requireContext())
         return view
     }
 
