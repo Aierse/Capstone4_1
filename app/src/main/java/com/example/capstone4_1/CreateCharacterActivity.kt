@@ -51,6 +51,10 @@ class CreateCharacterActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+    override fun onBackPressed() {
+
+    }
+
     fun reset(view: View) {
         binding.name.setText("")
         binding.gender.clearCheck()
