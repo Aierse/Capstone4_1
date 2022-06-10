@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         Character.currentLogin = LocalDateTime.now()
 
         initialize()
-        Log.d("create", "time"+Character.createTime)
+
         thread(start = true, true) {
 
             while (true) {
