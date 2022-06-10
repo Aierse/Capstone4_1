@@ -33,18 +33,18 @@ class QuestListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_quest_list, container, false)
-        val intent = Intent(requireContext(), CreateQuestActivity::class.java)
         val rootView = view.findViewById<ListView>(R.id.questListView)
         val questAdapter = QuestAdapter(requireContext())
-
+        //퀘스트 진행도
         val doQuest = view.findViewById<TextView>(R.id.doQuest)
-        doQuest.setText(Character.doingQuestCount.toString() + " / 3")
-
+        //리스트 갯수
         qSize = view.findViewById<TextView>(R.id.questListSize)
-
-        //퀘스트 생성 버튼 클릭 리스너
+        //퀘스트 버튼
         val fab = view.findViewById<Button>(R.id.fab)
+
+        //퀘스트 생성
         fab.setOnClickListener {
+            val intent = Intent(requireContext(), CreateQuestActivity::class.java)
             startActivity(intent)
         }
 

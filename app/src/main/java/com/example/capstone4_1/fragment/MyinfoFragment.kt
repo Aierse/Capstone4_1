@@ -1,7 +1,6 @@
 package com.example.capstone4_1.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,26 +40,19 @@ class MyinfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_myinfo, container, false)
-
-        val characterImg = view.findViewById<ImageView>(R.id.myCharacter)
-        val name = view.findViewById<TextView>(R.id.myInfoName)
-        val gender = view.findViewById<TextView>(R.id.myInfoGender)
-        val interest = view.findViewById<TextView>(R.id.myInfoInterest)
-        val hpbar = view.findViewById<RatingBar>(R.id.hp_Bar)
-
-        characterImg.setImageResource(Character.icon)
-        name.append("이름:${Character.name}")
-        gender.append("성별:${Character.gender.value}")
-        interest.append("관심:${Character.interest.value}")
-
-        hpbar.rating = Character.hp
-
-        Log.d("확인", "임포 프래그먼트 도착 ")
         val listView = view.findViewById<ListView>(R.id.statisticsListView)
 
+        //화면 초기화
+        view.findViewById<ImageView>(R.id.myCharacter).setImageResource(Character.icon)
+        view.findViewById<TextView>(R.id.myInfoName).append("이름:${Character.name}")
+        view.findViewById<TextView>(R.id.myInfoGender).append("성별:${Character.gender.value}")
+        view.findViewById<TextView>(R.id.myInfoInterest).append("관심:${Character.interest.value}")
+        view.findViewById<RatingBar>(R.id.hp_Bar).rating = Character.hp
+
+        //리스트뷰 연결
         listView.adapter = StatisticsAdapter(requireContext())
+
         return view
     }
 
