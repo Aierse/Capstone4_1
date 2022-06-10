@@ -25,6 +25,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:layout_margin="3dp"
                 android:background="#deb887"
                 android:text="@string/MyInfo"
@@ -50,27 +51,42 @@
                 android:layout_weight="2"
                 android:background="#964b00"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="2">
 
-                <ImageView
-                    android:id="@+id/myCharacter"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="3dp"
-                    android:layout_weight="2"
-                    android:background="#deb887"
-                    android:contentDescription="@string/MyInfo" />
-
-                <RatingBar
-                    android:id="@+id/hp_Bar"
-                    style="@style/slothBar"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="#deb887"
-                    android:isIndicator="true"
-                    android:numStars="3" />
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="2">
 
+                    <ImageView
+                        android:id="@+id/myCharacter"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:background="#deb887"
+                        android:contentDescription="@string/MyInfo" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="1"
+                    android:background="#deb887"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RatingBar
+                        android:id="@+id/hp_Bar"
+                        style="@style/slothBar"
+                        android:layout_width="195dp"
+                        android:layout_height="wrap_content"
+                        android:isIndicator="true"
+                        android:numStars="3" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -91,6 +107,7 @@
                     android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
                     android:background="#deb887"
+                    android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="#964b00"
                     tools:text="이름" />
@@ -105,6 +122,7 @@
                     android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
                     android:background="#deb887"
+                    android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="#964b00"
                     tools:text="성별" />
@@ -119,17 +137,20 @@
                     android:autoSizeMinTextSize="10dp"
                     android:autoSizeTextType="uniform"
                     android:background="#deb887"
+                    android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="#964b00"
                     tools:text="관심목표" />
 
             </LinearLayout>
         </LinearLayout>
-        <fragment
-            android:id="@+id/myInfoListFragment"
-            android:name="com.example.capstone4_1.fragment.StatisticsFragment"
+
+        <ListView
+            android:id="@+id/statisticsListView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
+            android:layout_height="261dp"
+            android:layout_gravity="bottom"
+            android:dividerHeight="5dp"
+            android:fastScrollEnabled="true" />
     </LinearLayout>
 </FrameLayout>
