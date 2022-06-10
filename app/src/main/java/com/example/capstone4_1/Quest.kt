@@ -12,20 +12,20 @@ class Quest(val image: Int, val name: String, val content: String, val value: In
         private val healthQuest = arrayListOf<Quest>(
             Quest(R.drawable.sit_up, "윗몸 일으키기", "윗몸 일으키기 %d번 하기", 30),
             Quest(R.drawable.push_up, "팔굽혀 펴기", "팔굽혀 펴기 %d번 하기", 30),
-            Quest(R.drawable.bike, "뜀걸음", "뜀걸음 %d분 하기", 10),
+            Quest(R.drawable.running, "뜀걸음", "뜀걸음 %d분 하기", 10),
             Quest(R.drawable.pull_up, "풀업", "풀업 %d번 하기", 10)
         )
 
         private val languageQuest = arrayListOf<Quest>(
-            Quest(R.drawable.bike, "영단어", "영단어 %d개 외우기", 20),
-            Quest(R.drawable.bike, "독해", "영어문장 %d개 독해하기", 5),
-            Quest(R.drawable.bike, "회화", "영어문장 %d개 말하기", 5)
+            Quest(R.drawable.abc, "영단어", "영단어 %d개 외우기", 20),
+            Quest(R.drawable.reading, "독해", "영어문장 %d개 독해하기", 5),
+            Quest(R.drawable.speaking, "회화", "영어문장 %d개 말하기", 5)
         )
 
         private val codingQuest = arrayListOf<Quest>(
-            Quest(R.drawable.bike, "백준", "백준 문제 %d개 풀기", 3),
-            Quest(R.drawable.bike, "백준", "백준 문제 %d개 풀기", 2),
-            Quest(R.drawable.bike, "백준", "백준 문제 %d개 풀기", 1),
+            Quest(R.drawable.coding, "백준", "백준 문제 %d개 풀기", 3),
+            Quest(R.drawable.coding, "백준", "백준 문제 %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 문제 %d개 풀기", 1),
 
         )
 
