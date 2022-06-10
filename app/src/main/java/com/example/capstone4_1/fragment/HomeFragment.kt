@@ -2,6 +2,7 @@ package com.example.capstone4_1.fragment
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -49,32 +50,38 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val mainCharacterIcon = view.findViewById<ImageView>(R.id.mainCharacterIcon)
+
+        //초기화
         view.findViewById<TextView>(R.id.SVday).setText(survivalDays()?.plus(1).toString() + " 일차 생존")
-
-
         view.findViewById<ImageView>(R.id.mainCharacterIcon).setImageResource(Character.icon)
 
-
         mainCharacterIcon.setOnClickListener { //이미지 클릭시
-            makeToast() //토스트 출력
-        }
+            val pos = IntArray(2) //[0]:x  [1]:y
+            mainCharacterIcon.getLocationOnScreen(pos)
+            mainCharacterIcon.width
+            mainCharacterIcon.height
+            Log.d("zzzzz", "onCreateView: "+mainCharacterIcon.height+"\n"+mainCharacterIcon.width)
+            makeToast(mainCharacterIcon.height) //토스트 출력
 
+        }
 
         return view
     }
 
-    private fun makeToast() {
+    private fun makeToast(y: Int) {
 
         val inflater = layoutInflater
         val layout: View = inflater.inflate(
-            R.layout.toastborder, view?.findViewById(R.id.toast_layout) as ViewGroup?
+            R.layout.toastborder,
+            view?.findViewById(R.id.toast_layout) as ViewGroup?
         )
         val randomStrings = arrayOf("안녕하세요", "반갑습니다", "배고파")
         val message = layout.findViewById<TextView>(R.id.toastText)
         message.setText(randomStrings[Random().nextInt(randomStrings.size)])
         if (mToast != null) mToast?.cancel()
         mToast = Toast(context)
-        mToast!!.setGravity(Gravity.CENTER, 0, 400)
+        mToast!!.setGravity(Gravity.BOTTOM, 0, y+170)
+        Log.d("yyySS", "onCreateView: " + y)
         mToast!!.duration = Toast.LENGTH_SHORT
         mToast!!.setView(layout);
         mToast!!.show()
