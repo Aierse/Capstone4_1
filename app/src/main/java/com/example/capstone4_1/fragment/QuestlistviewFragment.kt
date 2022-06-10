@@ -70,9 +70,9 @@ class QuestlistviewFragment : Fragment() {
                         Character.randomQuestList.removeAt(position)
                         Character.doingQuestCount++
                     }
+                    //퀘스트 수행 완료 시 증가
                     rootView.adapter = QuestAdapter(requireContext())
                     questAdapter.notifyDataSetChanged()
-                    //퀘스트 수행 완료 시 증가
                 }
                 dialog.setNegativeButton("취소") { dialogInterface, i -> }
                 dialog.show()
