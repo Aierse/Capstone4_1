@@ -32,7 +32,7 @@
                     android:id="@+id/remainTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="시간고장"
+                    android:text=" 00:00:00"
                     android:textAlignment="center"
                     android:textSize="27sp" />
 
@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    tools:text="(남은 퀘스트 : 15)"
+                    tools:text="(남은 퀘스트 : 00)"
                     android:textSize="17sp" />
 
             </LinearLayout>

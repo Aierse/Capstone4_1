@@ -6,6 +6,8 @@ import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,7 @@ import java.io.File
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -74,18 +77,18 @@ class MainActivity : AppCompatActivity() {
         Character.currentLogin = LocalDateTime.now()
 
         initialize()
+        Log.d("create", "time"+Character.createTime)
+        thread(start = true, true) {
 
-//        thread(start = true, true) {
-//
-//            while (true) {
-//                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
-//                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
-//                runOnUiThread {
-//                    t.text = Character.remainTimes
-//                }
-//                Thread.sleep(100)
-//            }
-//        }
+            while (true) {
+                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
+                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
+                runOnUiThread {
+                    t.text = Character.remainTimes
+                }
+                Thread.sleep(100)
+            }
+        }
 
     }
 

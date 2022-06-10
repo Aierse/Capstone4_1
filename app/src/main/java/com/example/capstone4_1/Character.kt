@@ -4,6 +4,7 @@ package com.example.capstone4_1
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import org.json.JSONObject
 import java.io.*
 import java.time.Duration
@@ -25,7 +26,8 @@ object Character {
     var randomQuestList = arrayListOf<Quest>()
     var doingQuestCount = 0  // 금일 퀘스트 수행   0 / 3
     var currentLogin: LocalDateTime? = null //최근 로그인
-    lateinit var createTime: LocalDateTime //캐릭터 생성시점
+    @RequiresApi(Build.VERSION_CODES.O)
+    var createTime: LocalDateTime = LocalDateTime.now() //캐릭터 생성시점
     var hp: Float = 0.0f // 나태함
 
     val statisticsList: Array<Statistics> = Statistics.statisticsList
@@ -84,13 +86,9 @@ object Character {
         randomQuestList = Quest.getRandomList(interest)
     }
 
-    fun survivalDays(): Int? { // return int  & must be tested
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Period.between(createTime.toLocalDate(), currentLogin?.toLocalDate()).days
-        } else {
-            //구버전 사용 안됨
-            -1
-        }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun survivalDays(): Int { // return int  & must be tested
+        return Period.between(createTime.toLocalDate(), currentLogin?.toLocalDate()).days
     }
 
     fun saveCharacter(context: Context) {//save
