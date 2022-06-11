@@ -27,10 +27,10 @@ Capstone
 
 > 
 > [App](https://excessive-onyx-7ef.notion.site/22-03-24-444d531edf074ab69d0f0b42092ef977) < 설명은 링크로 대체
-
-<img src="img/sample_img2.png" width="49%" height="455">
-<img src="img/sample_img1.png" width="49%" height="455">
-
+<p>
+    <img src="img/sample_img2.png" width="49%" height="455">
+    <img src="img/sample_img1.png" width="49%" height="455">
+</p>
 ## 2. 📖Skill
 
 > * Kotlin
