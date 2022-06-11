@@ -9,30 +9,32 @@ Capstone
 ---
 |역할|이름|학번|업무|
 |--|--|--|--|
-|팀장|서순원|20174489|--|
-|팀원|조윤혁|20174434|--|
-|팀원|최수한|20174414|--|
-|팀원|김희재|20174257|--|
-|팀원|고지민|20174222|--|
+|팀장|서순원|20174489| Frontend ,UI😃 |
+|팀원|조윤혁|20174434| Architecture , Class Design✨ |
+|팀원|최수한|20174414| Art Work🎨 |
+|팀원|김희재|20174257| Frontend , UI😃 |
+|팀원|고지민|20174222| Data handling, Algorithm💡 |
 
 
-## Topic
+## ✍️Topic
 
-> 1. [App](https://excessive-onyx-7ef.notion.site/22-03-24-444d531edf074ab69d0f0b42092ef977) **작심삼백일**
+> 1. 안드로이드 앱 개발[App](https://excessive-onyx-7ef.notion.site/22-03-24-444d531edf074ab69d0f0b42092ef977) **작심삼백일**
 > 2. [Skill](#Skill)
 > 3. 
 
 
-## 1. App
+## 1. 📱 App(작심삼백일)
 
-> [App](https://excessive-onyx-7ef.notion.site/22-03-24-444d531edf074ab69d0f0b42092ef977)
+> 
+> [App](https://excessive-onyx-7ef.notion.site/22-03-24-444d531edf074ab69d0f0b42092ef977) < 설명은 링크로 대체
 
+<img src="img/sample_img2.png" width="49%" height="455">
+<img src="img/sample_img1.png" width="49%" height="455">
 
+## 2. 📖Skill
 
-
-## 2. Skill
-
-> * Kotilin
+> * Kotlin
 > * Android Studio
 > * git (github)
 > * kakao oven, figma (prototype)
+> 
