@@ -11,50 +11,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/SVday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/end"
-            android:textSize="30sp" />
-
-        <fragment
-            android:id="@+id/mainList"
-            android:name="com.example.capstone4_1.fragment.QuestlistviewFragment"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/SVday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/end"
+                android:textSize="30sp" />
+
+            <fragment
+                android:id="@+id/HomeFragment"
+                android:name="com.example.capstone4_1.fragment.QuestlistviewFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="90dp"
                 android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <FrameLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:visibility="visible">
-
-
-                </FrameLayout>
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/mainCharacterIcon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/sprite_char1" />
+                android:visibility="visible" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/mainCharacterIcon"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/sprite_char1" />
     </LinearLayout>
 </FrameLayout>

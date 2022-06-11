@@ -85,6 +85,7 @@ class CreateCharacterActivity : AppCompatActivity() {
             }
         }
 
+        Character.isInitialized = true
         Character.icon = imageResourceList[binding.viewPager.currentItem]
         Character.initializeQuest()
         
