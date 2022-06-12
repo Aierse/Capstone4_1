@@ -3,6 +3,7 @@ package com.example.capstone4_1
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -17,12 +18,17 @@ class CreateQuestActivity : AppCompatActivity() {
         val qexplain = findViewById<EditText>(R.id.qexplain)
         val questAdapter= QuestAdapter(this)
 
-        makebtn.setOnClickListener() { view ->
-            Character.customQuestList.add(Quest(R.drawable.ball,qname.text.toString(),qexplain.text.toString()))
+        makebtn.setOnClickListener() {
+            if(qname.text.toString() == ""){
+                Toast.makeText(this, "퀘스트 이름을 입력해주세요!", Toast.LENGTH_SHORT).show()
+            }else
+            Character.customQuestList.add(Quest(R.drawable.ic_custom,qname.text.toString(),qexplain.text.toString()))
+            Toast.makeText(this, "${qname.text} 퀘스트가 생성되었습니다.", Toast.LENGTH_SHORT).show()
         }
 
         backbtn.setOnClickListener() {
             questAdapter.notifyDataSetChanged()
+            Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
             finish()
         }
 
