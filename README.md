@@ -16,13 +16,11 @@ Capstone
 |팀원|고지민|20174222| Data handling, Algorithm💡 |
 
 
-## ✍️Topic
+## ✍️Index
 
-> 1. 안드로이드 앱 개발[App](https://excessive-onyx-7ef.notion.site/22-03-24-444d531edf074ab69d0f0b42092ef977) **작심삼백일**
+> 1. 안드로이드 앱 개발 [App](https://verdant-result-e1b.notion.site/83b388037b7343be88a792b7d06983fe) **작심삼백일**
 > 2. [Skill](#Skill)
-> 3. 
-
-
+----
 ## 1. 📱 App(작심삼백일)
 
 > 
