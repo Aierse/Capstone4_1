@@ -17,17 +17,39 @@ class Quest(val image: Int, val name: String, val content: String, val value: In
         )
 
         private val languageQuest = arrayListOf<Quest>(
-            Quest(R.drawable.abc, "영단어", "영단어 %d개 외우기", 20),
+            Quest(R.drawable.abc, "영단어", "영단어 %d개 외우기", 5),
+            Quest(R.drawable.abc, "영단어", "영단어 %d개 외우기", 10),
+            Quest(R.drawable.abc, "영단어", "영단어 %d개 외우기", 15),
+            Quest(R.drawable.reading, "독해", "영어문장 %d개 독해하기", 3),
             Quest(R.drawable.reading, "독해", "영어문장 %d개 독해하기", 5),
-            Quest(R.drawable.speaking, "회화", "영어문장 %d개 말하기", 5)
+            Quest(R.drawable.speaking, "회화", "영어문장 %d개 말하기", 3),
+            Quest(R.drawable.speaking, "회화", "영어문장 %d개 말하기", 5),
+            Quest(R.drawable.speaking, "회화", "영어문장 %d개 말하기", 7),
+            Quest(R.drawable.speaking, "회화", "일본어문장 %d개 말하기", 3),
+            Quest(R.drawable.speaking, "회화", "일본어문장 %d개 말하기", 5),
+            Quest(R.drawable.speaking, "회화", "일본어문장 %d개 말하기", 7),
         )
 
         private val codingQuest = arrayListOf<Quest>(
-            Quest(R.drawable.coding, "백준", "백준 문제 %d개 풀기", 3),
-            Quest(R.drawable.coding, "백준", "백준 문제 %d개 풀기", 2),
-            Quest(R.drawable.coding, "백준", "백준 문제 %d개 풀기", 1),
+            Quest(R.drawable.coding, "백준", "백준 1단계 - %d개 풀기", 1),
+            Quest(R.drawable.coding, "백준", "백준 1단계 - %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 1단계 - %d개 풀기", 3),
+            Quest(R.drawable.coding, "백준", "백준 2단계 - %d개 풀기", 1),
+            Quest(R.drawable.coding, "백준", "백준 2단계 - %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 3단계 - %d개 풀기", 1),
+            Quest(R.drawable.coding, "백준", "백준 3단계 - %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 4단계 - %d개 풀기", 1),
+            Quest(R.drawable.coding, "백준", "백준 4단계 - %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 5단계 - %d개 풀기", 1),
+            Quest(R.drawable.coding, "백준", "백준 5단계 - %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 분류 - '문자열' 문제 %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 분류 - '수학' 문제 %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 분류 - '정렬' 문제 %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 분류 - '스택' 문제 %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 분류 - '큐' 문제 %d개 풀기", 2),
+            Quest(R.drawable.coding, "백준", "백준 분류 - 전체 문제 랜덤 문제 풀기- %d 포인트", 5),
 
-        )
+            )
 
         private val defaultQuestList = arrayOf(healthQuest, languageQuest, codingQuest)
 
