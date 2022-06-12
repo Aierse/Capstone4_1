@@ -6,8 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
-import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +20,6 @@ import java.io.File
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -39,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         // 캐릭터 클래스 초기화
         val filepath = filesDir.toString() + "/data.json"
         val file = File(filepath)
+        //최근 로그인 insert
+        Character.currentLogin = LocalDateTime.now()
 
         if (file.exists()) { // 파일이 존재 할경우
             Character.loadCharacter(this)
@@ -73,22 +72,20 @@ class MainActivity : AppCompatActivity() {
             }
             true
         })
-        //최근 로그인 insert
-        Character.currentLogin = LocalDateTime.now()
 
         initialize()
 
-        thread(start = true, true) {
-
-            while (true) {
-                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
-                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
-                runOnUiThread {
-                    t.text = Character.remainTimes
-                }
-                Thread.sleep(100)
-            }
-        }
+//        thread(start = true, true) {
+//
+//            while (true) {
+//                val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
+//                val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
+//                runOnUiThread {
+//                    t.text = Character.remainTimes
+//                }
+//                Thread.sleep(100)
+//            }
+//        }
 
     }
 
@@ -97,9 +94,8 @@ class MainActivity : AppCompatActivity() {
     fun dailyReset() {
 
         //최근 로그인 시간
-        val currentday = LocalDate.parse("2022-06-08")
-        Character.doingQuestCount = 1
-//        val currentday = Character.currentLogin
+//        val currentday = LocalDate.parse("2022-06-08") //날짜 고정 테스트 코드
+        val currentday = Character.currentLogin
         //현재 시간
         val nowday = LocalDate.now()
         //포멧 형식
