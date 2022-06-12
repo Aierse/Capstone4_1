@@ -29,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:autoSizeMaxTextSize="50dp"
-            tools:text="퀘스트 이름" />
+            tools:text="퀘스트 이름"
+            android:textSize="25sp"/>
 
         <TextView
             android:id="@+id/quest_explain"
@@ -37,7 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:autoSizeMaxTextSize="50dp"
-            tools:text="퀘스트 설명" />
+            tools:text="퀘스트 설명"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 </LinearLayout>
