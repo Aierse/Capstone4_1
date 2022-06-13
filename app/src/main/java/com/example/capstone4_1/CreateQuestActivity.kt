@@ -28,7 +28,6 @@ class CreateQuestActivity : AppCompatActivity() {
 
         backbtn.setOnClickListener() {
             questAdapter.notifyDataSetChanged()
-            Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
             finish()
         }
 
