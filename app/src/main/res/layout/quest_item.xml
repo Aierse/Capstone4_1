@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:background="@drawable/round"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants" >
 
 
     <ImageView
@@ -29,17 +30,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:autoSizeMaxTextSize="50dp"
-            tools:text="퀘스트 이름"
-            android:textSize="25sp"/>
+            android:textSize="20sp"
+            tools:text="퀘스트 이름" />
 
         <TextView
             android:id="@+id/quest_explain"
-            android:layout_width="wrap_content"
+            android:layout_width="315dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:autoSizeMaxTextSize="50dp"
-            tools:text="퀘스트 설명"
-            android:textSize="20sp"/>
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:textSize="16sp"
+            tools:text="퀘스트 설명" />
 
     </LinearLayout>
 </LinearLayout>
