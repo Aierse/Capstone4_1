@@ -35,16 +35,15 @@ class QuestListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_quest_list, container, false)
         val rootView = view.findViewById<ListView>(R.id.questListView)
         val questAdapter = QuestAdapter(requireContext())
-        //퀘스트 진행도
-        val doQuest = view.findViewById<TextView>(R.id.doQuest)
         //리스트 갯수
         qSize = view.findViewById<TextView>(R.id.questListSize)
+
+        //퀘스트 진행도 초기화
+        val doQuest = view.findViewById<TextView>(R.id.doQuest)
+        doQuest.setText(Character.doingQuestCount.toString() + " / 3")
+
         //퀘스트 버튼
         val fab = view.findViewById<Button>(R.id.fab)
-        //초기화
-        doQuest.setText(Character.doingQuestCount.toString() + " / 3")
-        
-
         //퀘스트 생성
         fab.setOnClickListener {
             val intent = Intent(requireContext(), CreateQuestActivity::class.java)
@@ -53,38 +52,46 @@ class QuestListFragment : Fragment() {
 
         rootView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
-                val dialog = AlertDialog.Builder(requireContext())
-                val selectQuest = parent.getItemAtPosition(position) as Quest
+                view.setOnSingleClickListener {
+                    val dialog = AlertDialog.Builder(requireContext())
+                    val selectQuest = parent.getItemAtPosition(position) as Quest
 
-                //다이얼로그 이름
-                dialog.setTitle(selectQuest.name)
-                //다이얼로그 설명
-                dialog.setMessage(" 이 퀘스트를 수행하셨나용? ")
+                    //다이얼로그 이름
+                    dialog.setTitle(selectQuest.name)
+                    //다이얼로그 설명
+                    dialog.setMessage(" 이 퀘스트를 수행하셨나용? ")
+                    // 확인 버튼 클릭시 동작할 것들!!!
+                    dialog.setPositiveButton("완료") { dialogInterface, i ->
+                        Toast.makeText(
+                            requireContext(),
+                            selectQuest.name + "\n퀘스트를 완료하셨습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
-                // 확인 버튼 클릭시 동작할 것들!!!
-                dialog.setPositiveButton("완료") { dialogInterface, i ->
-                    Toast.makeText(
-                        requireContext(), selectQuest.name + "\n 퀘스트를 완료하셨습니다.", Toast.LENGTH_SHORT
-                    ).show()
+                        if (Character.questList[position].value == -1) {
+                            val realPosition = position - Character.randomQuestList.count()
+                            Character.customQuestList.removeAt(realPosition)
+                        } else {
+                            //퀘스트 넘김
+                            Statistics.addCount(Character.randomQuestList[position])
+                            //선택 퀘스트 제거
+                            Character.randomQuestList.removeAt(position)
+                            //퀘스트 수행 완료 시 증가
+                            Character.doingQuestCount++
+                        }
+                        //리스트 갱신
+                        rootView.adapter = QuestAdapter(requireContext())
+                        questAdapter.notifyDataSetChanged()
 
-                    if (Character.questList[position].value == -1) {
-                        val realPosition = position - Character.randomQuestList.count()
-                        Character.customQuestList.removeAt(realPosition)
-                    } else {
-                        Statistics.addCount(Character.randomQuestList[position])
-                        Character.randomQuestList.removeAt(position)
-                        Character.doingQuestCount++
+                        qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
+                        doQuest.setText(Character.doingQuestCount.toString() + " / 3")
+
                     }
-                    //퀘스트 수행 완료 시 증가
-                    rootView.adapter = QuestAdapter(requireContext())
-                    questAdapter.notifyDataSetChanged()
 
-                    qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
-                    doQuest.setText(Character.doingQuestCount.toString() + " / 3")
+                    dialog.setNegativeButton("취소") { dialogInterface, i -> }
+                    dialog.setCancelable(false)
+                    dialog.show()
                 }
-
-                dialog.setNegativeButton("취소") { dialogInterface, i -> }
-                dialog.show()
             }
 
         return view
@@ -94,7 +101,8 @@ class QuestListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         //리스트뷰 갱신
-        view?.findViewById<ListView>(R.id.questListView)?.adapter = QuestAdapter(requireContext())
+        view?.findViewById<ListView>(R.id.questListView)?.adapter =
+            QuestAdapter(requireContext())
         QuestAdapter(requireContext()).notifyDataSetChanged()
         qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
     }
