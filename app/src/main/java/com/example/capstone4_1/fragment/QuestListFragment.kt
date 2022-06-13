@@ -23,6 +23,12 @@ private const val ARG_PARAM2 = "param2"
  */
 class QuestListFragment : Fragment() {
     private lateinit var qSize: TextView
+    private val CLICK_INTERVAL = 300
+    private var lastClickedTime: Long = System.currentTimeMillis()
+
+    private fun isSafe(): Boolean {
+        return System.currentTimeMillis() - lastClickedTime > CLICK_INTERVAL
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +58,11 @@ class QuestListFragment : Fragment() {
 
         rootView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, Iview, position, _ ->
+                if (!isSafe())
+                    return@OnItemClickListener
+
+                lastClickedTime = System.currentTimeMillis()
+
                 val selectQuest = parent.getItemAtPosition(position) as Quest
                 val dialog = AlertDialog.Builder(requireContext()).apply {
                     //다이얼로그 이름
@@ -88,10 +99,8 @@ class QuestListFragment : Fragment() {
 
 
                 dialog.setNegativeButton("취소") { _, _ -> }
-                dialog.setCancelable(false)
-                Iview.setOnSingleClickListener {
-                    dialog.show()
-                }
+
+                dialog.show()
 
             }
         return view
