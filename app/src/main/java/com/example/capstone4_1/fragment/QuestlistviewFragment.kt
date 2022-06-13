@@ -42,46 +42,47 @@ class QuestlistviewFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.quest_list, container, false)
         val rootView = view.findViewById<ListView>(R.id.questListView)
+        val questAdapter = QuestAdapter(requireContext())
 
-        rootView.adapter = QuestAdapter(requireContext())
+        rootView.adapter = questAdapter
 
         rootView.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
-                view.setOnSingleClickListener {
-                    val dialog = AlertDialog.Builder(requireContext())
-                    val selectQuest = parent.getItemAtPosition(position) as Quest
-                    val questAdapter = QuestAdapter(requireContext())
+            AdapterView.OnItemClickListener { parent, Iview, position, id ->
 
-                    //다이얼로그 이름
-                    dialog.setTitle(selectQuest.name)
-                    //다이얼로그 설명
-                    dialog.setMessage(" 이 퀘스트를 수행하셨나용? ")
+                val dialog = AlertDialog.Builder(requireContext())
+                val selectQuest = parent.getItemAtPosition(position) as Quest
 
-                    // 확인 버튼 클릭시 동작할 것들!!!
-                    dialog.setPositiveButton("완료") { dialogInterface, i ->
-                        Toast.makeText(
-                            requireContext(),
-                            selectQuest.name + "\n 퀘스트를 완료하셨습니다.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                //다이얼로그 이름
+                dialog.setTitle(selectQuest.name)
+                //다이얼로그 설명
+                dialog.setMessage(" 이 퀘스트를 수행하셨나용? ")
 
-                        if (Character.questList[position].value == -1) {
-                            val realPosition = position - Character.randomQuestList.count()
-                            Character.customQuestList.removeAt(realPosition)
-                        } else {
-                            //퀘스트 넘김
-                            Statistics.addCount(Character.randomQuestList[position])
-                            //선택 퀘스트 제거
-                            Character.randomQuestList.removeAt(position)
-                            //퀘스트 수행 완료 시 증가
-                            Character.doingQuestCount++
-                        }
-                        //리스트 갱신
-                        rootView.adapter = QuestAdapter(requireContext())
-                        questAdapter.notifyDataSetChanged()
+                // 확인 버튼 클릭시 동작할 것들!!!
+                dialog.setPositiveButton("완료") { dialogInterface, i ->
+                    Toast.makeText(
+                        requireContext(),
+                        selectQuest.name + "\n 퀘스트를 완료하셨습니다.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    if (Character.questList[position].value == -1) {
+                        val realPosition = position - Character.randomQuestList.count()
+                        Character.customQuestList.removeAt(realPosition)
+                    } else {
+                        //퀘스트 넘김
+                        Statistics.addCount(Character.randomQuestList[position])
+                        //선택 퀘스트 제거
+                        Character.randomQuestList.removeAt(position)
+                        //퀘스트 수행 완료 시 증가
+                        Character.doingQuestCount++
                     }
-                    dialog.setNegativeButton("취소") { dialogInterface, i -> }
-                    dialog.setCancelable(false)
+                    //리스트 갱신
+                    rootView.adapter = QuestAdapter(requireContext())
+                    questAdapter.notifyDataSetChanged()
+                }
+                dialog.setNegativeButton("취소") { dialogInterface, i -> }
+                dialog.setCancelable(false)
+                Iview.setOnSingleClickListener {
                     dialog.show()
                 }
             }

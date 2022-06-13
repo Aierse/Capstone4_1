@@ -51,50 +51,49 @@ class QuestListFragment : Fragment() {
         }
 
         rootView.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, _ ->
-                view.setOnSingleClickListener {
-                    val dialog = AlertDialog.Builder(requireContext()).apply {
-                        val selectQuest = parent.getItemAtPosition(position) as Quest
+            AdapterView.OnItemClickListener { parent, Iview, position, _ ->
+                val selectQuest = parent.getItemAtPosition(position) as Quest
+                val dialog = AlertDialog.Builder(requireContext()).apply {
+                    //다이얼로그 이름
+                    setTitle(selectQuest.name)
+                    //다이얼로그 설명
+                    setMessage(" 이 퀘스트를 수행하셨나용? ")
+                    // 확인 버튼 클릭시 동작할 것들!!!
+                    setPositiveButton("완료") { _, _ ->
+                        Toast.makeText(
+                            requireContext(),
+                            selectQuest.name + "\n퀘스트를 완료하셨습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
-                        //다이얼로그 이름
-                        setTitle(selectQuest.name)
-                        //다이얼로그 설명
-                        setMessage(" 이 퀘스트를 수행하셨나용? ")
-                        // 확인 버튼 클릭시 동작할 것들!!!
-                        setPositiveButton("완료") { _, _ ->
-                            Toast.makeText(
-                                requireContext(),
-                                selectQuest.name + "\n퀘스트를 완료하셨습니다.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-
-                            if (Character.questList[position].value == -1) {
-                                val realPosition = position - Character.randomQuestList.count()
-                                Character.customQuestList.removeAt(realPosition)
-                            } else {
-                                //퀘스트 넘김
-                                Statistics.addCount(Character.randomQuestList[position])
-                                //선택 퀘스트 제거
-                                Character.randomQuestList.removeAt(position)
-                                //퀘스트 수행 완료 시 증가
-                                Character.doingQuestCount++
-                            }
-                            //리스트 갱신
-                            rootView.adapter = QuestAdapter(requireContext())
-                            questAdapter.notifyDataSetChanged()
-
-                            qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
-                            doQuest.text = Character.doingQuestCount.toString() + " / 3"
+                        if (Character.questList[position].value == -1) {
+                            val realPosition = position - Character.randomQuestList.count()
+                            Character.customQuestList.removeAt(realPosition)
+                        } else {
+                            //퀘스트 넘김
+                            Statistics.addCount(Character.randomQuestList[position])
+                            //선택 퀘스트 제거
+                            Character.randomQuestList.removeAt(position)
+                            //퀘스트 수행 완료 시 증가
+                            Character.doingQuestCount++
                         }
+                        //리스트 갱신
+                        rootView.adapter = QuestAdapter(requireContext())
+                        questAdapter.notifyDataSetChanged()
+
                     }
+                    qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
+                    doQuest.text = Character.doingQuestCount.toString() + " / 3"
+                }
 
 
-                    dialog.setNegativeButton("취소") { _, _ -> }
-                    dialog.setCancelable(false)
+                dialog.setNegativeButton("취소") { _, _ -> }
+                dialog.setCancelable(false)
+                Iview.setOnSingleClickListener {
                     dialog.show()
                 }
-            }
 
+            }
         return view
     }
 

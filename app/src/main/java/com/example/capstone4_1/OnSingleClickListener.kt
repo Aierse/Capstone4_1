@@ -1,12 +1,11 @@
 package com.example.capstone4_1
 
-import android.util.Log
 import android.view.View
 
 class OnSingleClickListener(private val onSingleClick: (View) -> Unit) : View.OnClickListener {
 
     companion object {
-        const val CLICK_INTERVAL = 200
+        const val CLICK_INTERVAL = 300
     }
 
     private var lastClickedTime: Long = 0L
@@ -20,7 +19,6 @@ class OnSingleClickListener(private val onSingleClick: (View) -> Unit) : View.On
             onSingleClick(v)
         }
         lastClickedTime = System.currentTimeMillis()
-        Log.d("aaaaaaaaasssssssssss", "${lastClickedTime}")
     }
 }
 
