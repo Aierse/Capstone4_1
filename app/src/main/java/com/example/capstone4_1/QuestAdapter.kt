@@ -33,8 +33,8 @@ open class QuestAdapter(val context: Context) : BaseAdapter() {
         }
 
         viewHolder.apply {
-            name.setText(Character.questList[position].name)
-            explain.setText(Character.questList[position].explain)
+            name.text = Character.questList[position].name
+            explain.text = Character.questList[position].explain
             imageView.setImageResource(Character.questList[position].image)
         }
         return view

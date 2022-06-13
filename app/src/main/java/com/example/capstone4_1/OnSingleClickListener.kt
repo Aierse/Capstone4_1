@@ -1,5 +1,6 @@
 package com.example.capstone4_1
 
+import android.util.Log
 import android.view.View
 
 class OnSingleClickListener(private val onSingleClick: (View) -> Unit) : View.OnClickListener {
@@ -14,11 +15,12 @@ class OnSingleClickListener(private val onSingleClick: (View) -> Unit) : View.On
         return System.currentTimeMillis() - lastClickedTime > CLICK_INTERVAL
     }
 
-    override fun onClick(v: View?) {
-        if (isSafe() && v != null) {
+    override fun onClick(v: View) {
+        if (isSafe()) {
             onSingleClick(v)
         }
         lastClickedTime = System.currentTimeMillis()
+        Log.d("aaaaaaaaasssssssssss", "${lastClickedTime}")
     }
 }
 
