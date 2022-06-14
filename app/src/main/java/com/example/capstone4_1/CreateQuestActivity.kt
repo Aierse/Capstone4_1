@@ -24,6 +24,7 @@ class CreateQuestActivity : AppCompatActivity() {
             }else
             Character.customQuestList.add(Quest(R.drawable.ic_custom,qname.text.toString(),qexplain.text.toString()))
             Toast.makeText(this, "${qname.text} 퀘스트가 생성되었습니다.", Toast.LENGTH_SHORT).show()
+            finish()
         }
 
         backbtn.setOnClickListener() {
