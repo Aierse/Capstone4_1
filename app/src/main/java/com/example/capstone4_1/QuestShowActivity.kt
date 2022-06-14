@@ -16,12 +16,12 @@ class QuestShowActivity : AppCompatActivity() {
 
 
 
-        binding.okBtn.setOnClickListener(View.OnClickListener {
+       // binding.okBtn.setOnClickListener(View.OnClickListener {
             toast("오케이 버튼을 눌렀다")
-        })
-        binding.cancleBtn.setOnClickListener(View.OnClickListener {
+      //  })
+      //  binding.cancleBtn.setOnClickListener(View.OnClickListener {
             toast("취소 버튼을 눌렀다.")
-        })
+       // })
 
 
     }

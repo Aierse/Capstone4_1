@@ -1,17 +1,16 @@
 package com.example.capstone4_1.fragment
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ListView
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
-import com.example.capstone4_1.Character
-import com.example.capstone4_1.R
-import com.example.capstone4_1.StatisticsAdapter
+import com.example.capstone4_1.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,7 +41,15 @@ class MyinfoFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_myinfo, container, false)
         val listView = view.findViewById<ListView>(R.id.statisticsListView)
+        val button = view.findViewById<ImageView>(R.id.tierInfo)
 
+        button.setOnClickListener{
+            val builder = AlertDialog.Builder(requireContext())
+            val inflater = requireActivity().layoutInflater;
+            builder.setView(inflater.inflate(R.layout.quest_show_popup, null))
+            builder.show()
+
+        }
         //화면 초기화
         view.findViewById<ImageView>(R.id.myCharacter).setImageResource(Character.icon)
         view.findViewById<TextView>(R.id.myInfoName).append("이름:${Character.name}")

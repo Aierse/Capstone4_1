@@ -19,18 +19,25 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:background="#deb887"
+            android:layout_margin="3dp"
+            android:gravity="center">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_margin="3dp"
                 android:background="#deb887"
                 android:text="@string/MyInfo"
                 android:textAlignment="center"
                 android:textColor="#964b00"
                 android:textSize="30sp" />
+            <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/tierInfo"
+            android:src="@drawable/ic_baseline_info_24"/>
 
         </LinearLayout>
 
