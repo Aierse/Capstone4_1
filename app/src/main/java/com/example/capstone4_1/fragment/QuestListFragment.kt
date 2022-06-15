@@ -91,12 +91,11 @@ class QuestListFragment : Fragment() {
                         //리스트 갱신
                         rootView.adapter = QuestAdapter(requireContext())
                         questAdapter.notifyDataSetChanged()
-
+                        qSize.text = String.format("남은 퀘스트: %d", Character.questList.count())
+                        doQuest.text = Character.doingQuestCount.toString() + " / 3"
                     }
-                    qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
-                    doQuest.text = Character.doingQuestCount.toString() + " / 3"
-                }
 
+                }
 
                 dialog.setNegativeButton("취소") { _, _ -> }
 
