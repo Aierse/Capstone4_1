@@ -107,6 +107,8 @@ class EndActivity : AppCompatActivity() {
         return mPath
 
     }
-
+    override fun onBackPressed(){
+        
+    }
 
 }
