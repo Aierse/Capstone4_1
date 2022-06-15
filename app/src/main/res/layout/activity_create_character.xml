@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/characterInfo"
+                android:text="@string/characterCreate"
                 android:textSize="30sp" />
 
             <LinearLayout
@@ -153,6 +153,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
         android:layout_gravity="bottom">
 
         <Button
@@ -162,6 +163,7 @@
             android:layout_weight="1"
             android:onClick="reset"
             android:text="@string/Reset"
+
             android:textStyle="bold" />
 
         <Button
