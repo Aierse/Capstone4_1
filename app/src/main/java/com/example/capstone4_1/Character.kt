@@ -109,6 +109,7 @@ object Character {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun loadCharacter(context: Context): String {// load
         val filepath = context.filesDir.toString() + "/" + filename
         val file = File(filepath)
@@ -150,11 +151,11 @@ object Character {
 //                    Log.d("test_value", tmp_object.getString("name") )
 //                    Log.d("test_value", tmp_object.getString("content") )
                 }
-
                 this.questList = tmp_quests
                 this.doingQuestCount = data.getInt("doingQuest")
                 this.name = data.getString("name")
                 this.hp = data.getDouble("hp").toFloat()
+                this.currentLogin = LocalDateTime.parse(data.getString("currentLogin"))
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // createTime load check sdk v
                     this.createTime = LocalDateTime.parse(
                         data.getString("createTime"),
