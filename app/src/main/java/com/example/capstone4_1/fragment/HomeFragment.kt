@@ -2,7 +2,6 @@ package com.example.capstone4_1.fragment
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -59,10 +58,6 @@ class HomeFragment : Fragment() {
         mainCharacterIcon.setOnClickListener { //이미지 클릭시
             val pos = IntArray(2) //[0]:x  [1]:y
             mainCharacterIcon.getLocationOnScreen(pos)
-            Log.d(
-                "zzzzz",
-                "onCreateView: " + mainCharacterIcon.height + "\n" + mainCharacterIcon.width
-            )
             makeToast(mainCharacterIcon.height) //토스트 출력
 
         }
