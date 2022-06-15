@@ -21,7 +21,6 @@ import com.google.android.material.navigation.NavigationBarView
 import java.io.File
 import java.time.Duration
 import java.time.LocalDateTime
-import java.time.LocalTime
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -96,33 +95,40 @@ class MainActivity : AppCompatActivity() {
     fun dailyReset() {
 
         //최근 로그인 날짜시간
-//        val currentday = Character.currentLogin
-        val currentday = LocalDateTime.parse("2022-06-14T00:00:00") //날짜 고정 테스트 코드
+//        val currentDay = Character.currentLogin.minusHours(6)
+        var currentDay = LocalDateTime.parse("2022-06-14T21:00:00").minusHours(6) //날짜 고정 테스트 코드
+
+        Log.d("dailyReset", "current day" + currentDay)
+
         //현재 날짜시간
         val nowday = LocalDateTime.now()
         //날짜 차이
-        val duration = Duration.between(currentday, nowday).toDays()
-        //리셋 타임
-        val resetTime = LocalTime.parse("03:00:00")
+        val duration = Duration.between(currentDay, nowday).toDays()
+
         //로그
-        Log.d("dailyReset", "날짜 차이 " + duration)
+        Log.d("dailyReset", "날짜 차이 일수" + duration)
         Log.d("dailyReset", "저장 나태함 " + Character.hp)
 
-        //최근 로그인과 오늘 날짜 비교 후 다르면 실행
-        if (duration.toInt() != 0 && Character.doingQuestCount < 3 && resetTime.hour <= LocalTime.now().hour) {
+        val questFailed = Character.doingQuestCount < 3
 
-            Character.hp += (0.5f * duration.toInt())
-            Log.d("dailyReset", "나태함 증가 " + Character.hp)
+        for (i in 0..duration) {
+            if (questFailed) {
+                Character.hp += (0.5f)
+                Log.d("dailyReset", "나태함 증가 " + Character.hp)
 
-            if (Character.hp >= 3.0f) {
-                startActivity(Intent(this, EndActivity::class.java))
+                if (Character.hp >= 3.0f) {
+                    startActivity(Intent(this, EndActivity::class.java))
+                }
+
+                //랜덤퀘스트 리셋
+                //doing퀘스트 리셋
+                Character.doingQuestCount = 0
+                Log.d("dailyReset", "퀘스트 초기화 완료")
             }
-            //랜덤퀘스트 리셋
-            Character.initializeQuest()
-            //doing퀘스트 리셋
-            Character.doingQuestCount = 0
-            Log.d("dailyReset", "퀘스트 초기화 완료")
         }
+
+        if(duration > 0)
+            Character.initializeQuest()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
