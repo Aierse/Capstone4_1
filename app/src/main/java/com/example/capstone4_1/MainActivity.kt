@@ -95,8 +95,7 @@ class MainActivity : AppCompatActivity() {
     fun dailyReset() {
 
         //최근 로그인 날짜시간
-//        val currentDay = Character.currentLogin.minusHours(6)
-        var currentDay = LocalDateTime.parse("2022-06-14T21:00:00").minusHours(6) //날짜 고정 테스트 코드
+        val currentDay = Character.currentLogin.minusHours(6)
 
         Log.d("dailyReset", "current day" + currentDay)
 
