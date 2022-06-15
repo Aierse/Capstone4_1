@@ -19,9 +19,9 @@ import com.example.capstone4_1.fragment.QuestListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import java.io.File
-import java.time.LocalDate
+import java.time.Duration
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import java.time.LocalTime
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -40,13 +40,12 @@ class MainActivity : AppCompatActivity() {
         val filepath = filesDir.toString() + "/data.json"
         val file = File(filepath)
 
-        //최근 로그인 insert
-        Character.currentLogin = LocalDateTime.now()
-
         if (file.exists()) { // 파일이 존재 할경우
             Character.loadCharacter(this)
             //날짜 초기화시
             dailyReset()
+            //최근 로그인 insert
+            Character.currentLogin = LocalDateTime.now()
             findViewById<BottomNavigationView>(R.id.menu_bottom_navigation).selectedItemId =
                 R.id.home
         } else { // 아닐경우
@@ -60,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         startService(Intent(this, AutoSave::class.java))
-
 
         // setupEvent()
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.menu_bottom_navigation)
@@ -97,35 +95,33 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun dailyReset() {
 
-        //최근 로그인 시간
-        val currentday = LocalDate.parse("2022-06-10") //날짜 고정 테스트 코드
+        //최근 로그인 날짜시간
 //        val currentday = Character.currentLogin
-        //현재 날짜
-        val nowday = LocalDate.now()
-        //포멧 형식
-        val format = DateTimeFormatter.ofPattern("yyyyMMdd")
-        //날짜 데이터 포맷 -> INT
-        val currentdayI = currentday?.format(format)?.toInt()
-        val nowdayI = nowday.format(format).toInt()
+        val currentday = LocalDateTime.parse("2022-06-14T00:00:00") //날짜 고정 테스트 코드
+        //현재 날짜시간
+        val nowday = LocalDateTime.now()
+        //날짜 차이
+        val duration = Duration.between(currentday, nowday).toDays()
+        //리셋 타임
+        val resetTime = LocalTime.parse("03:00:00")
         //로그
-        Log.d("dailyReset", "최근 로그인 -> " + currentday)
-        Log.d("dailyReset", "최근 포멧: " + currentdayI)
-        Log.d("dailyReset", "오늘 포멧: " + nowdayI)
-        //최근 로그인과 오늘 날짜 비교 후 다르면 실행
-        if (currentdayI != nowdayI) {
-            //나태함 증가
-            if (Character.doingQuestCount < 3) {
-                Character.hp += 1.5f
-                if (Character.hp >= 3.0f) {
-                    startActivity(Intent(this, EndActivity::class.java))
-                }
-            }
+        Log.d("dailyReset", "날짜 차이 " + duration)
+        Log.d("dailyReset", "저장 나태함 " + Character.hp)
 
+        //최근 로그인과 오늘 날짜 비교 후 다르면 실행
+        if (duration.toInt() != 0 && Character.doingQuestCount < 3 && resetTime.hour <= LocalTime.now().hour) {
+
+            Character.hp += (0.5f * duration.toInt())
+            Log.d("dailyReset", "나태함 증가 " + Character.hp)
+
+            if (Character.hp >= 3.0f) {
+                startActivity(Intent(this, EndActivity::class.java))
+            }
             //랜덤퀘스트 리셋
             Character.initializeQuest()
             //doing퀘스트 리셋
             Character.doingQuestCount = 0
-            Log.d("dailyReset", "초기화 완료")
+            Log.d("dailyReset", "퀘스트 초기화 완료")
         }
     }
 
