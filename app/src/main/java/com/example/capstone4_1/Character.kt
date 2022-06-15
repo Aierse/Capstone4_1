@@ -25,7 +25,7 @@ object Character {
     var customQuestList = arrayListOf<Quest>()
     var randomQuestList = arrayListOf<Quest>()
     var doingQuestCount = 0  // 금일 퀘스트 수행   0 / 3
-    var currentLogin: LocalDateTime? = null //최근 로그인
+    lateinit var currentLogin: LocalDateTime //최근 로그인
     @RequiresApi(Build.VERSION_CODES.O)
     var createTime: LocalDateTime = LocalDateTime.now() //캐릭터 생성시점
     var hp: Float = 0.0f // 나태함
