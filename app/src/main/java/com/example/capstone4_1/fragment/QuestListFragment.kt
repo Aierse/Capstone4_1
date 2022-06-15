@@ -123,6 +123,10 @@ class QuestListFragment : Fragment() {
         qSize.text = String.format("(남은 퀘스트 : %d)", Character.questList.count())
     }
 
+    override fun onStop() {
+        super.onStop()
+        sToast?.cancel()
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
