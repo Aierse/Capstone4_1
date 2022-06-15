@@ -10,7 +10,8 @@
         android:theme="@style/Theme.Capstone4_1">
         <activity
             android:name=".Splash"
-            android:exported="true" >
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +20,8 @@
         </activity>
         <activity
             android:name=".EndActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".QuestShowActivity"
             android:exported="false" />
