@@ -2,7 +2,6 @@ package com.example.capstone4_1.fragment
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,9 +73,6 @@ class QuestlistviewFragment : Fragment() {
                     questAdapter.notifyDataSetChanged()
                 }
                 dialog.setNegativeButton("취소") { dialogInterface, i -> }
-
-                Log.d("testtest1111111111", "${Iview}")
-
                 dialog.show()
             }
 
