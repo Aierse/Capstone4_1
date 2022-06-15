@@ -1,6 +1,7 @@
 package com.example.capstone4_1.fragment
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,6 +26,7 @@ class QuestListFragment : Fragment() {
     private lateinit var qSize: TextView
     private val CLICK_INTERVAL = 300
     private var lastClickedTime: Long = System.currentTimeMillis()
+    private var sToast: Toast? = null
 
     private fun isSafe(): Boolean {
         return System.currentTimeMillis() - lastClickedTime > CLICK_INTERVAL
@@ -71,11 +73,7 @@ class QuestListFragment : Fragment() {
                     setMessage(" 이 퀘스트를 수행하셨나용? ")
                     // 확인 버튼 클릭시 동작할 것들!!!
                     setPositiveButton("완료") { _, _ ->
-                        Toast.makeText(
-                            requireContext(),
-                            selectQuest.name + "\n퀘스트를 완료하셨습니다.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        showToast(requireContext(),selectQuest.name + "\n퀘스트를 완료하셨습니다.")
 
                         if (Character.questList[position].value == -1) {
                             val realPosition = position - Character.randomQuestList.count()
@@ -103,6 +101,16 @@ class QuestListFragment : Fragment() {
 
             }
         return view
+    }
+
+    fun showToast(context: Context?, message: String?) {
+        sToast?.cancel()
+        if (sToast == null) {
+            sToast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
+        } else {
+            sToast!!.setText(message)
+        }
+        sToast!!.show()
     }
 
     /*--------------------------------------------- 메인 끝 ---------------------------------------------*/
