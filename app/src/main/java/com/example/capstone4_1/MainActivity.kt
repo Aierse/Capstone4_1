@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         // 캐릭터 클래스 초기화
         val filepath = filesDir.toString() + "/data.json"
         val file = File(filepath)
+
         //최근 로그인 insert
         Character.currentLogin = LocalDateTime.now()
 
@@ -84,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                 val mainFrag = findViewById<FrameLayout>(R.id.mainFrag) ?: continue
                 val t = mainFrag.findViewById<TextView>(R.id.remainTime) ?: continue
                 runOnUiThread {
-                    t.text = Character.remainTimes
+                    t.text = " " + Character.remainTimes
                 }
                 Thread.sleep(100)
             }
@@ -97,9 +98,9 @@ class MainActivity : AppCompatActivity() {
     fun dailyReset() {
 
         //최근 로그인 시간
-//        val currentday = LocalDate.parse("2022-06-08") //날짜 고정 테스트 코드
-        val currentday = Character.currentLogin
-        //현재 시간
+        val currentday = LocalDate.parse("2022-06-10") //날짜 고정 테스트 코드
+//        val currentday = Character.currentLogin
+        //현재 날짜
         val nowday = LocalDate.now()
         //포멧 형식
         val format = DateTimeFormatter.ofPattern("yyyyMMdd")
@@ -114,9 +115,7 @@ class MainActivity : AppCompatActivity() {
         if (currentdayI != nowdayI) {
             //나태함 증가
             if (Character.doingQuestCount < 3) {
-                Log.d("dailyReset", "현재 나태함 증가됨 -> " + Character.hp)
-                Character.hp += 0.5f
-                Log.d("dailyReset", "현재 나태함 증가됨 -> " + Character.hp)
+                Character.hp += 1.5f
                 if (Character.hp >= 3.0f) {
                     startActivity(Intent(this, EndActivity::class.java))
                 }
