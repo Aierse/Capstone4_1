@@ -52,15 +52,17 @@ class HomeFragment : Fragment() {
         val mainCharacterIcon = view.findViewById<ImageView>(R.id.mainCharacterIcon)
 
         //초기화
-        view.findViewById<TextView>(R.id.SVday).setText(survivalDays()?.plus(1).toString() + " 일차 생존")
+        view.findViewById<TextView>(R.id.SVday)
+            .setText(survivalDays()?.plus(1).toString() + " 일차 생존")
         view.findViewById<ImageView>(R.id.mainCharacterIcon).setImageResource(Character.icon)
 
         mainCharacterIcon.setOnClickListener { //이미지 클릭시
             val pos = IntArray(2) //[0]:x  [1]:y
             mainCharacterIcon.getLocationOnScreen(pos)
-            mainCharacterIcon.width
-            mainCharacterIcon.height
-            Log.d("zzzzz", "onCreateView: "+mainCharacterIcon.height+"\n"+mainCharacterIcon.width)
+            Log.d(
+                "zzzzz",
+                "onCreateView: " + mainCharacterIcon.height + "\n" + mainCharacterIcon.width
+            )
             makeToast(mainCharacterIcon.height) //토스트 출력
 
         }
@@ -78,10 +80,11 @@ class HomeFragment : Fragment() {
         val randomStrings = arrayOf("안녕하세요", "반갑습니다", "배고파")
         val message = layout.findViewById<TextView>(R.id.toastText)
         message.setText(randomStrings[Random().nextInt(randomStrings.size)])
-        if (mToast != null) mToast?.cancel()
+
+        mToast?.cancel()
+
         mToast = Toast(context)
-        mToast!!.setGravity(Gravity.BOTTOM, 0, y+170)
-        Log.d("yyySS", "onCreateView: " + y)
+        mToast!!.setGravity(Gravity.BOTTOM, 0, y + 170)
         mToast!!.duration = Toast.LENGTH_SHORT
         mToast!!.setView(layout);
         mToast!!.show()
