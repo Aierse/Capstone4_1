@@ -24,8 +24,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:fontFamily="@font/nanumson"
                 android:text="@string/end"
-                android:textSize="30sp" />
+                android:textSize="37sp" />
 
             <fragment
                 android:id="@+id/HomeFragment"
