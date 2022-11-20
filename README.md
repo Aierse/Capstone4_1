@@ -5,7 +5,7 @@ Capstone
 > ✨ 이문서는 2022년도 4학년 1학기에 진행하는 캡스톤디자인 활동에 대해 기록하는 문서 입니다.
 
 
-👨‍👨‍👧‍👦Contributor
+👨‍👨‍👧‍👦Contributor  
 <a href="https://github.com/Aierse/Capstone4_1/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Aierse/Capstone4_1" />
 </a>
