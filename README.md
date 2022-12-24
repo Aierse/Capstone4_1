@@ -28,7 +28,7 @@ Capstone
 ## 1. 📱 App(작심삼백일)
 
 > 
-> [App](https://excessive-onyx-7ef.notion.site/22-03-24-444d531edf074ab69d0f0b42092ef977) < 설명은 링크로 대체
+> [App](https://verdant-result-e1b.notion.site/18dde67553e84113b3722fc4a43edbb2) < 설명은 링크로 대체
 <p>
     <img src="img/sample_img2.png" width="49%" height="455">
     <img src="img/sample_img1.png" width="49%" height="455">
