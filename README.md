@@ -28,7 +28,7 @@ Capstone
 ## 1. 📱 App(작심삼백일)
 
 > 
-> [App](https://verdant-result-e1b.notion.site/18dde67553e84113b3722fc4a43edbb2) < 설명은 링크로 대체
+> [App](https://accessible-supernova-c7a.notion.site/0864fc310bab42aea3b11ebb5b238c8f) < 설명은 링크로 대체
 <p>
     <img src="img/sample_img2.png" width="49%" height="455">
     <img src="img/sample_img1.png" width="49%" height="455">
